@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rentico Leads — MVP Prototype</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --panel: #ffffff;
+      --text: #152033;
+      --muted: #6f7b8f;
+      --line: #e8ecf2;
+      --brand: #2558ff;
+      --brand-dark: #173bcc;
+      --brand-soft: #eef3ff;
+      --success: #1f9d68;
+      --success-soft: #eaf8f2;
+      --warning: #d97706;
+      --warning-soft: #fff4df;
+      --danger: #d64545;
+      --danger-soft: #fff0f0;
+      --info: #3a7bd5;
+      --info-soft: #edf5ff;
+      --shadow: 0 18px 50px rgba(28, 41, 68, 0.08);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-sm: 11px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
+
+    .app {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 250px 1fr;
+    }
+
+    .sidebar {
+      background: #0f1729;
+      color: #fff;
+      padding: 28px 22px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 38px;
+    }
+
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #4b76ff, #7c4dff);
+      box-shadow: 0 8px 24px rgba(64, 93, 255, 0.4);
+      font-weight: 900;
+    }
+
+    .nav { display: grid; gap: 8px; }
+    .nav-item {
+      width: 100%;
+      border: 0;
+      color: #b7c1d5;
+      background: transparent;
+      border-radius: 12px;
+      padding: 13px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-align: left;
+      transition: 0.2s ease;
+    }
+    .nav-item:hover, .nav-item.active {
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+    }
+
+    .partner-mini {
+      margin-top: auto;
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      background: rgba(255,255,255,0.04);
+    }
+    .partner-mini strong { display:block; font-size:14px; }
+    .partner-mini span { color:#98a5bd; font-size:12px; }
+
+    .main { padding: 28px 34px 60px; overflow-x: hidden; }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 26px;
+    }
+    .topbar h1 {
+      margin: 0;
+      font-size: 30px;
+      letter-spacing: -0.04em;
+    }
+    .topbar p { margin: 6px 0 0; color: var(--muted); }
+
+    .primary-btn, .secondary-btn {
+      border: 0;
+      border-radius: 12px;
+      padding: 13px 18px;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+    .primary-btn {
+      color: #fff;
+      background: linear-gradient(135deg, var(--brand), #7448ff);
+      box-shadow: 0 10px 28px rgba(37, 88, 255, 0.24);
+    }
+    .primary-btn:hover { transform: translateY(-1px); box-shadow: 0 14px 32px rgba(37, 88, 255, 0.3); }
+    .secondary-btn { background: #eef1f6; color: var(--text); }
+
+    .view { display: none; }
+    .view.active { display: block; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+    .stat-card {
+      background: var(--panel);
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      box-shadow: 0 8px 25px rgba(28,41,68,0.04);
+    }
+    .stat-label { color: var(--muted); font-size: 13px; margin-bottom: 12px; }
+    .stat-value { font-size: 27px; font-weight: 800; letter-spacing: -0.04em; }
+    .stat-note { font-size: 12px; color: var(--muted); margin-top: 8px; }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+    }
+    .card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      padding: 22px 24px 16px;
+    }
+    .card-head h2 { margin: 0; font-size: 19px; letter-spacing: -0.02em; }
+    .card-head p { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
+
+    .balance-card {
+      color: white;
+      min-height: 250px;
+      padding: 26px;
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,.22), transparent 35%),
+        linear-gradient(135deg, #224df1, #7348ff);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 20px 50px rgba(64, 78, 210, 0.25);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .balance-card small { opacity: .75; }
+    .balance-card .amount { font-size: 40px; font-weight: 800; letter-spacing: -0.05em; margin: 8px 0; }
+    .balance-row { display: flex; gap: 24px; }
+    .balance-row div { flex:1; }
+    .balance-row strong { display:block; font-size:19px; margin-top:5px; }
+
+    .quick-form { padding: 0 24px 24px; }
+    .quick-form .mini-fields { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    .field { display:grid; gap: 7px; }
+    .field label { font-size: 12px; font-weight: 700; color: #596579; }
+    .field input, .field select, .field textarea {
+      width: 100%;
+      border: 1px solid #dfe5ee;
+      background: #fff;
+      border-radius: 11px;
+      padding: 12px 13px;
+      outline: none;
+      color: var(--text);
+      transition: 0.2s ease;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      border-color: var(--brand);
+      box-shadow: 0 0 0 4px rgba(37,88,255,.09);
+    }
+    .field textarea { min-height: 110px; resize: vertical; }
+
+    .table-wrap { overflow-x:auto; }
+    table { width:100%; border-collapse:collapse; }
+    th, td { padding: 14px 18px; text-align:left; border-top:1px solid var(--line); white-space:nowrap; }
+    th { color: var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.04em; cursor:pointer; user-select:none; }
+    td { font-size:14px; }
+    tbody tr:hover { background:#fafbfe; }
+    .lead-name { font-weight:700; }
+    .lead-sub { display:block; color:var(--muted); font-size:12px; margin-top:3px; }
+
+    .status {
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      padding:7px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:800;
+    }
+    .status::before { content:""; width:7px; height:7px; border-radius:50%; background:currentColor; }
+    .status-new { color:#315fd8; background:#eef3ff; }
+    .status-contact { color:#8a5d00; background:#fff4df; }
+    .status-selection { color:#6d42c7; background:#f4edff; }
+    .status-confirmed { color:#0f7b59; background:#eaf8f2; }
+    .status-completed { color:#14824f; background:#e5f8ee; }
+    .status-rejected { color:#c54444; background:#fff0f0; }
+
+    .toolbar {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      padding: 0 24px 18px;
+    }
+    .search { max-width:300px; width:100%; }
+    .search input { width:100%; padding:11px 13px; border-radius:11px; border:1px solid var(--line); outline:none; }
+
+    .profile-grid { display:grid; grid-template-columns: 1fr 1fr; gap:18px; }
+    .profile-card { padding:24px; }
+    .profile-card h2 { margin-top:0; }
+    .profile-card .fields { display:grid; gap:14px; }
+    .checkbox-row { display:flex; align-items:center; gap:10px; color:var(--text); font-size:14px; }
+    .checkbox-row input { width:18px; height:18px; }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 18, 34, 0.58);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      z-index:1000;
+    }
+    .modal-backdrop.open { display:flex; }
+    .modal {
+      width:min(720px, 100%);
+      max-height:92vh;
+      overflow:auto;
+      background:#fff;
+      border-radius:24px;
+      box-shadow:0 30px 80px rgba(8,18,38,.3);
+      animation: pop .18s ease;
+    }
+    @keyframes pop { from { transform:translateY(8px) scale(.98); opacity:.6; } to { transform:none; opacity:1; } }
+    .modal-head {
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      padding:24px 24px 16px;
+      border-bottom:1px solid var(--line);
+    }
+    .modal-head h2 { margin:0; }
+    .modal-head p { margin:5px 0 0; color:var(--muted); font-size:13px; }
+    .close-btn { border:0; background:#f1f3f7; width:38px; height:38px; border-radius:10px; font-size:22px; }
+    .modal-body { padding:22px 24px 26px; }
+    .modal-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .modal-grid .full { grid-column:1/-1; }
+    .modal-actions { display:flex; justify-content:flex-end; gap:10px; margin-top:20px; }
+
+    .toast {
+      position:fixed;
+      right:24px;
+      bottom:24px;
+      background:#101827;
+      color:#fff;
+      padding:14px 18px;
+      border-radius:12px;
+      box-shadow:0 18px 50px rgba(0,0,0,.22);
+      opacity:0;
+      transform:translateY(10px);
+      pointer-events:none;
+      transition:.2s ease;
+      z-index:1200;
+    }
+    .toast.show { opacity:1; transform:none; }
+
+    @media (max-width: 1100px) {
+      .stats { grid-template-columns:repeat(2,1fr); }
+      .dashboard-grid { grid-template-columns:1fr; }
+      .profile-grid { grid-template-columns:1fr; }
+    }
+    @media (max-width: 760px) {
+      .app { grid-template-columns:1fr; }
+      .sidebar { position:static; height:auto; padding:18px; }
+      .nav { grid-template-columns:repeat(3,1fr); }
+      .partner-mini { display:none; }
+      .logo { margin-bottom:18px; }
+      .main { padding:22px 16px 40px; }
+      .topbar { align-items:flex-start; }
+      .stats { grid-template-columns:1fr; }
+      .quick-form .mini-fields, .modal-grid { grid-template-columns:1fr; }
+      .modal-grid .full { grid-column:auto; }
+      .toolbar { align-items:stretch; flex-direction:column; }
+      .topbar .primary-btn { padding:12px 14px; }
+    }
+  </style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="logo"><div class="logo-mark">R</div> Rentico Leads</div>
+    <nav class="nav">
+      <button class="nav-item active" data-view="dashboard">◫ Дашборд</button>
+      <button class="nav-item" data-view="leads">≡ Мои заявки</button>
+      <button class="nav-item" data-view="profile">⚙ Профиль</button>
+    </nav>
+    <div class="partner-mini">
+      <strong>Alex Partner</strong>
+      <span>Партнер ID: RL-1024</span>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <h1 id="pageTitle">Дашборд</h1>
+        <p id="pageSubtitle">Все ключевые данные по вашим заявкам и вознаграждениям.</p>
+      </div>
+      <button class="primary-btn" id="openLeadModal">+ Передать заявку</button>
+    </div>
+
+    <section class="view active" id="dashboardView">
+      <div class="stats">
+        <div class="stat-card"><div class="stat-label">Всего заявок</div><div class="stat-value" id="statTotal">12</div><div class="stat-note">За все время</div></div>
+        <div class="stat-card"><div class="stat-label">В работе</div><div class="stat-value" id="statActive">5</div><div class="stat-note">Требуют обработки Rentico</div></div>
+        <div class="stat-card"><div class="stat-label">Успешные сделки</div><div class="stat-value" id="statSuccess">4</div><div class="stat-note">Аренда завершена</div></div>
+        <div class="stat-card"><div class="stat-label">Конверсия</div><div class="stat-value" id="statConversion">33%</div><div class="stat-note">Из заявки в аренду</div></div>
+      </div>
+
+      <div class="dashboard-grid">
+        <div class="balance-card">
+          <div>
+            <small>Доступный баланс</small>
+            <div class="amount">7 850 AED</div>
+            <small>Можно запросить выплату после подтверждения реквизитов</small>
+          </div>
+          <div class="balance-row">
+            <div><small>Ожидает начисления</small><strong>2 100 AED</strong></div>
+            <div><small>Заработано всего</small><strong>18 450 AED</strong></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <div><h2>Быстрая передача</h2><p>Минимум данных для новой заявки</p></div>
+          </div>
+          <form class="quick-form" id="quickLeadForm">
+            <div class="mini-fields">
+              <div class="field"><label>Имя клиента</label><input required id="quickName" placeholder="Например, Omar" /></div>
+              <div class="field"><label>Телефон</label><input required id="quickPhone" placeholder="+971..." /></div>
+            </div>
+            <button class="primary-btn" style="width:100%; margin-top:14px;" type="submit">Передать заявку</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><div><h2>Последние заявки</h2><p>Новые и недавно обновленные</p></div><button class="secondary-btn" data-go="leads">Смотреть все</button></div>
+        <div class="table-wrap"><table><thead><tr><th>Клиент</th><th>Статус</th><th>Автомобиль</th><th>Сумма аренды</th><th>Дата</th></tr></thead><tbody id="dashboardLeadRows"></tbody></table></div>
+      </div>
+    </section>
+
+    <section class="view" id="leadsView">
+      <div class="card">
+        <div class="card-head"><div><h2>Все заявки</h2><p>Нажмите на заголовок столбца для сортировки</p></div></div>
+        <div class="toolbar">
+          <div class="search"><input id="leadSearch" placeholder="Поиск по имени или автомобилю" /></div>
+          <select id="statusFilter" style="padding:11px 13px;border:1px solid var(--line);border-radius:11px;background:#fff;">
+            <option value="all">Все статусы</option>
+            <option value="Новая">Новая</option>
+            <option value="Связались с клиентом">Связались с клиентом</option>
+            <option value="Подбор автомобиля">Подбор автомобиля</option>
+            <option value="Бронь подтверждена">Бронь подтверждена</option>
+            <option value="Аренда завершена">Аренда завершена</option>
+            <option value="Отклонена">Отклонена</option>
+          </select>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th data-sort="id">ID</th><th data-sort="name">Клиент</th><th data-sort="status">Статус</th><th data-sort="car">Автомобиль</th><th data-sort="amount">Сумма аренды</th><th data-sort="reward">Вознаграждение</th><th data-sort="date">Дата</th></tr></thead>
+            <tbody id="leadRows"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="view" id="profileView">
+      <div class="profile-grid">
+        <div class="card profile-card">
+          <h2>Контактные данные</h2>
+          <div class="fields">
+            <div class="field"><label>Имя партнера</label><input value="Alex Partner" /></div>
+            <div class="field"><label>Телефон</label><input value="+971 50 123 45 67" /></div>
+            <div class="field"><label>Email</label><input value="alex@example.com" /></div>
+            <div class="field"><label>Telegram</label><input value="@alex_partner" /></div>
+            <button class="primary-btn" id="saveProfile">Сохранить изменения</button>
+          </div>
+        </div>
+        <div class="card profile-card">
+          <h2>Уведомления</h2>
+          <div class="fields">
+            <label class="checkbox-row"><input type="checkbox" checked /> Отправлять изменения статусов на email</label>
+            <label class="checkbox-row"><input type="checkbox" checked /> Отправлять уведомления в Telegram</label>
+            <label class="checkbox-row"><input type="checkbox" /> Отправлять уведомления в WhatsApp</label>
+            <div class="field"><label>Куда отправлять уведомления</label><select><option>Telegram</option><option>Email</option><option>WhatsApp</option><option>Все каналы</option></select></div>
+            <button class="primary-btn" id="saveNotifications">Сохранить настройки</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="modal-backdrop" id="leadModal">
+  <div class="modal">
+    <div class="modal-head">
+      <div><h2>Передать новую заявку</h2><p>Укажите данные клиента. После отправки заявка появится на дашборде.</p></div>
+      <button class="close-btn" id="closeLeadModal">×</button>
+    </div>
+    <form class="modal-body" id="leadForm">
+      <div class="modal-grid">
+        <div class="field"><label>Имя *</label><input required id="leadName" placeholder="Имя клиента" /></div>
+        <div class="field"><label>Телефон *</label><input required id="leadPhone" placeholder="+971..." /></div>
+        <div class="field"><label>Email</label><input id="leadEmail" type="email" placeholder="client@example.com" /></div>
+        <div class="field"><label>Предпочтительный бюджет</label><input id="leadBudget" type="number" min="0" placeholder="Например, 5000" /></div>
+        <div class="field full"><label>Приоритетный способ связи</label>
+          <select id="leadContactMethod">
+            <option>WhatsApp</option><option>Telegram</option><option>Телефон</option><option>Указать вручную</option>
+          </select>
+        </div>
+        <div class="field full" id="customContactField" style="display:none;"><label>Укажите способ связи</label><input id="customContact" placeholder="Например, Signal или звонок после 18:00" /></div>
+        <div class="field full"><label>Какой автомобиль необходим *</label><textarea required id="leadCar" placeholder="Например: Audi R8, внедорожник или премиальный автомобиль на 7 дней"></textarea></div>
+      </div>
+      <div class="modal-actions"><button type="button" class="secondary-btn" id="cancelLeadModal">Отмена</button><button type="submit" class="primary-btn">Отправить заявку</button></div>
+    </form>
+  </div>
+</div>
+
+<div class="toast" id="toast">Заявка успешно добавлена</div>
+
+<script>
+  const leads = [
+    {id: 1024, name:'Omar Khalid', phone:'+971 52 214 87 10', status:'Новая', car:'BMW X5', amount:0, reward:0, date:'2026-07-27'},
+    {id: 1023, name:'Sarah Miller', phone:'+971 55 908 44 12', status:'Связались с клиентом', car:'Range Rover Sport', amount:0, reward:0, date:'2026-07-26'},
+    {id: 1022, name:'Ahmed Noor', phone:'+971 50 771 33 18', status:'Подбор автомобиля', car:'SUV / внедорожник', amount:0, reward:0, date:'2026-07-25'},
+    {id: 1021, name:'Michael Tan', phone:'+971 54 125 09 91', status:'Бронь подтверждена', car:'Mercedes G63', amount:12800, reward:640, date:'2026-07-22'},
+    {id: 1020, name:'Nina Petrova', phone:'+971 58 900 11 23', status:'Аренда завершена', car:'Audi A6', amount:7400, reward:370, date:'2026-07-19'},
+    {id: 1019, name:'Yousef Ali', phone:'+971 56 449 30 03', status:'Отклонена', car:'Ferrari Roma', amount:0, reward:0, date:'2026-07-17'},
+    {id: 1018, name:'Liam Baker', phone:'+971 55 219 77 45', status:'Аренда завершена', car:'Toyota Land Cruiser', amount:9600, reward:480, date:'2026-07-14'},
+    {id: 1017, name:'Dana White', phone:'+971 52 882 61 29', status:'Связались с клиентом', car:'Convertible', amount:0, reward:0, date:'2026-07-12'},
+    {id: 1016, name:'Rami Haddad', phone:'+971 50 334 25 67', status:'Аренда завершена', car:'Porsche Cayenne', amount:11400, reward:570, date:'2026-07-08'},
+    {id: 1015, name:'Emma Wilson', phone:'+971 58 441 82 10', status:'Подбор автомобиля', car:'Luxury sedan', amount:0, reward:0, date:'2026-07-05'},
+    {id: 1014, name:'Karim Mansour', phone:'+971 54 703 18 01', status:'Аренда завершена', car:'Nissan Patrol', amount:8500, reward:425, date:'2026-07-02'},
+    {id: 1013, name:'Victor Lee', phone:'+971 55 246 70 36', status:'Отклонена', car:'Lamborghini Urus', amount:0, reward:0, date:'2026-06-29'}
+  ];
+
+  const statusClass = {
+    'Новая':'status-new',
+    'Связались с клиентом':'status-contact',
+    'Подбор автомобиля':'status-selection',
+    'Бронь подтверждена':'status-confirmed',
+    'Аренда завершена':'status-completed',
+    'Отклонена':'status-rejected'
+  };
+
+  let sortState = { key: 'date', dir: 'desc' };
+
+  function money(v) { return v ? `${v.toLocaleString('ru-RU')} AED` : '—'; }
+  function statusBadge(status) { return `<span class="status ${statusClass[status] || 'status-new'}">${status}</span>`; }
+
+  function renderStats() {
+    const total = leads.length;
+    const success = leads.filter(l => l.status === 'Аренда завершена').length;
+    const active = leads.filter(l => !['Аренда завершена','Отклонена'].includes(l.status)).length;
+    document.getElementById('statTotal').textContent = total;
+    document.getElementById('statSuccess').textContent = success;
+    document.getElementById('statActive').textContent = active;
+    document.getElementById('statConversion').textContent = `${Math.round(success/total*100)}%`;
+  }
+
+  function renderDashboardRows() {
+    const rows = [...leads].sort((a,b)=>b.id-a.id).slice(0,5).map(l => `
+      <tr><td><span class="lead-name">${l.name}</span><span class="lead-sub">${l.phone}</span></td><td>${statusBadge(l.status)}</td><td>${l.car}</td><td>${money(l.amount)}</td><td>${new Date(l.date).toLocaleDateString('ru-RU')}</td></tr>
+    `).join('');
+    document.getElementById('dashboardLeadRows').innerHTML = rows;
+  }
+
+  function renderLeadRows() {
+    const q = document.getElementById('leadSearch').value.toLowerCase().trim();
+    const status = document.getElementById('statusFilter').value;
+    let list = leads.filter(l => (!q || l.name.toLowerCase().includes(q) || l.car.toLowerCase().includes(q)) && (status === 'all' || l.status === status));
+    list.sort((a,b)=>{
+      const av = a[sortState.key], bv = b[sortState.key];
+      const result = typeof av === 'number' ? av-bv : String(av).localeCompare(String(bv), 'ru');
+      return sortState.dir === 'asc' ? result : -result;
+    });
+    document.getElementById('leadRows').innerHTML = list.map(l => `
+      <tr><td>#${l.id}</td><td><span class="lead-name">${l.name}</span><span class="lead-sub">${l.phone}</span></td><td>${statusBadge(l.status)}</td><td>${l.car}</td><td>${money(l.amount)}</td><td>${money(l.reward)}</td><td>${new Date(l.date).toLocaleDateString('ru-RU')}</td></tr>
+    `).join('');
+  }
+
+  function renderAll() { renderStats(); renderDashboardRows(); renderLeadRows(); }
+
+  const titles = {
+    dashboard:['Дашборд','Все ключевые данные по вашим заявкам и вознаграждениям.'],
+    leads:['Мои заявки','Отслеживайте статусы, суммы аренды и вознаграждения.'],
+    profile:['Профиль партнера','Настройте контакты и каналы уведомлений.']
+  };
+
+  function switchView(name) {
+    document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+    document.getElementById(name+'View').classList.add('active');
+    document.querySelector(`[data-view="${name}"]`).classList.add('active');
+    document.getElementById('pageTitle').textContent = titles[name][0];
+    document.getElementById('pageSubtitle').textContent = titles[name][1];
+  }
+
+  document.querySelectorAll('.nav-item').forEach(btn=>btn.addEventListener('click',()=>switchView(btn.dataset.view)));
+  document.querySelectorAll('[data-go]').forEach(btn=>btn.addEventListener('click',()=>switchView(btn.dataset.go)));
+
+  const modal = document.getElementById('leadModal');
+  const openModal = () => modal.classList.add('open');
+  const closeModal = () => { modal.classList.remove('open'); document.getElementById('leadForm').reset(); document.getElementById('customContactField').style.display='none'; };
+  document.getElementById('openLeadModal').addEventListener('click', openModal);
+  document.getElementById('closeLeadModal').addEventListener('click', closeModal);
+  document.getElementById('cancelLeadModal').addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+
+  document.getElementById('leadContactMethod').addEventListener('change', e => {
+    document.getElementById('customContactField').style.display = e.target.value === 'Указать вручную' ? 'grid' : 'none';
+  });
+
+  function toast(message) {
+    const el = document.getElementById('toast');
+    el.textContent = message;
+    el.classList.add('show');
+    setTimeout(()=>el.classList.remove('show'), 2200);
+  }
+
+  function addLead({name, phone, car}) {
+    const nextId = Math.max(...leads.map(l=>l.id))+1;
+    leads.unshift({id:nextId, name, phone, status:'Новая', car, amount:0, reward:0, date:new Date().toISOString().slice(0,10)});
+    renderAll();
+  }
+
+  document.getElementById('leadForm').addEventListener('submit', e => {
+    e.preventDefault();
+    addLead({name:document.getElementById('leadName').value.trim(), phone:document.getElementById('leadPhone').value.trim(), car:document.getElementById('leadCar').value.trim()});
+    closeModal();
+    switchView('dashboard');
+    toast('Заявка успешно добавлена и появилась на дашборде');
+  });
+
+  document.getElementById('quickLeadForm').addEventListener('submit', e => {
+    e.preventDefault();
+    document.getElementById('leadName').value = document.getElementById('quickName').value;
+    document.getElementById('leadPhone').value = document.getElementById('quickPhone').value;
+    document.getElementById('quickLeadForm').reset();
+    openModal();
+    setTimeout(()=>document.getElementById('leadCar').focus(), 50);
+  });
+
+  document.getElementById('leadSearch').addEventListener('input', renderLeadRows);
+  document.getElementById('statusFilter').addEventListener('change', renderLeadRows);
+  document.querySelectorAll('th[data-sort]').forEach(th=>th.addEventListener('click',()=>{
+    const key = th.dataset.sort;
+    sortState = {key, dir: sortState.key === key && sortState.dir === 'asc' ? 'desc' : 'asc'};
+    renderLeadRows();
+  }));
+
+  document.getElementById('saveProfile').addEventListener('click', ()=>toast('Профиль сохранен'));
+  document.getElementById('saveNotifications').addEventListener('click', ()=>toast('Настройки уведомлений сохранены'));
+
+  renderAll();
+</script>
+</body>
+</html>
