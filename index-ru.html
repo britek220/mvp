@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Rentico Fleet Management — professional vehicle management for owners who want income without day-to-day operations." />
+  <title>Rentico Fleet Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+:root{--bg:#f7f7f4;--soft:#ecece7;--ink:#101010;--muted:#65655f;--line:#d7d7d0;--accent:#b8ff3d;--white:#fff;--radius:22px;--max:1320px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,Arial,sans-serif;line-height:1.5}h1,h2,h3,p{margin-top:0}h1,h2,h3{font-family:Manrope,Inter,sans-serif;letter-spacing:-.04em}h1{font-size:clamp(3.3rem,7.8vw,8.1rem);line-height:.91;max-width:1100px;margin-bottom:30px}h2{font-size:clamp(2.4rem,5vw,5.3rem);line-height:1;max-width:900px;margin-bottom:25px}h3{font-size:1.35rem;line-height:1.15}.container{width:min(calc(100% - 48px),var(--max));margin:auto}.section-pad{padding:130px 0}.section-soft{background:var(--soft)}.section-dark{background:#101010;color:#fff}.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.75rem;font-weight:700;margin-bottom:24px}.eyebrow.light{color:#d8d8d2}.site-header{position:absolute;z-index:20;top:0;left:0;width:100%;height:94px;display:flex;align-items:center;justify-content:space-between;padding:0 max(24px,calc((100vw - var(--max))/2));color:#fff;border-bottom:1px solid rgba(255,255,255,.2)}.brand{display:inline-flex;align-items:center;gap:12px;color:inherit;text-decoration:none;font-family:Manrope;font-weight:700;letter-spacing:.12em}.brand-mark{display:grid;place-items:center;width:34px;height:34px;border:1px solid currentColor;border-radius:50%}.desktop-nav{display:flex;gap:30px}.desktop-nav a,.footer-links a{color:inherit;text-decoration:none;font-size:.88rem}.btn{border:0;border-radius:999px;padding:17px 28px;font-weight:700;cursor:pointer;transition:.25s transform,.25s opacity;background:var(--accent);color:#111}.btn:hover{transform:translateY(-2px)}.btn-small{padding:12px 22px}.btn-light{background:#fff}.btn-dark{background:#111;color:#fff}.hero{position:relative;min-height:950px;display:flex;align-items:flex-end;overflow:hidden}.hero-media,.final-media{position:absolute;inset:0;background:#202020 url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2200&q=88') center/cover no-repeat;transform:scale(1.02)}.hero-overlay,.final-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.83),rgba(0,0,0,.2) 70%),linear-gradient(0deg,rgba(0,0,0,.55),transparent 45%)}.hero-content{position:relative;z-index:2;padding:200px 0 55px}.hero-copy{font-size:clamp(1.1rem,1.7vw,1.5rem);max-width:720px;color:#deded9;margin-bottom:38px}.hero-actions{display:flex;align-items:center;gap:28px}.text-link{color:inherit;text-decoration:none}.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:120px;border-top:1px solid rgba(255,255,255,.28)}.hero-stats div{padding:27px 20px 0 0}.hero-stats strong{display:block;font-size:2rem}.hero-stats span{color:#c7c7c0;font-size:.9rem}.split-heading,.section-head,.why-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:90px}.lead-copy,.section-head>p,.why-copy{font-size:1.18rem;color:var(--muted);max-width:620px}.lead-copy .btn,.why-copy .btn{margin-top:18px}.image-statement{position:relative;height:780px;color:#fff;display:flex;align-items:flex-end}.image-statement-media{position:absolute;inset:0;background:#303030 url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=2200&q=88') center/cover}.image-statement:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.75),transparent 65%)}.image-statement-content{position:relative;z-index:2;padding-bottom:80px}.image-statement-content p{text-transform:uppercase;letter-spacing:.15em;font-size:.75rem}.process-grid{display:grid;grid-template-columns:repeat(3,1fr);margin-top:65px;border-top:1px solid var(--line);border-left:1px solid var(--line)}.process-card{min-height:260px;padding:28px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column}.process-card span,.management-grid article span{font-size:.75rem;color:var(--muted)}.process-card h3{margin-top:auto}.process-card p{color:var(--muted);margin-bottom:0}.accent-card{background:var(--accent)}.center-btn{display:block;margin:42px auto 0}.management-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:62px}.management-grid article{background:#f8f8f5;border-radius:var(--radius);padding:28px;min-height:280px;display:flex;flex-direction:column}.management-grid article h3{margin-top:auto}.management-grid article p{color:var(--muted);margin-bottom:0}.calculator-section{background:#141414;color:#fff}.calculator-wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:100px;align-items:start}.calculator-copy p{color:#b7b7b2;font-size:1.1rem}.calculator-note{display:inline-block;border:1px solid #454545;border-radius:999px;padding:9px 14px;color:#bcbcb5;font-size:.75rem}.calculator{background:#222;border-radius:28px;padding:38px}.calculator label{display:block;margin-bottom:30px;font-size:.9rem}.calculator label span{float:right;color:#c7c7c1}select,input[type=range]{width:100%;margin-top:12px}select{background:#151515;color:#fff;border:1px solid #484848;border-radius:10px;padding:15px;font:inherit}input[type=range]{accent-color:var(--accent)}.calc-results{border-top:1px solid #444;margin-top:12px}.calc-results div{display:flex;justify-content:space-between;gap:20px;padding:17px 0;border-bottom:1px solid #444}.calc-results span{color:#aaa}.calc-results strong{font-size:1.12rem}.full-btn{width:100%;margin-top:28px}.dashboard-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:90px;align-items:center}.dashboard-grid>div>p{color:#bbb;max-width:550px;font-size:1.1rem}.check-list{list-style:none;padding:0;margin:35px 0}.check-list li{border-top:1px solid #3a3a3a;padding:14px 0}.check-list li:before{content:'↗';margin-right:12px;color:var(--accent)}.dashboard-ui{background:#f4f4f0;color:#111;border-radius:24px;padding:28px;box-shadow:0 35px 90px rgba(0,0,0,.35);transform:rotate(1deg)}.dash-top,.dash-row{display:flex;justify-content:space-between}.dash-top{padding-bottom:22px;border-bottom:1px solid #d0d0ca;font-weight:700}.dash-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0}.dash-metrics div{background:#fff;border-radius:15px;padding:18px}.dash-metrics small,.dash-metrics span{display:block;color:#777}.dash-metrics strong{font-size:1.8rem}.chart{height:220px;background:repeating-linear-gradient(to bottom,transparent 0,transparent 54px,#deded8 55px);position:relative;overflow:hidden}.chart-line{position:absolute;inset:45px 18px 38px;background:linear-gradient(155deg,transparent 0 12%,#111 12.5% 13%,transparent 13.5% 31%,#111 31.5% 32%,transparent 32.5% 48%,#111 48.5% 49%,transparent 49.5% 67%,#111 67.5% 68%,transparent 68.5% 84%,#111 84.5% 85%,transparent 85.5%);clip-path:polygon(0 72%,14% 58%,31% 65%,49% 31%,67% 45%,84% 12%,100% 25%,100% 29%,84% 16%,67% 49%,49% 35%,31% 69%,14% 62%,0 76%);background:#111}.chart-label{position:absolute;bottom:7px;font-size:.7rem;color:#777}.one{left:1%}.two{left:32%}.three{left:65%}.four{right:1%}.dash-row{padding:16px 0;border-top:1px solid #d0d0ca}.status{background:#d9ff9b;padding:5px 10px;border-radius:999px}.security-grid{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center}.security-image{height:760px;border-radius:var(--radius);background:#d8d8d3 url('https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1400&q=88') center/cover}.security-list{margin:38px 0}.security-list div{display:grid;grid-template-columns:50px 1fr;border-top:1px solid var(--line);padding:18px 0}.security-list p{margin:0;color:var(--muted)}.security-list strong{color:var(--ink)}.case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:60px}.case-card{height:560px;border-radius:var(--radius);overflow:hidden;position:relative;background-size:cover;background-position:center}.case-card:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.85),transparent 65%)}.case-one{background-image:url('https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1000&q=85')}.case-two{background-image:url('https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=1000&q=85')}.case-three{background-image:url('https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1000&q=85')}.case-content{position:absolute;z-index:2;bottom:0;padding:28px;color:#fff;width:100%}.case-content>span{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em}.case-content h3{font-size:2.1rem;margin:10px 0 28px}.case-content div{display:grid;grid-template-columns:auto 1fr;gap:4px 12px}.case-content strong{font-size:1.35rem}.case-content small{align-self:center;color:#ccc}.faq{background:#fff}.faq-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:100px}.accordion details{border-top:1px solid var(--line);padding:24px 0}.accordion details:last-child{border-bottom:1px solid var(--line)}summary{display:flex;justify-content:space-between;align-items:center;font-size:1.2rem;font-weight:600;cursor:pointer;list-style:none}summary::-webkit-details-marker{display:none}summary span{font-size:1.7rem;font-weight:400}.accordion p{color:var(--muted);max-width:720px;padding-top:15px}.final-cta{position:relative;min-height:720px;display:flex;align-items:end}.final-media{background-image:url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=2200&q=88')}.final-content{position:relative;z-index:2;padding-bottom:90px}.final-content p{font-size:1.25rem;color:#ddd}.final-content h2{max-width:1000px}footer{padding:45px 0;background:#0d0d0d;color:#fff}.footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr auto;align-items:center;gap:25px}.footer-grid p,.footer-grid>span{color:#999;margin:0}.footer-links{display:flex;gap:18px}.toast{position:fixed;right:24px;bottom:24px;background:#111;color:#fff;padding:16px 20px;border-radius:12px;z-index:50;opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s}.toast.show{opacity:1;transform:none}@media(max-width:1000px){.desktop-nav{display:none}.section-pad{padding:90px 0}.split-heading,.section-head,.why-grid,.calculator-wrap,.dashboard-grid,.security-grid,.faq-grid{grid-template-columns:1fr;gap:45px}.process-grid,.management-grid{grid-template-columns:repeat(2,1fr)}.case-grid{grid-template-columns:1fr}.case-card{height:500px}.hero{min-height:850px}.hero-stats{margin-top:80px}.security-image{height:540px}.footer-grid{grid-template-columns:1fr 1fr}.dashboard-ui{transform:none}}@media(max-width:640px){.container{width:min(calc(100% - 30px),var(--max))}.site-header{height:78px;padding:0 15px}.site-header .btn{display:none}.hero{min-height:760px}.hero-content{padding-top:150px}.hero-stats{grid-template-columns:1fr}.hero-stats div{border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:14px}.hero-actions{align-items:flex-start;flex-direction:column}.process-grid,.management-grid,.dash-metrics{grid-template-columns:1fr}.process-card{min-height:220px}.image-statement{height:620px}.calculator{padding:23px}.calc-results div{flex-direction:column}.case-card{height:440px}.footer-grid{grid-template-columns:1fr}.footer-links{flex-wrap:wrap}.section-pad{padding:72px 0}h1{font-size:3.15rem}}
+
+img,svg,video{max-width:100%;height:auto}button,select,input{max-width:100%}body{overflow-x:hidden}.site-header,.container,.hero-content,.final-content{min-width:0}.management-grid article,.process-card,.case-card,.dashboard-ui{min-width:0}@media(max-width:420px){h1{font-size:2.65rem}.hero-copy{font-size:1rem}.btn{width:100%;text-align:center}.hero-actions{width:100%}.calculator{border-radius:18px}.dashboard-ui{padding:18px}.dash-metrics strong{font-size:1.45rem}.site-header .brand{font-size:.85rem}}
+
+  </style>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="Rentico home">
+      <span class="brand-mark">R</span>
+      <span>RENTICO</span>
+    </a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="#how">Как это работает</a>
+      <a href="#management">Управление</a>
+      <a href="#income">Доход</a>
+      <a href="#security">Безопасность</a>
+      <a href="#faq">Частые вопросы</a>
+    </nav>
+    <button class="btn btn-small js-cta" type="button">CTA</button>
+  </header>
+
+  <main>
+    <section class="hero section-dark">
+      <div class="hero-media" role="img" aria-label="Premium car in a modern city"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content container">
+        <div class="eyebrow light">Fleet Management от Rentico</div>
+        <h1>Превратите автомобиль в актив, который приносит доход.</h1>
+        <p class="hero-copy">Вы владеете автомобилем. Rentico берет на себя маркетинг, клиентов, выдачу, осмотры, обслуживание, страховое сопровождение и платежи.</p>
+        <div class="hero-actions">
+          <button class="btn btn-light js-cta" type="button">CTA</button>
+          <a class="text-link light" href="#how">Посмотреть модель <span>↘</span></a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>XX+</strong><span>автомобилей в управлении</span></div>
+          <div><strong>XX%</strong><span>средняя загрузка</span></div>
+          <div><strong>24/7</strong><span>операционная команда</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="intro section-pad">
+      <div class="container split-heading">
+        <div>
+          <div class="eyebrow">Новый подход к владению автомобилем</div>
+          <h2>Ваш автомобиль может работать, даже когда вы отдыхаете.</h2>
+        </div>
+        <div class="lead-copy">
+          <p>Сохраняйте право собственности, пока Rentico превращает автомобиль в профессионально управляемый арендный актив.</p>
+          <p>Без объявлений, звонков клиентов, графиков выдачи и сбора оплат. Вы владеете автомобилем — мы управляем бизнесом.</p>
+          <button class="btn btn-dark js-cta" type="button">CTA</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="image-statement">
+      <div class="image-statement-media" role="img" aria-label="Премиум vehicle detail"></div>
+      <div class="container image-statement-content">
+        <p>Профессиональное управление автопарком</p>
+        <h2>Больше, чем аренда.<br>Полное управление автомобилем.</h2>
+      </div>
+    </section>
+
+    <section class="section-pad" id="how">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Как это работает</div>
+            <h2>От одного автомобиля — к регулярному доходу.</h2>
+          </div>
+          <p>Прозрачный процесс подключения, который позволяет быстро подготовить автомобиль, разместить его и запустить в работу без лишней сложности.</p>
+        </div>
+        <div class="process-grid">
+          <article class="process-card"><span>01</span><h3>Добавьте автомобиль</h3><p>Укажите модель, год, пробег и состояние автомобиля.</p></article>
+          <article class="process-card"><span>02</span><h3>Оценка автомобиля</h3><p>Мы оцениваем арендный потенциал и операционные требования.</p></article>
+          <article class="process-card"><span>03</span><h3>Договор управления</h3><p>Условия, ответственность сторон и отчетность закрепляются документально.</p></article>
+          <article class="process-card"><span>04</span><h3>Подключение к автопарку</h3><p>Осмотр, подготовка, фотосъемка и настройка в системе.</p></article>
+          <article class="process-card"><span>05</span><h3>Арендные операции</h3><p>Запускаются маркетинг, бронирования, выдачи и поддержка.</p></article>
+          <article class="process-card accent-card"><span>06</span><h3>Получайте выплаты</h3><p>Следите за результатами и получайте выплаты по согласованному графику.</p></article>
+        </div>
+        <button class="btn btn-dark center-btn js-cta" type="button">CTA</button>
+      </div>
+    </section>
+
+    <section class="section-soft section-pad" id="management">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Все, что мы берем на себя</div>
+            <h2>Один оператор.<br>Все процессы под контролем.</h2>
+          </div>
+          <p>Rentico объединяет коммерческое, операционное и финансовое управление в одной системе.</p>
+        </div>
+        <div class="management-grid">
+          <article><span>01</span><h3>Маркетинг и дистрибуция</h3><p>Размещение, рекламные кампании, каналы бронирования, контент и привлечение спроса.</p></article>
+          <article><span>02</span><h3>Продажи и бронирования</h3><p>Обработка обращений, управление бронированиями, дополнительные продажи и коммуникация с клиентами.</p></article>
+          <article><span>03</span><h3>Динамическое ценообразование</h3><p>Тарифы корректируются с учетом спроса, сезонности, срока аренды и доступности автомобиля.</p></article>
+          <article><span>04</span><h3>Выдача и возврат</h3><p>Выдача и возврат автомобиля, логистика и документированная проверка состояния.</p></article>
+          <article><span>05</span><h3>Организация обслуживания</h3><p>Плановое ТО, ремонт, мойка и контроль готовности автомобиля.</p></article>
+          <article><span>06</span><h3>Платежи и отчетность</h3><p>Прием платежей, операционный учет, отчеты и расчет выплат владельцу.</p></article>
+          <article><span>07</span><h3>Поддержка клиентов</h3><p>Ежедневная поддержка клиентов и сопровождение на протяжении всей аренды.</p></article>
+          <article><span>08</span><h3>Страховое сопровождение</h3><p>Фиксация инцидентов, сопровождение страховых случаев и коммуникация со всеми сторонами.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad calculator-section" id="income">
+      <div class="container calculator-wrap">
+        <div class="calculator-copy">
+          <div class="eyebrow">Калькулятор дохода</div>
+          <h2>Оцените потенциальный доход вашего автомобиля.</h2>
+          <p>Изменяйте параметры, чтобы увидеть упрощенную финансовую модель. Итоговые показатели зависят от автомобиля, сезона, спроса и согласованных условий управления.</p>
+          <div class="calculator-note">Расчет носит ориентировочный характер</div>
+        </div>
+        <form class="calculator" id="incomeCalculator">
+          <label>Класс автомобиля
+            <select id="vehicleClass">
+              <option value="economy">Эконом</option>
+              <option value="business" selected>Бизнес-класс</option>
+              <option value="suv">SUV</option>
+              <option value="luxury">Премиум</option>
+            </select>
+          </label>
+          <label>Предполагаемая ставка в день <span id="rateValue">420 AED</span>
+            <input id="dailyRate" type="range" min="150" max="1800" value="420" step="10" />
+          </label>
+          <label>Предполагаемая загрузка <span id="загрузкаValue">68%</span>
+            <input id="загрузка" type="range" min="20" max="95" value="68" step="1" />
+          </label>
+          <label>Предполагаемые ежемесячные расходы <span id="costValue">2,800 AED</span>
+            <input id="operatingCosts" type="range" min="500" max="15000" value="2800" step="100" />
+          </label>
+          <div class="calc-results">
+            <div><span>Предполагаемая месячная выручка</span><strong id="monthlyВыручка">8,568 AED</strong></div>
+            <div><span>Предполагаемый доход владельца</span><strong id="ownerДоход">3,461 AED</strong></div>
+            <div><span>Годовой прогноз</span><strong id="annualДоход">41,530 AED</strong></div>
+          </div>
+          <button class="btn btn-light full-btn js-cta" type="button">CTA</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="dashboard section-dark section-pad">
+      <div class="container dashboard-grid">
+        <div>
+          <div class="eyebrow light">Кабинет владельца</div>
+          <h2>Полная прозрачность без участия в операционной работе.</h2>
+          <p>Следите за результатами автомобиля через понятную и структурированную отчетность.</p>
+          <ul class="check-list">
+            <li>Выручка и выплаты</li>
+            <li>Бронирования и загрузка</li>
+            <li>Статус автомобиля</li>
+            <li>Техническое обслуживание</li>
+            <li>Ежемесячные отчеты</li>
+          </ul>
+          <button class="btn btn-light js-cta" type="button">CTA</button>
+        </div>
+        <div class="dashboard-ui" aria-label="Макет кабинета владельца">
+          <div class="dash-top"><span>Обзор автопарка</span><span>Август</span></div>
+          <div class="dash-metrics">
+            <div><small>Выручка</small><strong>18,420</strong><span>AED</span></div>
+            <div><small>Загрузка</small><strong>74%</strong><span>+8.2%</span></div>
+            <div><small>Бронирования</small><strong>12</strong><span>За месяц</span></div>
+          </div>
+          <div class="chart"><div class="chart-line"></div><span class="chart-label one">01</span><span class="chart-label two">10</span><span class="chart-label three">20</span><span class="chart-label four">30</span></div>
+          <div class="dash-row"><span>Статус автомобиля</span><strong class="status">В аренде</strong></div>
+          <div class="dash-row"><span>Следующее ТО</span><strong>2,450 km</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad" id="security">
+      <div class="container security-grid">
+        <div class="security-image" role="img" aria-label="Осмотр автомобиля"></div>
+        <div class="security-copy">
+          <div class="eyebrow">Безопасность и управление рисками</div>
+          <h2>Ваш автомобиль защищен на каждом этапе.</h2>
+          <div class="security-list">
+            <div><span>01</span><p><strong>Проверка клиентов</strong><br>Проверка личности и документов до передачи автомобиля.</p></div>
+            <div><span>02</span><p><strong>Документированные осмотры</strong><br>Фиксация состояния автомобиля при выдаче и возврате.</p></div>
+            <div><span>03</span><p><strong>Контроль депозитов и платежей</strong><br>Системный прием платежей и учет всех транзакций.</p></div>
+            <div><span>04</span><p><strong>Сопровождение инцидентов</strong><br>Оформление повреждений и сопровождение коммуникации со страховой компанией.</p></div>
+            <div><span>05</span><p><strong>Контроль обслуживания</strong><br>Планирование сервиса и контроль готовности автомобиля к эксплуатации.</p></div>
+          </div>
+          <button class="btn btn-dark js-cta" type="button">CTA</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-soft section-pad">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Примеры результатов</div>
+            <h2>Ориентируемся на измеримый результат.</h2>
+          </div>
+          <p>Демонстрационные примеры для будущих подтвержденных кейсов Rentico.</p>
+        </div>
+        <div class="case-grid">
+          <article class="case-card case-one"><div class="case-content"><span>Частный владелец · 1 автомобиль</span><h3>BMW X5</h3><div><strong>XX%</strong><small>загрузка</small><strong>XX XXX</strong><small>выручка в AED</small></div></div></article>
+          <article class="case-card case-two"><div class="case-content"><span>Частный владелец · 2 автомобиля</span><h3>Tesla Model Y</h3><div><strong>XX%</strong><small>загрузка</small><strong>XX XXX</strong><small>выручка в AED</small></div></div></article>
+          <article class="case-card case-three"><div class="case-content"><span>Премиальный автопарк</span><h3>Mercedes-Benz</h3><div><strong>XX%</strong><small>загрузка</small><strong>XX XXX</strong><small>выручка в AED</small></div></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad why-section">
+      <div class="container why-grid">
+        <div>
+          <div class="eyebrow">Почему Rentico</div>
+          <h2>Fleet Management — это полноценная операционная система, а не просто размещение объявлений.</h2>
+        </div>
+        <div class="why-copy">
+          <p>Высокая эффективность автомобиля требует ежедневной слаженной работы маркетинга, ценообразования, поддержки клиентов, логистики, обслуживания, технологий и финансового контроля.</p>
+          <p>Rentico объединяет все функции в одном управляемом процессе, чтобы владельцам не приходилось самостоятельно строить арендный бизнес.</p>
+          <button class="btn btn-dark js-cta" type="button">CTA</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq section-pad" id="faq">
+      <div class="container faq-grid">
+        <div>
+          <div class="eyebrow">Частые вопросы</div>
+          <h2>Понятные ответы до начала сотрудничества.</h2>
+        </div>
+        <div class="accordion">
+          <details><summary>Кто остается владельцем автомобиля?<span>+</span></summary><p>Вы остаетесь юридическим владельцем автомобиля. Операционная ответственность Rentico определяется договором управления.</p></details>
+          <details><summary>Можно ли начать с одного автомобиля?<span>+</span></summary><p>Да. Сервис подходит как владельцам одного автомобиля, так и небольшим или крупным автопаркам.</p></details>
+          <details><summary>Как рассчитываются выплаты владельцу?<span>+</span></summary><p>Точная модель расчета фиксируется в договоре. В отчетности отдельно отражаются выручка, согласованные расходы и выплата владельцу.</p></details>
+          <details><summary>Что произойдет, если автомобиль будет поврежден?<span>+</span></summary><p>Каждый инцидент проходит через документированный осмотр, отчетность и страховое сопровождение.</p></details>
+          <details><summary>Кто организует техническое обслуживание?<span>+</span></summary><p>Rentico организует плановое обслуживание, мойку, осмотры и согласованный ремонт в рамках управления автопарком.</p></details>
+          <details><summary>Можно ли забрать автомобиль из управления?<span>+</span></summary><p>Условия вывода автомобиля и сроки уведомления прозрачно фиксируются в договоре управления.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta section-dark">
+      <div class="final-media"></div>
+      <div class="final-overlay"></div>
+      <div class="container final-content">
+        <div class="eyebrow light">Fleet Management от Rentico</div>
+        <h2>Пусть ваш автомобиль работает на вас.</h2>
+        <p>Сохраняйте право собственности. Получайте доход. Операционную работу оставьте Rentico.</p>
+        <button class="btn btn-light js-cta" type="button">CTA</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <a class="brand" href="#top"><span class="brand-mark">R</span><span>RENTICO</span></a>
+      <p>Профессиональное управление автомобилями для владельцев.</p>
+      <div class="footer-links"><a href="#how">Процесс</a><a href="#income">Доход</a><a href="#security">Безопасность</a><a href="#faq">Частые вопросы</a></div>
+      <span>© <span id="year"></span> Rentico</span>
+    </div>
+  </footer>
+
+  <div class="toast" id="ctaToast" role="status" aria-live="polite">Действие для кнопки будет добавлено позже.</div>
+  <script>
+const currency = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
+const dailyRate = document.getElementById('dailyRate');
+const загрузка = document.getElementById('загрузка');
+const costs = document.getElementById('operatingCosts');
+const vehicleClass = document.getElementById('vehicleClass');
+
+const presets = {
+  economy: { rate: 210, загрузка: 76, costs: 1900 },
+  business: { rate: 420, загрузка: 68, costs: 2800 },
+  suv: { rate: 650, загрузка: 64, costs: 4300 },
+  luxury: { rate: 1350, загрузка: 54, costs: 9200 }
+};
+
+function updateCalculator() {
+  const rate = Number(dailyRate.value);
+  const occ = Number(загрузка.value);
+  const operatingCosts = Number(costs.value);
+  const monthlyВыручка = rate * 30 * (occ / 100);
+  const managementShare = monthlyВыручка * 0.40;
+  const ownerДоход = Math.max(0, monthlyВыручка - operatingCosts - managementShare);
+
+  document.getElementById('rateValue').textContent = `${currency.format(rate)} AED`;
+  document.getElementById('загрузкаValue').textContent = `${occ}%`;
+  document.getElementById('costValue').textContent = `${currency.format(operatingCosts)} AED`;
+  document.getElementById('monthlyВыручка').textContent = `${currency.format(monthlyВыручка)} AED`;
+  document.getElementById('ownerДоход').textContent = `${currency.format(ownerДоход)} AED`;
+  document.getElementById('annualДоход').textContent = `${currency.format(ownerДоход * 12)} AED`;
+}
+
+[dailyRate, загрузка, costs].forEach((el) => el.addEventListener('input', updateCalculator));
+vehicleClass.addEventListener('change', () => {
+  const preset = presets[vehicleClass.value];
+  dailyRate.value = preset.rate;
+  загрузка.value = preset.загрузка;
+  costs.value = preset.costs;
+  updateCalculator();
+});
+
+const toast = document.getElementById('ctaToast');
+let toastTimer;
+document.querySelectorAll('.js-cta').forEach((button) => {
+  button.addEventListener('click', () => {
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
+  });
+});
+
+document.querySelectorAll('details').forEach((detail) => {
+  detail.addEventListener('toggle', () => {
+    if (!detail.open) return;
+    document.querySelectorAll('details').forEach((other) => {
+      if (other !== detail) other.open = false;
+    });
+  });
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+updateCalculator();
+
+  </script>
+</body>
+</html>
