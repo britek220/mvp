@@ -41,6 +41,15 @@
     .hero-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:80px;padding-top:24px;border-top:1px solid var(--line)}
     .hero-meta strong{font-family:Manrope;font-size:1.8rem;display:block;margin-bottom:4px}
     .hero-meta span{font-size:.9rem;color:var(--muted)}
+
+    .audiences{padding:92px 0;border-top:1px solid var(--line)}
+    .audiences-head{display:grid;grid-template-columns:1fr .7fr;gap:80px;align-items:start;margin-bottom:42px}
+    .audiences-head p{font-size:1.08rem;max-width:520px}
+    .audiences-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .audience-card{border:1px solid var(--line);border-radius:20px;padding:24px;background:#fff;min-height:170px}
+    .audience-card strong{display:block;font-family:Manrope,Inter,sans-serif;font-size:1.35rem;letter-spacing:-.03em;margin-bottom:8px}
+    .audience-card p{margin-bottom:0;font-size:.94rem}
+
     .image-band{padding:0 0 100px}
     .image-band img{display:block;width:100%;height:clamp(320px,48vw,620px);object-fit:cover;border-radius:30px}
     .section-head{display:grid;grid-template-columns:1fr .7fr;gap:80px;align-items:start;margin-bottom:52px}
@@ -85,10 +94,10 @@
     .toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:#111;color:#fff;padding:12px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:.25s;z-index:50;font-size:.9rem}
     .toast.show{opacity:1;transform:translate(-50%,0)}
     @media(max-width:900px){
-      .nav a{display:none}.section{padding:82px 0}.hero{padding:82px 0 65px}.hero-meta,.steps,.services,.trust-grid{grid-template-columns:1fr 1fr}.section-head,.calculator-wrap{grid-template-columns:1fr;gap:28px}.section-head{margin-bottom:38px}.image-band{padding-bottom:78px}
+      .nav a{display:none}.section{padding:82px 0}.hero{padding:82px 0 65px}.hero-meta,.steps,.services,.trust-grid,.audiences-grid{grid-template-columns:1fr 1fr}.section-head,.calculator-wrap,.audiences-head{grid-template-columns:1fr;gap:28px}.section-head,.audiences-head{margin-bottom:38px}.image-band{padding-bottom:78px}
     }
     @media(max-width:620px){
-      .container{width:min(calc(100% - 28px),var(--max))}.header{height:72px}.nav .btn{padding:11px 17px;font-size:.85rem}.hero{padding:64px 0 52px}.hero-copy{font-size:1rem}.hero-meta{grid-template-columns:1fr;gap:18px;margin-top:54px}.hero-meta div{padding-bottom:18px;border-bottom:1px solid var(--line)}.image-band img{border-radius:18px}.steps,.services,.trust-grid{grid-template-columns:1fr}.section{padding:68px 0}.step{min-height:170px}.calculator{padding:22px}.results div{align-items:flex-start}.final{padding:80px 0}.footer-inner{flex-direction:column}
+      .container{width:min(calc(100% - 28px),var(--max))}.header{height:72px}.nav .btn{padding:11px 17px;font-size:.85rem}.hero{padding:64px 0 52px}.hero-copy{font-size:1rem}.hero-meta{grid-template-columns:1fr;gap:18px;margin-top:54px}.hero-meta div{padding-bottom:18px;border-bottom:1px solid var(--line)}.image-band img{border-radius:18px}.steps,.services,.trust-grid,.audiences-grid{grid-template-columns:1fr}.section,.audiences{padding:68px 0}.step{min-height:170px}.calculator{padding:22px}.results div{align-items:flex-start}.final{padding:80px 0}.footer-inner{flex-direction:column}
     }
   </style>
 </head>
@@ -119,6 +128,37 @@
           <div><strong>Под ключ</strong><span>Берем на себя ежедневную операционную работу</span></div>
           <div><strong>Прозрачно</strong><span>Отчетность по загрузке, выручке и выплатам</span></div>
           <div><strong>С 1 авто</strong><span>Можно начать с одного автомобиля</span></div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="audiences" id="audiences">
+      <div class="container">
+        <div class="audiences-head">
+          <div>
+            <div class="eyebrow">С кем мы работаем</div>
+            <h2>Неважно, один у вас автомобиль или целый автопарк.</h2>
+          </div>
+          <p>Rentico берет в управление автомобили любого масштаба — от одной машины до крупного парка.</p>
+        </div>
+        <div class="audiences-grid">
+          <article class="audience-card">
+            <strong>1 автомобиль</strong>
+            <p>Хотите получать доход без самостоятельной аренды и ежедневной операционной работы.</p>
+          </article>
+          <article class="audience-card">
+            <strong>2–10 автомобилей</strong>
+            <p>Передайте управление нашей команде и сфокусируйтесь только на результате.</p>
+          </article>
+          <article class="audience-card">
+            <strong>Автопарк</strong>
+            <p>Комплексно управляем загрузкой, клиентами, обслуживанием и отчетностью.</p>
+          </article>
+          <article class="audience-card">
+            <strong>Инвесторы</strong>
+            <p>Создаем и управляем автопарком под ключ для тех, кто рассматривает автомобили как актив.</p>
+          </article>
         </div>
       </div>
     </section>
