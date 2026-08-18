@@ -1,14 +1,15 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Rentico Fleet Management — управление автомобилем под ключ для владельцев, которые хотят получать доход без ежедневной операционной работы." />
-  <title>Rentico Fleet Management</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700&display=swap" rel="stylesheet">
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Rentico Fleet Management — управление автомобилем под ключ для владельцев, которые хотят получать доход без ежедневной операционной работы." name="description"/>
+<title>Rentico Fleet Management</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<style>
     :root{
       --bg:#fff;--ink:#111;--muted:#6f6f6a;--line:#e8e8e3;--soft:#f6f6f3;
       --accent:#c8ff52;--max:1180px;--radius:24px
@@ -50,6 +51,9 @@
     .audience-card strong{display:block;font-family:Manrope,Inter,sans-serif;font-size:1.35rem;letter-spacing:-.03em;margin-bottom:8px}
     .audience-card p{margin-bottom:0;font-size:.94rem}
 
+
+    .hero-note{font-size:.78rem;color:#8a8a84;margin:16px 0 0;max-width:720px}
+    .trust-card:nth-child(-n+2){min-height:245px}
     .image-band{padding:0 0 100px}
     .image-band img{display:block;width:100%;height:clamp(320px,48vw,620px);object-fit:cover;border-radius:30px}
     .section-head{display:grid;grid-template-columns:1fr .7fr;gap:80px;align-items:start;margin-bottom:52px}
@@ -102,180 +106,159 @@
   </style>
 </head>
 <body>
-  <header class="header">
-    <div class="container header-inner">
-      <a class="brand" href="#top">RENTICO</a>
-      <nav class="nav">
-        <a href="#how">Как работает</a>
-        <a href="#income">Доход</a>
-        <a href="#faq">FAQ</a>
-        <button class="btn btn-accent js-cta" type="button">CTA</button>
-      </nav>
-    </div>
-  </header>
-
-  <main id="top">
-    <section class="hero">
-      <div class="container">
-        <div class="eyebrow">Rentico Fleet Management</div>
-        <h1>Ваш автомобиль начнет приносить доход</h1>
-        <p class="hero-copy">Передайте его в управление Rentico. Мы берем на себя аренду, клиентов, обслуживание и контроль — вы сохраняете автомобиль и получаете выплаты.</p>
-        <div class="hero-actions">
-          <button class="btn btn-accent js-cta" type="button">CTA</button>
-          <a class="btn btn-ghost" href="#how">Как это работает</a>
-        </div>
-        <div class="hero-meta">
-          <div><strong>Под ключ</strong><span>Берем на себя ежедневную операционную работу</span></div>
-          <div><strong>Прозрачно</strong><span>Отчетность по загрузке, выручке и выплатам</span></div>
-          <div><strong>С 1 авто</strong><span>Можно начать с одного автомобиля</span></div>
-        </div>
-      </div>
-    </section>
-
-
-    <section class="audiences" id="audiences">
-      <div class="container">
-        <div class="audiences-head">
-          <div>
-            <div class="eyebrow">С кем мы работаем</div>
-            <h2>Неважно, один у вас автомобиль или целый автопарк.</h2>
-          </div>
-          <p>Rentico берет в управление автомобили любого масштаба — от одной машины до крупного парка.</p>
-        </div>
-        <div class="audiences-grid">
-          <article class="audience-card">
-            <strong>1 автомобиль</strong>
-            <p>Хотите получать доход без самостоятельной аренды и ежедневной операционной работы.</p>
-          </article>
-          <article class="audience-card">
-            <strong>2–10 автомобилей</strong>
-            <p>Передайте управление нашей команде и сфокусируйтесь только на результате.</p>
-          </article>
-          <article class="audience-card">
-            <strong>Автопарк</strong>
-            <p>Комплексно управляем загрузкой, клиентами, обслуживанием и отчетностью.</p>
-          </article>
-          <article class="audience-card">
-            <strong>Инвесторы</strong>
-            <p>Создаем и управляем автопарком под ключ для тех, кто рассматривает автомобили как актив.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="image-band">
-      <div class="container">
-        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1800&q=86" alt="Автомобиль в городе" />
-      </div>
-    </section>
-
-    <section class="section" id="how">
-      <div class="container">
-        <div class="section-head">
-          <div><div class="eyebrow">Как это работает</div><h2>Простой путь от автомобиля до регулярных выплат.</h2></div>
-          <p>Без самостоятельного поиска клиентов, постоянных звонков и контроля каждой аренды.</p>
-        </div>
-        <div class="steps">
-          <article class="step"><span class="step-num">01</span><h3>Оцениваем автомобиль</h3><p>Проверяем состояние и потенциальную доходность.</p></article>
-          <article class="step"><span class="step-num">02</span><h3>Подключаем к Rentico</h3><p>Заключаем договор и готовим автомобиль к работе.</p></article>
-          <article class="step"><span class="step-num">03</span><h3>Вы получаете выплаты</h3><p>Мы управляем арендой и регулярно предоставляем отчетность.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section soft">
-      <div class="container">
-        <div class="section-head">
-          <div><div class="eyebrow">Что берем на себя</div><h2>Всю операционную работу.</h2></div>
-          <p>Rentico работает как готовая команда для вашего автомобиля.</p>
-        </div>
-        <div class="services">
-          <article class="service"><h3>Продажи и маркетинг</h3><p>Привлекаем клиентов и управляем загрузкой.</p></article>
-          <article class="service"><h3>Аренда и поддержка</h3><p>Бронирования, коммуникация, выдача и возврат.</p></article>
-          <article class="service"><h3>Автомобиль</h3><p>Осмотры, мойка, сервис и организация ремонта.</p></article>
-          <article class="service"><h3>Финансы</h3><p>Платежи, учет, отчеты и выплаты владельцу.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="income">
-      <div class="container calculator-wrap">
-        <div class="calculator-copy">
-          <div class="eyebrow">Доход</div>
-          <h2>Оцените потенциал вашего автомобиля.</h2>
-          <p>Упрощенный расчет для первичной оценки. Финальные условия зависят от модели, состояния автомобиля и рынка.</p>
-        </div>
-        <form class="calculator" id="incomeCalculator">
-          <label>Класс автомобиля
+<header class="header">
+<div class="container header-inner">
+<a class="brand" href="#top">RENTICO</a>
+<nav class="nav">
+<a href="#how">Как работает</a>
+<a href="#income">Доход</a>
+<a href="#faq">FAQ</a>
+<button class="btn btn-accent js-cta" type="button">CTA</button>
+</nav>
+</div>
+</header>
+<main id="top">
+<section class="hero">
+<div class="container">
+<div class="eyebrow">Rentico Fleet Management</div>
+<h1>Ваш автомобиль начнет приносить доход</h1>
+<p class="hero-copy">Передайте его в управление Rentico. Мы берем на себя аренду, клиентов, обслуживание и контроль — вы сохраняете автомобиль и получаете выплаты.</p>
+<div class="hero-actions">
+<button class="btn btn-accent js-cta" type="button">CTA</button>
+<a class="btn btn-ghost" href="#how">Как это работает</a>
+</div>
+<div class="hero-meta"><div><strong>от $10 000</strong><span>порог входа в модель управления</span></div><div><strong>от 20% годовых*</strong><span>ориентир доходности до уточнения финансовой модели</span></div><div><strong>Ежемесячно</strong><span>выплаты по результатам работы автомобиля</span></div></div>
+<p class="hero-note">* Доходность указана как предварительный ориентир и будет скорректирована после финального расчета экономики по классам автомобилей</p></div>
+</section>
+<section class="audiences" id="audiences">
+<div class="container">
+<div class="audiences-head">
+<div>
+<div class="eyebrow">С кем мы работаем</div>
+<h2>Неважно, один у вас автомобиль или целый автопарк</h2>
+</div>
+<p>Rentico берет в управление автомобили любого масштаба — от одной машины до крупного парка.</p>
+</div>
+<div class="audiences-grid">
+<article class="audience-card">
+<strong>1 автомобиль</strong>
+<p>Хотите получать доход без самостоятельной аренды и ежедневной операционной работы.</p>
+</article>
+<article class="audience-card">
+<strong>2–10 автомобилей</strong>
+<p>Передайте управление нашей команде и сфокусируйтесь только на результате.</p>
+</article>
+<article class="audience-card">
+<strong>Автопарк</strong>
+<p>Комплексно управляем загрузкой, клиентами, обслуживанием и отчетностью.</p>
+</article>
+<article class="audience-card">
+<strong>Инвесторы</strong>
+<p>Создаем и управляем автопарком под ключ для тех, кто рассматривает автомобили как актив.</p>
+</article>
+</div>
+</div>
+</section>
+<section class="image-band">
+<div class="container">
+<img alt="Автомобиль в городе" src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&amp;fit=crop&amp;w=1800&amp;q=86"/>
+</div>
+</section>
+<section class="section" id="how">
+<div class="container">
+<div class="section-head">
+<div><div class="eyebrow">Как это работает</div><h2>Простой путь от автомобиля до регулярных выплат</h2></div>
+<p>Без самостоятельного поиска клиентов, постоянных звонков и контроля каждой аренды.</p>
+</div>
+<div class="steps">
+<article class="step"><span class="step-num">01</span><h3>Оцениваем автомобиль</h3><p>Проверяем состояние и потенциальную доходность.</p></article>
+<article class="step"><span class="step-num">02</span><h3>Подключаем к Rentico</h3><p>Заключаем договор и готовим автомобиль к работе.</p></article>
+<article class="step"><span class="step-num">03</span><h3>Вы получаете выплаты</h3><p>Мы управляем арендой и регулярно предоставляем отчетность.</p></article>
+</div>
+</div>
+</section>
+<section class="section soft">
+<div class="container">
+<div class="section-head">
+<div><div class="eyebrow">Что берем на себя</div><h2>Всю операционную работу</h2></div>
+<p>Rentico работает как готовая команда для вашего автомобиля.</p>
+</div>
+<div class="services">
+<article class="service"><h3>Продажи и маркетинг</h3><p>Привлекаем клиентов и управляем загрузкой.</p></article>
+<article class="service"><h3>Аренда и поддержка</h3><p>Бронирования, коммуникация, выдача и возврат.</p></article>
+<article class="service"><h3>Автомобиль</h3><p>Осмотры, мойка, сервис и организация ремонта.</p></article>
+<article class="service"><h3>Финансы</h3><p>Платежи, учет, отчеты и выплаты владельцу.</p></article>
+</div>
+</div>
+</section>
+<section class="section" id="income">
+<div class="container calculator-wrap">
+<div class="calculator-copy">
+<div class="eyebrow">Доход</div>
+<h2>Оцените потенциал вашего автомобиля</h2>
+<p>Упрощенный расчет для первичной оценки. Финальные условия зависят от модели, состояния автомобиля и рынка.</p>
+</div>
+<form class="calculator" id="incomeCalculator">
+<label>Класс автомобиля
             <select id="vehicleClass">
-              <option value="economy">Эконом</option>
-              <option value="business" selected>Бизнес-класс</option>
-              <option value="suv">SUV</option>
-              <option value="luxury">Премиум</option>
-            </select>
-          </label>
-          <label>Ставка в день <span id="rateValue">420 AED</span>
-            <input id="dailyRate" type="range" min="150" max="1800" value="420" step="10" />
-          </label>
-          <label>Загрузка <span id="occupancyValue">68%</span>
-            <input id="occupancy" type="range" min="20" max="95" value="68" step="1" />
-          </label>
-          <label>Расходы в месяц <span id="costValue">2 800 AED</span>
-            <input id="operatingCosts" type="range" min="500" max="15000" value="2800" step="100" />
-          </label>
-          <div class="results">
-            <div><span>Выручка в месяц</span><strong id="monthlyRevenue">8 568 AED</strong></div>
-            <div><span>Ориентировочный доход владельца</span><strong id="ownerIncome">3 461 AED</strong></div>
-            <div><span>Прогноз на год</span><strong id="annualIncome">41 530 AED</strong></div>
-          </div>
-          <button class="btn btn-accent full js-cta" type="button">CTA</button>
-        </form>
-      </div>
-    </section>
-
-    <section class="section soft">
-      <div class="container">
-        <div class="section-head">
-          <div><div class="eyebrow">Контроль</div><h2>Вы владеете автомобилем. Мы управляем процессом.</h2></div>
-          <p>Ключевые риски и показатели остаются прозрачными для владельца.</p>
-        </div>
-        <div class="trust-grid">
-          <article class="trust-card"><h3>Состояние автомобиля</h3><p>Осмотры, фиксация повреждений и контроль обслуживания.</p></article>
-          <article class="trust-card"><h3>Клиенты и платежи</h3><p>Проверка документов, депозиты и контроль оплат.</p></article>
-          <article class="trust-card"><h3>Страховые случаи</h3><p>Документирование инцидентов и сопровождение процесса.</p></article>
-          <article class="trust-card"><h3>Отчетность</h3><p>Понятные данные по выручке, загрузке и выплатам.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="faq">
-      <div class="container faq">
-        <div class="eyebrow">FAQ</div>
-        <h2>Основные вопросы.</h2>
-        <details><summary>Можно ли начать с одного автомобиля?</summary><p>Да. Вы можете передать в управление один автомобиль и оценить модель на практике.</p></details>
-        <details><summary>Кто остается владельцем автомобиля?</summary><p>Автомобиль остается в вашей собственности. Rentico отвечает за операционное управление в рамках договора.</p></details>
-        <details><summary>Как происходят выплаты?</summary><p>Порядок и периодичность выплат фиксируются в договоре. Вы получаете отчетность по результатам работы автомобиля.</p></details>
-        <details><summary>Что происходит при повреждении?</summary><p>Состояние автомобиля фиксируется при выдаче и возврате, а инциденты проходят через установленный процесс документирования и страхового сопровождения.</p></details>
-        <details><summary>Можно ли забрать автомобиль?</summary><p>Да. Условия и срок уведомления заранее фиксируются в договоре управления.</p></details>
-      </div>
-    </section>
-
-    <section class="final">
-      <div class="container">
-        <div class="eyebrow" style="color:#aaa">Rentico Fleet Management</div>
-        <h2>Пусть автомобиль работает. Не вы.</h2>
-        <p>Передайте ежедневное управление Rentico и получайте доход от своего автомобиля.</p>
-        <button class="btn btn-accent js-cta" type="button">CTA</button>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footer-inner"><span>© Rentico</span><span>Fleet Management</span></div>
-  </footer>
-  <div class="toast" id="toast">Действие для этой кнопки добавим позже</div>
-
-  <script>
+<option value="economy">Эконом</option>
+<option selected="" value="business">Бизнес-класс</option>
+<option value="suv">SUV</option>
+<option value="luxury">Премиум</option>
+</select>
+</label>
+<label>Ставка в день <span id="rateValue">420 AED</span>
+<input id="dailyRate" max="1800" min="150" step="10" type="range" value="420"/>
+</label>
+<label>Загрузка <span id="occupancyValue">68%</span>
+<input id="occupancy" max="95" min="20" step="1" type="range" value="68"/>
+</label>
+<label>Расходы в месяц <span id="costValue">2 800 AED</span>
+<input id="operatingCosts" max="15000" min="500" step="100" type="range" value="2800"/>
+</label>
+<div class="results">
+<div><span>Выручка в месяц</span><strong id="monthlyRevenue">8 568 AED</strong></div>
+<div><span>Ориентировочный доход владельца</span><strong id="ownerIncome">3 461 AED</strong></div>
+<div><span>Прогноз на год</span><strong id="annualIncome">41 530 AED</strong></div>
+</div>
+<button class="btn btn-accent full js-cta" type="button">CTA</button>
+</form>
+</div>
+</section>
+<section class="section soft">
+<div class="container">
+<div class="section-head">
+<div><div class="eyebrow">Модель сотрудничества</div><h2>Вы владеете автопарком — мы управляем</h2></div>
+<p>В ОАЭ арендные автомобили должны работать через компанию с лицензией car rental, поэтому формат оформления зависит от размера инвестиций</p>
+</div>
+<div class="trust-grid"><article class="trust-card"><h3>Инвестиции до $200 000</h3><p>Для одного автомобиля или небольшого парка открывать отдельную компанию и получать собственную лицензию обычно нецелесообразно. Автомобиль передается Rentico по договору управления и ставится на учет на нашу лицензированную компанию.</p></article><article class="trust-card"><h3>Инвестиции от $200 000</h3><p>Для инвесторов, которые формируют парк примерно от 10 автомобилей, мы можем помочь зарегистрировать отдельное юридическое лицо и получить лицензию car rental. Автопарк работает через собственную структуру инвестора, а Rentico берет на себя операционное управление.</p></article><article class="trust-card"><h3>Операционное управление</h3><p>Продажи, маркетинг, бронирования, работа с клиентами, обслуживание автомобилей, контроль загрузки и ежедневные процессы остаются на стороне Rentico.</p></article><article class="trust-card"><h3>Отчетность и выплаты</h3><p>Вы получаете понятную отчетность по выручке, расходам и результатам работы автопарка, а выплаты производятся по согласованной модели сотрудничества.</p></article></div>
+</div>
+</section>
+<section class="section" id="faq">
+<div class="container faq">
+<div class="eyebrow">FAQ</div>
+<h2>Основные вопросы</h2>
+<details><summary>Можно ли начать с одного автомобиля?</summary><p>Да. Для небольшого объема автомобиль передается Rentico по договору управления и регистрируется в рамках нашей лицензированной структуры.</p></details>
+<details><summary>Как оформляется автомобиль для сдачи в аренду?</summary><p>В ОАЭ арендный автомобиль должен работать через компанию с лицензией car rental. При небольших инвестициях автомобиль передается Rentico по договору управления и ставится на учет на нашу компанию. При инвестициях от $200 000 мы можем помочь инвестору открыть отдельное юридическое лицо и получить собственную лицензию.</p></details>
+<details><summary>Как происходят выплаты?</summary><p>Порядок и периодичность выплат фиксируются в договоре. Вы получаете отчетность по результатам работы автомобиля.</p></details>
+<details><summary>Что происходит при повреждении?</summary><p>Состояние автомобиля фиксируется при выдаче и возврате, а инциденты проходят через установленный процесс документирования и страхового сопровождения.</p></details>
+<details><summary>Можно ли забрать автомобиль?</summary><p>Да. Условия и срок уведомления заранее фиксируются в договоре управления.</p></details>
+</div>
+</section>
+<section class="final">
+<div class="container">
+<div class="eyebrow" style="color:#aaa">Rentico Fleet Management</div>
+<h2>Пусть автомобиль работает — не вы</h2>
+<p>Передайте ежедневное управление Rentico и получайте доход от своего автомобиля.</p>
+<button class="btn btn-accent js-cta" type="button">CTA</button>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="container footer-inner"><span>© Rentico</span><span>Fleet Management</span></div>
+</footer>
+<div class="toast" id="toast">Действие для этой кнопки добавим позже</div>
+<script>
     const dailyRate=document.getElementById('dailyRate');
     const occupancy=document.getElementById('occupancy');
     const operatingCosts=document.getElementById('operatingCosts');
