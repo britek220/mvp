@@ -79,6 +79,21 @@
     .results span{color:var(--muted)}
     .results strong{font-size:1.05rem;text-align:right}
     .full{width:100%;margin-top:24px}
+
+    .income-intro{display:grid;grid-template-columns:1fr .7fr;gap:80px;align-items:start;margin-bottom:44px}
+    .income-intro p{font-size:1.08rem;max-width:520px}
+    .income-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .income-card{border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:#fff}
+    .income-card .tag{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#595954;margin-bottom:24px}
+    .income-card h3{font-size:1.45rem;margin-bottom:22px}
+    .income-row{display:flex;justify-content:space-between;gap:20px;padding:13px 0;border-top:1px solid var(--line);font-size:.92rem}
+    .income-row span{color:var(--muted)}
+    .income-row strong{text-align:right;font-weight:700}
+    .format-copy{font-size:.9rem;margin:22px 0 0;min-height:86px}
+    .featured-format{background:var(--soft);border-color:#dcdcd5}
+    .income-note{margin:28px 0 0;font-size:.82rem;max-width:900px;color:#85857f}
+    .income-action{margin-top:30px}
+
     .trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
     .trust-card{padding:30px;border:1px solid var(--line);border-radius:var(--radius);background:#fff}
     .trust-card p{margin-bottom:0}
@@ -98,10 +113,10 @@
     .toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:#111;color:#fff;padding:12px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:.25s;z-index:50;font-size:.9rem}
     .toast.show{opacity:1;transform:translate(-50%,0)}
     @media(max-width:900px){
-      .nav a{display:none}.section{padding:82px 0}.hero{padding:82px 0 65px}.hero-meta,.steps,.services,.trust-grid,.audiences-grid{grid-template-columns:1fr 1fr}.section-head,.calculator-wrap,.audiences-head{grid-template-columns:1fr;gap:28px}.section-head,.audiences-head{margin-bottom:38px}.image-band{padding-bottom:78px}
+      .nav a{display:none}.section{padding:82px 0}.hero{padding:82px 0 65px}.hero-meta,.steps,.services,.trust-grid,.audiences-grid,.income-grid{grid-template-columns:1fr 1fr}.section-head,.calculator-wrap,.audiences-head,.income-intro{grid-template-columns:1fr;gap:28px}.section-head,.audiences-head{margin-bottom:38px}.image-band{padding-bottom:78px}
     }
     @media(max-width:620px){
-      .container{width:min(calc(100% - 28px),var(--max))}.header{height:72px}.nav .btn{padding:11px 17px;font-size:.85rem}.hero{padding:64px 0 52px}.hero-copy{font-size:1rem}.hero-meta{grid-template-columns:1fr;gap:18px;margin-top:54px}.hero-meta div{padding-bottom:18px;border-bottom:1px solid var(--line)}.image-band img{border-radius:18px}.steps,.services,.trust-grid,.audiences-grid{grid-template-columns:1fr}.section,.audiences{padding:68px 0}.step{min-height:170px}.calculator{padding:22px}.results div{align-items:flex-start}.final{padding:80px 0}.footer-inner{flex-direction:column}
+      .container{width:min(calc(100% - 28px),var(--max))}.header{height:72px}.nav .btn{padding:11px 17px;font-size:.85rem}.hero{padding:64px 0 52px}.hero-copy{font-size:1rem}.hero-meta{grid-template-columns:1fr;gap:18px;margin-top:54px}.hero-meta div{padding-bottom:18px;border-bottom:1px solid var(--line)}.image-band img{border-radius:18px}.steps,.services,.trust-grid,.audiences-grid,.income-grid{grid-template-columns:1fr}.section,.audiences{padding:68px 0}.step{min-height:170px}.calculator{padding:22px}.results div{align-items:flex-start}.final{padding:80px 0}.footer-inner{flex-direction:column}
     }
   </style>
 </head>
@@ -192,37 +207,51 @@
 </div>
 </section>
 <section class="section" id="income">
-<div class="container calculator-wrap">
-<div class="calculator-copy">
-<div class="eyebrow">Доход</div>
-<h2>Оцените потенциал вашего автомобиля</h2>
-<p>Упрощенный расчет для первичной оценки. Финальные условия зависят от модели, состояния автомобиля и рынка.</p>
+<div class="container">
+<div class="income-intro">
+<div>
+<div class="eyebrow">Форматы сотрудничества</div>
+<h2>Выберите свой формат</h2>
 </div>
-<form class="calculator" id="incomeCalculator">
-<label>Класс автомобиля
-            <select id="vehicleClass">
-<option value="economy">Эконом</option>
-<option selected="" value="business">Бизнес-класс</option>
-<option value="suv">SUV</option>
-<option value="luxury">Премиум</option>
-</select>
-</label>
-<label>Ставка в день <span id="rateValue">420 AED</span>
-<input id="dailyRate" max="1800" min="150" step="10" type="range" value="420"/>
-</label>
-<label>Загрузка <span id="occupancyValue">68%</span>
-<input id="occupancy" max="95" min="20" step="1" type="range" value="68"/>
-</label>
-<label>Расходы в месяц <span id="costValue">2 800 AED</span>
-<input id="operatingCosts" max="15000" min="500" step="100" type="range" value="2800"/>
-</label>
-<div class="results">
-<div><span>Выручка в месяц</span><strong id="monthlyRevenue">8 568 AED</strong></div>
-<div><span>Ориентировочный доход владельца</span><strong id="ownerIncome">3 461 AED</strong></div>
-<div><span>Прогноз на год</span><strong id="annualIncome">41 530 AED</strong></div>
+<p>Уже есть автомобиль или только планируете инвестицию — Rentico подбирает модель управления под ваш масштаб и бюджет.</p>
 </div>
-<button class="btn btn-accent full js-cta" type="button">Получить точный расчет</button>
-</form>
+
+<div class="income-grid">
+<article class="income-card">
+<span class="tag">Уже есть автомобиль</span>
+<h3>Передать авто в управление</h3>
+<div class="income-row"><span>Масштаб</span><strong>от 1 автомобиля</strong></div>
+<div class="income-row"><span>Оформление</span><strong>через структуру Rentico</strong></div>
+<div class="income-row"><span>Управление</span><strong>полностью на Rentico</strong></div>
+<div class="income-row"><span>Выплаты</span><strong>ежемесячно</strong></div>
+<p class="format-copy">Подходит, если автомобиль уже есть и вы хотите получать от него доход без самостоятельной аренды.</p>
+<button class="btn btn-ghost full js-cta" type="button">Рассчитать доход автомобиля</button>
+</article>
+
+<article class="income-card featured-format">
+<span class="tag">Хочу инвестировать</span>
+<h3>Начать с одного или нескольких авто</h3>
+<div class="income-row"><span>Инвестиции</span><strong>от $10 000</strong></div>
+<div class="income-row"><span>Автомобили</span><strong>подбираем под rental-модель</strong></div>
+<div class="income-row"><span>Ориентир доходности</span><strong>от 20% годовых*</strong></div>
+<div class="income-row"><span>Выплаты</span><strong>ежемесячно</strong></div>
+<p class="format-copy">Подходит, если вы хотите вложить капитал в автомобиль и передать всю операционную работу Rentico.</p>
+<button class="btn btn-accent full js-cta" type="button">Получить расчет инвестиций</button>
+</article>
+
+<article class="income-card">
+<span class="tag">Хочу создать автопарк</span>
+<h3>Собственная rental-структура</h3>
+<div class="income-row"><span>Инвестиции</span><strong>от $200 000</strong></div>
+<div class="income-row"><span>Масштаб</span><strong>ориентировочно от 10 авто</strong></div>
+<div class="income-row"><span>Компания</span><strong>отдельное юрлицо</strong></div>
+<div class="income-row"><span>Лицензия</span><strong>собственная Car Rental License</strong></div>
+<p class="format-copy">Помогаем создать структуру для инвестора, а Rentico берет на себя операционное управление автопарком.</p>
+<button class="btn btn-ghost full js-cta" type="button">Обсудить создание автопарка</button>
+</article>
+</div>
+
+<p class="income-note">* 20% годовых — предварительный ориентир. Фактическая доходность зависит от выбранных автомобилей, стоимости покупки, загрузки, сезонности и операционных расходов. Перед началом работы рассчитываем финансовую модель под конкретный автомобиль или бюджет.</p>
 </div>
 </section>
 <section class="section soft">
@@ -259,37 +288,13 @@
 </footer>
 <div class="toast" id="toast">Форму для этого действия подключим позже</div>
 <script>
-    const dailyRate=document.getElementById('dailyRate');
-    const occupancy=document.getElementById('occupancy');
-    const operatingCosts=document.getElementById('operatingCosts');
-    const vehicleClass=document.getElementById('vehicleClass');
-    const rateValue=document.getElementById('rateValue');
-    const occupancyValue=document.getElementById('occupancyValue');
-    const costValue=document.getElementById('costValue');
-    const monthlyRevenue=document.getElementById('monthlyRevenue');
-    const ownerIncome=document.getElementById('ownerIncome');
-    const annualIncome=document.getElementById('annualIncome');
-    const fmt=n=>Math.round(n).toLocaleString('ru-RU')+' AED';
-    const presets={economy:220,business:420,suv:520,luxury:950};
-    function calc(){
-      const rate=+dailyRate.value, occ=+occupancy.value/100, costs=+operatingCosts.value;
-      const revenue=rate*30*occ;
-      const owner=Math.max(0,(revenue-costs)*0.60);
-      rateValue.textContent=fmt(rate);
-      occupancyValue.textContent=Math.round(occ*100)+'%';
-      costValue.textContent=fmt(costs);
-      monthlyRevenue.textContent=fmt(revenue);
-      ownerIncome.textContent=fmt(owner);
-      annualIncome.textContent=fmt(owner*12);
-    }
-    [dailyRate,occupancy,operatingCosts].forEach(el=>el.addEventListener('input',calc));
-    vehicleClass.addEventListener('change',()=>{dailyRate.value=presets[vehicleClass.value];calc()});
-    calc();
-    const toast=document.getElementById('toast');
-    let timer;
-    document.querySelectorAll('.js-cta').forEach(btn=>btn.addEventListener('click',()=>{
-      clearTimeout(timer);toast.classList.add('show');timer=setTimeout(()=>toast.classList.remove('show'),1800)
-    }));
-  </script>
+const toast=document.getElementById('toast');
+let timer;
+document.querySelectorAll('.js-cta').forEach(btn=>btn.addEventListener('click',()=>{
+  clearTimeout(timer);
+  toast.classList.add('show');
+  timer=setTimeout(()=>toast.classList.remove('show'),1800);
+}));
+</script>
 </body>
 </html>
