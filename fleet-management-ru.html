@@ -94,6 +94,23 @@
     .income-note{margin:28px 0 0;font-size:.82rem;max-width:900px;color:#85857f}
     .income-action{margin-top:30px}
 
+
+    .market-examples{padding:110px 0;border-top:1px solid var(--line);background:#fff}
+    .market-head{display:grid;grid-template-columns:1fr .7fr;gap:80px;align-items:start;margin-bottom:44px}
+    .market-head p{font-size:1.08rem;max-width:520px}
+    .market-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .market-card{border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:#fff}
+    .market-card .tag{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#595954;margin-bottom:24px}
+    .market-card h3{font-size:1.45rem;margin-bottom:22px}
+    .market-row{display:flex;justify-content:space-between;gap:18px;padding:13px 0;border-top:1px solid var(--line);font-size:.92rem}
+    .market-row span{color:var(--muted)}
+    .market-row strong{text-align:right;font-weight:700}
+    .market-highlight{margin-top:18px;padding:18px 0 0;border-top:1px solid var(--line)}
+    .market-highlight span{display:block;color:var(--muted);font-size:.82rem;margin-bottom:4px}
+    .market-highlight strong{font-family:Manrope,Inter,sans-serif;font-size:1.65rem;letter-spacing:-.03em}
+    .market-note{margin:28px 0 0;font-size:.82rem;max-width:940px;color:#85857f}
+    .market-action{margin-top:30px}
+
     .trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
     .trust-card{padding:30px;border:1px solid var(--line);border-radius:var(--radius);background:#fff}
     .trust-card p{margin-bottom:0}
@@ -113,10 +130,10 @@
     .toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:#111;color:#fff;padding:12px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:.25s;z-index:50;font-size:.9rem}
     .toast.show{opacity:1;transform:translate(-50%,0)}
     @media(max-width:900px){
-      .nav a{display:none}.section{padding:82px 0}.hero{padding:82px 0 65px}.hero-meta,.steps,.services,.trust-grid,.audiences-grid,.income-grid{grid-template-columns:1fr 1fr}.section-head,.calculator-wrap,.audiences-head,.income-intro{grid-template-columns:1fr;gap:28px}.section-head,.audiences-head{margin-bottom:38px}.image-band{padding-bottom:78px}
+      .nav a{display:none}.section{padding:82px 0}.hero{padding:82px 0 65px}.hero-meta,.steps,.services,.trust-grid,.audiences-grid,.income-grid,.market-grid{grid-template-columns:1fr 1fr}.section-head,.calculator-wrap,.audiences-head,.income-intro,.market-head{grid-template-columns:1fr;gap:28px}.section-head,.audiences-head{margin-bottom:38px}.image-band{padding-bottom:78px}
     }
     @media(max-width:620px){
-      .container{width:min(calc(100% - 28px),var(--max))}.header{height:72px}.nav .btn{padding:11px 17px;font-size:.85rem}.hero{padding:64px 0 52px}.hero-copy{font-size:1rem}.hero-meta{grid-template-columns:1fr;gap:18px;margin-top:54px}.hero-meta div{padding-bottom:18px;border-bottom:1px solid var(--line)}.image-band img{border-radius:18px}.steps,.services,.trust-grid,.audiences-grid,.income-grid{grid-template-columns:1fr}.section,.audiences{padding:68px 0}.step{min-height:170px}.calculator{padding:22px}.results div{align-items:flex-start}.final{padding:80px 0}.footer-inner{flex-direction:column}
+      .container{width:min(calc(100% - 28px),var(--max))}.header{height:72px}.nav .btn{padding:11px 17px;font-size:.85rem}.hero{padding:64px 0 52px}.hero-copy{font-size:1rem}.hero-meta{grid-template-columns:1fr;gap:18px;margin-top:54px}.hero-meta div{padding-bottom:18px;border-bottom:1px solid var(--line)}.image-band img{border-radius:18px}.steps,.services,.trust-grid,.audiences-grid,.income-grid,.market-grid{grid-template-columns:1fr}.section,.audiences,.market-examples{padding:68px 0}.step{min-height:170px}.calculator{padding:22px}.results div{align-items:flex-start}.final{padding:80px 0}.footer-inner{flex-direction:column}
     }
   </style>
 </head>
@@ -254,6 +271,63 @@
 <p class="income-note">* 20% годовых — предварительный ориентир. Фактическая доходность зависит от выбранных автомобилей, стоимости покупки, загрузки, сезонности и операционных расходов. Перед началом работы рассчитываем финансовую модель под конкретный автомобиль или бюджет.</p>
 </div>
 </section>
+
+<section class="market-examples" id="examples">
+<div class="container">
+<div class="market-head">
+<div>
+<div class="eyebrow">Примеры экономики</div>
+<h2>Как может выглядеть экономика автомобиля</h2>
+</div>
+<p>Три реальных рыночных ориентира по Дубаю, чтобы понять порядок цифр до персонального расчета Rentico.</p>
+</div>
+
+<div class="market-grid">
+<article class="market-card">
+<span class="tag">Эконом-сегмент</span>
+<h3>Toyota Corolla 2026</h3>
+<div class="market-row"><span>Цена нового авто</span><strong>от 76 900 AED</strong></div>
+<div class="market-row"><span>Рыночная аренда</span><strong>≈ 1 400–1 900 AED/мес</strong></div>
+<div class="market-row"><span>Дневная ставка</span><strong>≈ 75–90 AED</strong></div>
+<div class="market-highlight">
+<span>Валовая выручка при 12 полных месяцах аренды</span>
+<strong>≈ 16 800–22 800 AED/год</strong>
+</div>
+</article>
+
+<article class="market-card">
+<span class="tag">Бизнес-седан</span>
+<h3>Toyota Camry 2026</h3>
+<div class="market-row"><span>Цена нового авто</span><strong>от 122 900 AED</strong></div>
+<div class="market-row"><span>Рыночная аренда</span><strong>≈ 3 150–5 500 AED/мес</strong></div>
+<div class="market-row"><span>Дневная ставка</span><strong>≈ 145–250 AED</strong></div>
+<div class="market-highlight">
+<span>Валовая выручка при 12 полных месяцах аренды</span>
+<strong>≈ 37 800–66 000 AED/год</strong>
+</div>
+</article>
+
+<article class="market-card">
+<span class="tag">SUV</span>
+<h3>Toyota Land Cruiser</h3>
+<div class="market-row"><span>Цена нового авто</span><strong>от 239 900 AED</strong></div>
+<div class="market-row"><span>Рыночная аренда</span><strong>≈ 7 000–9 000 AED/мес</strong></div>
+<div class="market-row"><span>Дневная ставка</span><strong>≈ 300–400 AED</strong></div>
+<div class="market-highlight">
+<span>Валовая выручка при 12 полных месяцах аренды</span>
+<strong>≈ 84 000–108 000 AED/год</strong>
+</div>
+</article>
+</div>
+
+<p class="market-note">Это примеры текущих рыночных ставок, а не обещание доходности. Валовая выручка рассчитана как месячная ставка × 12 и не учитывает простои, сезонность, скидки, страхование, обслуживание, регистрацию и операционные расходы. В персональном расчете Rentico показывает прогноз загрузки, расходы и ориентировочный чистый результат под конкретную модель автомобиля.</p>
+
+<div class="market-action">
+<button class="btn btn-accent js-cta" type="button">Получить расчет под мой бюджет</button>
+</div>
+</div>
+</section>
+
 <section class="section soft">
 <div class="container">
 <div class="section-head">
