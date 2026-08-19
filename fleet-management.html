@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="Rentico Fleet Management — professional car and fleet management in the UAE for owners and investors who want to earn without handling day-to-day rental operations." name="description"/>
+<meta content="Rentico Fleet Management — professional vehicle and fleet management in the UAE for owners and investors who want income without day-to-day rental operations." name="description"/>
 <title>Rentico Fleet Management</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -94,6 +94,23 @@
     .income-note{margin:28px 0 0;font-size:.82rem;max-width:900px;color:#85857f}
     .income-action{margin-top:30px}
 
+
+    .market-examples{padding:110px 0;border-top:1px solid var(--line);background:#fff}
+    .market-head{display:grid;grid-template-columns:1fr .7fr;gap:80px;align-items:start;margin-bottom:44px}
+    .market-head p{font-size:1.08rem;max-width:520px}
+    .market-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .market-card{border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:#fff}
+    .market-card .tag{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#595954;margin-bottom:24px}
+    .market-card h3{font-size:1.45rem;margin-bottom:22px}
+    .market-row{display:flex;justify-content:space-between;gap:18px;padding:13px 0;border-top:1px solid var(--line);font-size:.92rem}
+    .market-row span{color:var(--muted)}
+    .market-row strong{text-align:right;font-weight:700}
+    .market-highlight{margin-top:18px;padding:18px 0 0;border-top:1px solid var(--line)}
+    .market-highlight span{display:block;color:var(--muted);font-size:.82rem;margin-bottom:4px}
+    .market-highlight strong{font-family:Manrope,Inter,sans-serif;font-size:1.65rem;letter-spacing:-.03em}
+    .market-note{margin:28px 0 0;font-size:.82rem;max-width:940px;color:#85857f}
+    .market-action{margin-top:30px}
+
     .trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
     .trust-card{padding:30px;border:1px solid var(--line);border-radius:var(--radius);background:#fff}
     .trust-card p{margin-bottom:0}
@@ -113,10 +130,10 @@
     .toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:#111;color:#fff;padding:12px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:.25s;z-index:50;font-size:.9rem}
     .toast.show{opacity:1;transform:translate(-50%,0)}
     @media(max-width:900px){
-      .nav a{display:none}.section{padding:82px 0}.hero{padding:82px 0 65px}.hero-meta,.steps,.services,.trust-grid,.audiences-grid,.income-grid{grid-template-columns:1fr 1fr}.section-head,.calculator-wrap,.audiences-head,.income-intro{grid-template-columns:1fr;gap:28px}.section-head,.audiences-head{margin-bottom:38px}.image-band{padding-bottom:78px}
+      .nav a{display:none}.section{padding:82px 0}.hero{padding:82px 0 65px}.hero-meta,.steps,.services,.trust-grid,.audiences-grid,.income-grid,.market-grid{grid-template-columns:1fr 1fr}.section-head,.calculator-wrap,.audiences-head,.income-intro,.market-head{grid-template-columns:1fr;gap:28px}.section-head,.audiences-head{margin-bottom:38px}.image-band{padding-bottom:78px}
     }
     @media(max-width:620px){
-      .container{width:min(calc(100% - 28px),var(--max))}.header{height:72px}.nav .btn{padding:11px 17px;font-size:.85rem}.hero{padding:64px 0 52px}.hero-copy{font-size:1rem}.hero-meta{grid-template-columns:1fr;gap:18px;margin-top:54px}.hero-meta div{padding-bottom:18px;border-bottom:1px solid var(--line)}.image-band img{border-radius:18px}.steps,.services,.trust-grid,.audiences-grid,.income-grid{grid-template-columns:1fr}.section,.audiences{padding:68px 0}.step{min-height:170px}.calculator{padding:22px}.results div{align-items:flex-start}.final{padding:80px 0}.footer-inner{flex-direction:column}
+      .container{width:min(calc(100% - 28px),var(--max))}.header{height:72px}.nav .btn{padding:11px 17px;font-size:.85rem}.hero{padding:64px 0 52px}.hero-copy{font-size:1rem}.hero-meta{grid-template-columns:1fr;gap:18px;margin-top:54px}.hero-meta div{padding-bottom:18px;border-bottom:1px solid var(--line)}.image-band img{border-radius:18px}.steps,.services,.trust-grid,.audiences-grid,.income-grid,.market-grid{grid-template-columns:1fr}.section,.audiences,.market-examples{padding:68px 0}.step{min-height:170px}.calculator{padding:22px}.results div{align-items:flex-start}.final{padding:80px 0}.footer-inner{flex-direction:column}
     }
   </style>
 </head>
@@ -128,7 +145,7 @@
 <a href="#how">How it works</a>
 <a href="#income">Returns</a>
 <a href="#faq">FAQ</a>
-<button class="btn btn-accent js-cta" type="button">Discuss fleet management</button>
+<button class="btn btn-accent js-cta" type="button">Discuss management</button>
 </nav>
 </div>
 </header>
@@ -137,7 +154,7 @@
 <div class="container">
 <div class="eyebrow">Rentico Fleet Management</div>
 <h1>Put your car to work</h1>
-<p class="hero-copy">Let Rentico manage your car. We handle rentals, customers, maintenance and day-to-day operations, while you receive regular payouts.</p>
+<p class="hero-copy">Let Rentico manage your vehicle. We handle rentals, customers, maintenance and day-to-day operations, while you receive regular payouts.</p>
 <div class="hero-actions">
 <button class="btn btn-accent js-cta" type="button">Estimate my returns</button>
 <a class="btn btn-ghost" href="#how">How it works</a>
@@ -169,14 +186,14 @@
 </article>
 <article class="audience-card">
 <strong>Investors</strong>
-<p>We build and operate rental fleets for investors who view vehicles as income-generating assets.</p>
+<p>We build and operate rental fleets for investors who see vehicles as income-generating assets.</p>
 </article>
 </div>
 </div>
 </section>
 <section class="image-band">
 <div class="container">
-<img alt="Car in the city" src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&amp;fit=crop&amp;w=1800&amp;q=86"/>
+<img alt="Car in Dubai" src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&amp;fit=crop&amp;w=1800&amp;q=86"/>
 </div>
 </section>
 <section class="section" id="how">
@@ -254,6 +271,63 @@
 <p class="income-note">* 20% p.a. is an initial target only. Actual returns depend on vehicle selection, purchase price, utilization, seasonality and operating costs. Before you invest, we prepare a financial model for your specific vehicle or budget.</p>
 </div>
 </section>
+
+<section class="market-examples" id="examples">
+<div class="container">
+<div class="market-head">
+<div>
+<div class="eyebrow">Economics examples</div>
+<h2>What the economics can look like</h2>
+</div>
+<p>Three current Dubai market examples to give you a sense of the numbers before Rentico prepares a personalized model.</p>
+</div>
+
+<div class="market-grid">
+<article class="market-card">
+<span class="tag">Economy</span>
+<h3>Toyota Corolla 2026</h3>
+<div class="market-row"><span>New vehicle price</span><strong>from 76,900 AED</strong></div>
+<div class="market-row"><span>Market rental rate</span><strong>≈ 1 400–1 900 AED/mo</strong></div>
+<div class="market-row"><span>Daily rate</span><strong>≈ 75–90 AED</strong></div>
+<div class="market-highlight">
+<span>Gross revenue at 12 fully rented months</span>
+<strong>≈ 16 800–22 800 AED/year</strong>
+</div>
+</article>
+
+<article class="market-card">
+<span class="tag">Business sedan</span>
+<h3>Toyota Camry 2026</h3>
+<div class="market-row"><span>New vehicle price</span><strong>from 122,900 AED</strong></div>
+<div class="market-row"><span>Market rental rate</span><strong>≈ 3 150–5 500 AED/mo</strong></div>
+<div class="market-row"><span>Daily rate</span><strong>≈ 145–250 AED</strong></div>
+<div class="market-highlight">
+<span>Gross revenue at 12 fully rented months</span>
+<strong>≈ 37 800–66 000 AED/year</strong>
+</div>
+</article>
+
+<article class="market-card">
+<span class="tag">SUV</span>
+<h3>Toyota Land Cruiser</h3>
+<div class="market-row"><span>New vehicle price</span><strong>from 239,900 AED</strong></div>
+<div class="market-row"><span>Market rental rate</span><strong>≈ 7 000–9 000 AED/mo</strong></div>
+<div class="market-row"><span>Daily rate</span><strong>≈ 300–400 AED</strong></div>
+<div class="market-highlight">
+<span>Gross revenue at 12 fully rented months</span>
+<strong>≈ 84 000–108 000 AED/year</strong>
+</div>
+</article>
+</div>
+
+<p class="market-note">These are current market-rate examples, not a promise of returns. Gross revenue is calculated as the monthly rental rate × 12 and does not account for downtime, seasonality, discounts, insurance, maintenance, registration or operating costs. Rentico’s personalized model includes expected utilization, costs and an indicative net result for the specific vehicle.</p>
+
+<div class="market-action">
+<button class="btn btn-accent js-cta" type="button">Get a model for my budget</button>
+</div>
+</div>
+</section>
+
 <section class="section soft">
 <div class="container">
 <div class="section-head">
