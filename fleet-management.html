@@ -1,335 +1,300 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Rentico Fleet Management — professional vehicle management for owners who want income without day-to-day operations." />
-  <title>Rentico Fleet Management</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
-  <style>
-:root{--bg:#f7f7f4;--soft:#ecece7;--ink:#101010;--muted:#65655f;--line:#d7d7d0;--accent:#b8ff3d;--white:#fff;--radius:22px;--max:1320px}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,Arial,sans-serif;line-height:1.5}h1,h2,h3,p{margin-top:0}h1,h2,h3{font-family:Manrope,Inter,sans-serif;letter-spacing:-.04em}h1{font-size:clamp(3.3rem,7.8vw,8.1rem);line-height:.91;max-width:1100px;margin-bottom:30px}h2{font-size:clamp(2.4rem,5vw,5.3rem);line-height:1;max-width:900px;margin-bottom:25px}h3{font-size:1.35rem;line-height:1.15}.container{width:min(calc(100% - 48px),var(--max));margin:auto}.section-pad{padding:130px 0}.section-soft{background:var(--soft)}.section-dark{background:#101010;color:#fff}.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.75rem;font-weight:700;margin-bottom:24px}.eyebrow.light{color:#d8d8d2}.site-header{position:absolute;z-index:20;top:0;left:0;width:100%;height:94px;display:flex;align-items:center;justify-content:space-between;padding:0 max(24px,calc((100vw - var(--max))/2));color:#fff;border-bottom:1px solid rgba(255,255,255,.2)}.brand{display:inline-flex;align-items:center;gap:12px;color:inherit;text-decoration:none;font-family:Manrope;font-weight:700;letter-spacing:.12em}.brand-mark{display:grid;place-items:center;width:34px;height:34px;border:1px solid currentColor;border-radius:50%}.desktop-nav{display:flex;gap:30px}.desktop-nav a,.footer-links a{color:inherit;text-decoration:none;font-size:.88rem}.btn{border:0;border-radius:999px;padding:17px 28px;font-weight:700;cursor:pointer;transition:.25s transform,.25s opacity;background:var(--accent);color:#111}.btn:hover{transform:translateY(-2px)}.btn-small{padding:12px 22px}.btn-light{background:#fff}.btn-dark{background:#111;color:#fff}.hero{position:relative;min-height:950px;display:flex;align-items:flex-end;overflow:hidden}.hero-media,.final-media{position:absolute;inset:0;background:#202020 url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2200&q=88') center/cover no-repeat;transform:scale(1.02)}.hero-overlay,.final-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.83),rgba(0,0,0,.2) 70%),linear-gradient(0deg,rgba(0,0,0,.55),transparent 45%)}.hero-content{position:relative;z-index:2;padding:200px 0 55px}.hero-copy{font-size:clamp(1.1rem,1.7vw,1.5rem);max-width:720px;color:#deded9;margin-bottom:38px}.hero-actions{display:flex;align-items:center;gap:28px}.text-link{color:inherit;text-decoration:none}.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:120px;border-top:1px solid rgba(255,255,255,.28)}.hero-stats div{padding:27px 20px 0 0}.hero-stats strong{display:block;font-size:2rem}.hero-stats span{color:#c7c7c0;font-size:.9rem}.split-heading,.section-head,.why-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:90px}.lead-copy,.section-head>p,.why-copy{font-size:1.18rem;color:var(--muted);max-width:620px}.lead-copy .btn,.why-copy .btn{margin-top:18px}.image-statement{position:relative;height:780px;color:#fff;display:flex;align-items:flex-end}.image-statement-media{position:absolute;inset:0;background:#303030 url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=2200&q=88') center/cover}.image-statement:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.75),transparent 65%)}.image-statement-content{position:relative;z-index:2;padding-bottom:80px}.image-statement-content p{text-transform:uppercase;letter-spacing:.15em;font-size:.75rem}.process-grid{display:grid;grid-template-columns:repeat(3,1fr);margin-top:65px;border-top:1px solid var(--line);border-left:1px solid var(--line)}.process-card{min-height:260px;padding:28px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column}.process-card span,.management-grid article span{font-size:.75rem;color:var(--muted)}.process-card h3{margin-top:auto}.process-card p{color:var(--muted);margin-bottom:0}.accent-card{background:var(--accent)}.center-btn{display:block;margin:42px auto 0}.management-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:62px}.management-grid article{background:#f8f8f5;border-radius:var(--radius);padding:28px;min-height:280px;display:flex;flex-direction:column}.management-grid article h3{margin-top:auto}.management-grid article p{color:var(--muted);margin-bottom:0}.calculator-section{background:#141414;color:#fff}.calculator-wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:100px;align-items:start}.calculator-copy p{color:#b7b7b2;font-size:1.1rem}.calculator-note{display:inline-block;border:1px solid #454545;border-radius:999px;padding:9px 14px;color:#bcbcb5;font-size:.75rem}.calculator{background:#222;border-radius:28px;padding:38px}.calculator label{display:block;margin-bottom:30px;font-size:.9rem}.calculator label span{float:right;color:#c7c7c1}select,input[type=range]{width:100%;margin-top:12px}select{background:#151515;color:#fff;border:1px solid #484848;border-radius:10px;padding:15px;font:inherit}input[type=range]{accent-color:var(--accent)}.calc-results{border-top:1px solid #444;margin-top:12px}.calc-results div{display:flex;justify-content:space-between;gap:20px;padding:17px 0;border-bottom:1px solid #444}.calc-results span{color:#aaa}.calc-results strong{font-size:1.12rem}.full-btn{width:100%;margin-top:28px}.dashboard-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:90px;align-items:center}.dashboard-grid>div>p{color:#bbb;max-width:550px;font-size:1.1rem}.check-list{list-style:none;padding:0;margin:35px 0}.check-list li{border-top:1px solid #3a3a3a;padding:14px 0}.check-list li:before{content:'↗';margin-right:12px;color:var(--accent)}.dashboard-ui{background:#f4f4f0;color:#111;border-radius:24px;padding:28px;box-shadow:0 35px 90px rgba(0,0,0,.35);transform:rotate(1deg)}.dash-top,.dash-row{display:flex;justify-content:space-between}.dash-top{padding-bottom:22px;border-bottom:1px solid #d0d0ca;font-weight:700}.dash-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0}.dash-metrics div{background:#fff;border-radius:15px;padding:18px}.dash-metrics small,.dash-metrics span{display:block;color:#777}.dash-metrics strong{font-size:1.8rem}.chart{height:220px;background:repeating-linear-gradient(to bottom,transparent 0,transparent 54px,#deded8 55px);position:relative;overflow:hidden}.chart-line{position:absolute;inset:45px 18px 38px;background:linear-gradient(155deg,transparent 0 12%,#111 12.5% 13%,transparent 13.5% 31%,#111 31.5% 32%,transparent 32.5% 48%,#111 48.5% 49%,transparent 49.5% 67%,#111 67.5% 68%,transparent 68.5% 84%,#111 84.5% 85%,transparent 85.5%);clip-path:polygon(0 72%,14% 58%,31% 65%,49% 31%,67% 45%,84% 12%,100% 25%,100% 29%,84% 16%,67% 49%,49% 35%,31% 69%,14% 62%,0 76%);background:#111}.chart-label{position:absolute;bottom:7px;font-size:.7rem;color:#777}.one{left:1%}.two{left:32%}.three{left:65%}.four{right:1%}.dash-row{padding:16px 0;border-top:1px solid #d0d0ca}.status{background:#d9ff9b;padding:5px 10px;border-radius:999px}.security-grid{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center}.security-image{height:760px;border-radius:var(--radius);background:#d8d8d3 url('https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1400&q=88') center/cover}.security-list{margin:38px 0}.security-list div{display:grid;grid-template-columns:50px 1fr;border-top:1px solid var(--line);padding:18px 0}.security-list p{margin:0;color:var(--muted)}.security-list strong{color:var(--ink)}.case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:60px}.case-card{height:560px;border-radius:var(--radius);overflow:hidden;position:relative;background-size:cover;background-position:center}.case-card:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.85),transparent 65%)}.case-one{background-image:url('https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1000&q=85')}.case-two{background-image:url('https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=1000&q=85')}.case-three{background-image:url('https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1000&q=85')}.case-content{position:absolute;z-index:2;bottom:0;padding:28px;color:#fff;width:100%}.case-content>span{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em}.case-content h3{font-size:2.1rem;margin:10px 0 28px}.case-content div{display:grid;grid-template-columns:auto 1fr;gap:4px 12px}.case-content strong{font-size:1.35rem}.case-content small{align-self:center;color:#ccc}.faq{background:#fff}.faq-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:100px}.accordion details{border-top:1px solid var(--line);padding:24px 0}.accordion details:last-child{border-bottom:1px solid var(--line)}summary{display:flex;justify-content:space-between;align-items:center;font-size:1.2rem;font-weight:600;cursor:pointer;list-style:none}summary::-webkit-details-marker{display:none}summary span{font-size:1.7rem;font-weight:400}.accordion p{color:var(--muted);max-width:720px;padding-top:15px}.final-cta{position:relative;min-height:720px;display:flex;align-items:end}.final-media{background-image:url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=2200&q=88')}.final-content{position:relative;z-index:2;padding-bottom:90px}.final-content p{font-size:1.25rem;color:#ddd}.final-content h2{max-width:1000px}footer{padding:45px 0;background:#0d0d0d;color:#fff}.footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr auto;align-items:center;gap:25px}.footer-grid p,.footer-grid>span{color:#999;margin:0}.footer-links{display:flex;gap:18px}.toast{position:fixed;right:24px;bottom:24px;background:#111;color:#fff;padding:16px 20px;border-radius:12px;z-index:50;opacity:0;transform:translateY(15px);pointer-events:none;transition:.25s}.toast.show{opacity:1;transform:none}@media(max-width:1000px){.desktop-nav{display:none}.section-pad{padding:90px 0}.split-heading,.section-head,.why-grid,.calculator-wrap,.dashboard-grid,.security-grid,.faq-grid{grid-template-columns:1fr;gap:45px}.process-grid,.management-grid{grid-template-columns:repeat(2,1fr)}.case-grid{grid-template-columns:1fr}.case-card{height:500px}.hero{min-height:850px}.hero-stats{margin-top:80px}.security-image{height:540px}.footer-grid{grid-template-columns:1fr 1fr}.dashboard-ui{transform:none}}@media(max-width:640px){.container{width:min(calc(100% - 30px),var(--max))}.site-header{height:78px;padding:0 15px}.site-header .btn{display:none}.hero{min-height:760px}.hero-content{padding-top:150px}.hero-stats{grid-template-columns:1fr}.hero-stats div{border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:14px}.hero-actions{align-items:flex-start;flex-direction:column}.process-grid,.management-grid,.dash-metrics{grid-template-columns:1fr}.process-card{min-height:220px}.image-statement{height:620px}.calculator{padding:23px}.calc-results div{flex-direction:column}.case-card{height:440px}.footer-grid{grid-template-columns:1fr}.footer-links{flex-wrap:wrap}.section-pad{padding:72px 0}h1{font-size:3.15rem}}
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Rentico Fleet Management — professional car and fleet management in the UAE for owners and investors who want to earn without handling day-to-day rental operations." name="description"/>
+<title>Rentico Fleet Management</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root{
+      --bg:#fff;--ink:#111;--muted:#6f6f6a;--line:#e8e8e3;--soft:#f6f6f3;
+      --accent:#c8ff52;--max:1180px;--radius:24px
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,Arial,sans-serif;line-height:1.55;overflow-x:hidden}
+    h1,h2,h3,p{margin-top:0}
+    h1,h2,h3{font-family:Manrope,Inter,sans-serif;letter-spacing:-.04em}
+    h1{font-size:clamp(3rem,7vw,6.5rem);line-height:.98;margin-bottom:28px;max-width:950px}
+    h2{font-size:clamp(2rem,4.6vw,4.2rem);line-height:1.04;margin-bottom:22px;max-width:820px}
+    h3{font-size:1.25rem;line-height:1.2;margin-bottom:10px}
+    p{color:var(--muted)}
+    .container{width:min(calc(100% - 40px),var(--max));margin:auto}
+    .section{padding:110px 0;border-top:1px solid var(--line)}
+    .soft{background:var(--soft)}
+    .eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px;color:#474743}
+    .btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:999px;padding:16px 26px;background:var(--ink);color:#fff;font:inherit;font-weight:700;cursor:pointer;text-decoration:none;transition:.2s transform,.2s opacity}
+    .btn:hover{transform:translateY(-2px);opacity:.92}
+    .btn-accent{background:var(--accent);color:#111}
+    .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+    .header{height:82px;display:flex;align-items:center;border-bottom:1px solid var(--line);background:#fff}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{font-family:Manrope,Inter,sans-serif;font-weight:700;letter-spacing:.08em;text-decoration:none;color:var(--ink)}
+    .nav{display:flex;align-items:center;gap:26px}
+    .nav a{color:var(--ink);text-decoration:none;font-size:.9rem}
+    .hero{padding:110px 0 90px}
+    .hero-copy{font-size:clamp(1.08rem,1.5vw,1.35rem);max-width:660px;margin-bottom:34px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .hero-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:80px;padding-top:24px;border-top:1px solid var(--line)}
+    .hero-meta strong{font-family:Manrope;font-size:1.8rem;display:block;margin-bottom:4px}
+    .hero-meta span{font-size:.9rem;color:var(--muted)}
 
-img,svg,video{max-width:100%;height:auto}button,select,input{max-width:100%}body{overflow-x:hidden}.site-header,.container,.hero-content,.final-content{min-width:0}.management-grid article,.process-card,.case-card,.dashboard-ui{min-width:0}@media(max-width:420px){h1{font-size:2.65rem}.hero-copy{font-size:1rem}.btn{width:100%;text-align:center}.hero-actions{width:100%}.calculator{border-radius:18px}.dashboard-ui{padding:18px}.dash-metrics strong{font-size:1.45rem}.site-header .brand{font-size:.85rem}}
+    .audiences{padding:92px 0;border-top:1px solid var(--line)}
+    .audiences-head{display:grid;grid-template-columns:1fr .7fr;gap:80px;align-items:start;margin-bottom:42px}
+    .audiences-head p{font-size:1.08rem;max-width:520px}
+    .audiences-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .audience-card{border:1px solid var(--line);border-radius:20px;padding:24px;background:#fff;min-height:170px}
+    .audience-card strong{display:block;font-family:Manrope,Inter,sans-serif;font-size:1.35rem;letter-spacing:-.03em;margin-bottom:8px}
+    .audience-card p{margin-bottom:0;font-size:.94rem}
 
+
+    .hero-note{font-size:.78rem;color:#8a8a84;margin:16px 0 0;max-width:720px}
+    .trust-card:nth-child(-n+2){min-height:245px}
+    .image-band{padding:0 0 100px}
+    .image-band img{display:block;width:100%;height:clamp(320px,48vw,620px);object-fit:cover;border-radius:30px}
+    .section-head{display:grid;grid-template-columns:1fr .7fr;gap:80px;align-items:start;margin-bottom:52px}
+    .section-head p{font-size:1.08rem;max-width:520px}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .step{border:1px solid var(--line);border-radius:var(--radius);padding:26px;min-height:210px;display:flex;flex-direction:column}
+    .step-num{font-size:.8rem;color:var(--muted);margin-bottom:40px}
+    .step h3{margin-top:auto}
+    .step p{margin-bottom:0;font-size:.95rem}
+    .services{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .service{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;min-height:145px}
+    .service p{margin-bottom:0;font-size:.92rem}
+    .calculator-wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:start}
+    .calculator-copy p{font-size:1.08rem;max-width:500px}
+    .calculator{background:#fff;border:1px solid var(--line);border-radius:28px;padding:30px}
+    .calculator label{display:block;margin-bottom:24px;font-size:.9rem;font-weight:600}
+    .calculator label span{float:right;color:var(--muted);font-weight:500}
+    select,input[type=range]{width:100%;margin-top:10px}
+    select{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:12px;padding:14px;font:inherit}
+    input[type=range]{accent-color:#111}
+    .results{border-top:1px solid var(--line);margin-top:8px}
+    .results div{display:flex;justify-content:space-between;gap:18px;padding:16px 0;border-bottom:1px solid var(--line)}
+    .results span{color:var(--muted)}
+    .results strong{font-size:1.05rem;text-align:right}
+    .full{width:100%;margin-top:24px}
+
+    .income-intro{display:grid;grid-template-columns:1fr .7fr;gap:80px;align-items:start;margin-bottom:44px}
+    .income-intro p{font-size:1.08rem;max-width:520px}
+    .income-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .income-card{border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:#fff}
+    .income-card .tag{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#595954;margin-bottom:24px}
+    .income-card h3{font-size:1.45rem;margin-bottom:22px}
+    .income-row{display:flex;justify-content:space-between;gap:20px;padding:13px 0;border-top:1px solid var(--line);font-size:.92rem}
+    .income-row span{color:var(--muted)}
+    .income-row strong{text-align:right;font-weight:700}
+    .format-copy{font-size:.9rem;margin:22px 0 0;min-height:86px}
+    .featured-format{background:var(--soft);border-color:#dcdcd5}
+    .income-note{margin:28px 0 0;font-size:.82rem;max-width:900px;color:#85857f}
+    .income-action{margin-top:30px}
+
+    .trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .trust-card{padding:30px;border:1px solid var(--line);border-radius:var(--radius);background:#fff}
+    .trust-card p{margin-bottom:0}
+    .faq{max-width:900px}
+    details{border-top:1px solid var(--line);padding:22px 0}
+    details:last-child{border-bottom:1px solid var(--line)}
+    summary{list-style:none;cursor:pointer;font-weight:600;font-size:1.08rem;display:flex;justify-content:space-between;gap:20px}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:'+';font-size:1.4rem;font-weight:400}
+    details[open] summary::after{content:'−'}
+    details p{max-width:760px;margin:14px 0 0}
+    .final{padding:120px 0;background:#111;color:#fff}
+    .final h2{max-width:800px}
+    .final p{color:#bdbdb7;font-size:1.1rem;max-width:620px;margin-bottom:30px}
+    .footer{padding:28px 0;border-top:1px solid #2c2c2c;background:#111;color:#aaa;font-size:.85rem}
+    .footer-inner{display:flex;justify-content:space-between;gap:20px}
+    .toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:#111;color:#fff;padding:12px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:.25s;z-index:50;font-size:.9rem}
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+    @media(max-width:900px){
+      .nav a{display:none}.section{padding:82px 0}.hero{padding:82px 0 65px}.hero-meta,.steps,.services,.trust-grid,.audiences-grid,.income-grid{grid-template-columns:1fr 1fr}.section-head,.calculator-wrap,.audiences-head,.income-intro{grid-template-columns:1fr;gap:28px}.section-head,.audiences-head{margin-bottom:38px}.image-band{padding-bottom:78px}
+    }
+    @media(max-width:620px){
+      .container{width:min(calc(100% - 28px),var(--max))}.header{height:72px}.nav .btn{padding:11px 17px;font-size:.85rem}.hero{padding:64px 0 52px}.hero-copy{font-size:1rem}.hero-meta{grid-template-columns:1fr;gap:18px;margin-top:54px}.hero-meta div{padding-bottom:18px;border-bottom:1px solid var(--line)}.image-band img{border-radius:18px}.steps,.services,.trust-grid,.audiences-grid,.income-grid{grid-template-columns:1fr}.section,.audiences{padding:68px 0}.step{min-height:170px}.calculator{padding:22px}.results div{align-items:flex-start}.final{padding:80px 0}.footer-inner{flex-direction:column}
+    }
   </style>
 </head>
 <body>
-  <header class="site-header" id="top">
-    <a class="brand" href="#top" aria-label="Rentico home">
-      <span class="brand-mark">R</span>
-      <span>RENTICO</span>
-    </a>
-    <nav class="desktop-nav" aria-label="Primary navigation">
-      <a href="#how">How it works</a>
-      <a href="#management">Management</a>
-      <a href="#income">Income</a>
-      <a href="#security">Security</a>
-      <a href="#faq">FAQ</a>
-    </nav>
-    <button class="btn btn-small js-cta" type="button">CTA</button>
-  </header>
+<header class="header">
+<div class="container header-inner">
+<a class="brand" href="#top">RENTICO</a>
+<nav class="nav">
+<a href="#how">How it works</a>
+<a href="#income">Returns</a>
+<a href="#faq">FAQ</a>
+<button class="btn btn-accent js-cta" type="button">Discuss fleet management</button>
+</nav>
+</div>
+</header>
+<main id="top">
+<section class="hero">
+<div class="container">
+<div class="eyebrow">Rentico Fleet Management</div>
+<h1>Put your car to work</h1>
+<p class="hero-copy">Let Rentico manage your car. We handle rentals, customers, maintenance and day-to-day operations, while you receive regular payouts.</p>
+<div class="hero-actions">
+<button class="btn btn-accent js-cta" type="button">Estimate my returns</button>
+<a class="btn btn-ghost" href="#how">How it works</a>
+</div>
+<div class="hero-meta"><div><strong>from $10,000</strong><span>starting investment</span></div><div><strong>from 20% p.a.*</strong><span>indicative target return</span></div><div><strong>Monthly</strong><span>payouts based on vehicle performance</span></div></div>
+<p class="hero-note">* The return shown is an initial estimate and will be refined once the financial model is finalized for each vehicle category</p></div>
+</section>
+<section class="audiences" id="audiences">
+<div class="container">
+<div class="audiences-head">
+<div>
+<div class="eyebrow">Who we work with</div>
+<h2>From one car to a full fleet</h2>
+</div>
+<p>Rentico manages vehicles at any scale — from a single car to a large fleet.</p>
+</div>
+<div class="audiences-grid">
+<article class="audience-card">
+<strong>1 vehicle</strong>
+<p>Earn from your car without managing rentals or day-to-day operations yourself.</p>
+</article>
+<article class="audience-card">
+<strong>2–10 vehicles</strong>
+<p>Let our team handle the operations while you focus on the results.</p>
+</article>
+<article class="audience-card">
+<strong>Fleet</strong>
+<p>We manage utilization, customers, maintenance and reporting end to end.</p>
+</article>
+<article class="audience-card">
+<strong>Investors</strong>
+<p>We build and operate rental fleets for investors who view vehicles as income-generating assets.</p>
+</article>
+</div>
+</div>
+</section>
+<section class="image-band">
+<div class="container">
+<img alt="Car in the city" src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&amp;fit=crop&amp;w=1800&amp;q=86"/>
+</div>
+</section>
+<section class="section" id="how">
+<div class="container">
+<div class="section-head">
+<div><div class="eyebrow">How it works</div><h2>A simple path from vehicle to regular payouts</h2></div>
+<p>No customer acquisition, constant calls or hands-on rental management on your side.</p>
+</div>
+<div class="steps">
+<article class="step"><span class="step-num">01</span><h3>Assess the vehicle</h3><p>We review its condition and earning potential.</p></article>
+<article class="step"><span class="step-num">02</span><h3>Onboard with Rentico</h3><p>We sign the management agreement and prepare the vehicle for rental.</p></article>
+<article class="step"><span class="step-num">03</span><h3>Receive payouts</h3><p>We run the rental operation and provide regular performance reports.</p></article>
+</div>
+</div>
+</section>
+<section class="section soft">
+<div class="container">
+<div class="section-head">
+<div><div class="eyebrow">What we handle</div><h2>Everything day to day</h2></div>
+<p>Rentico becomes the operating team behind your vehicle or fleet.</p>
+</div>
+<div class="services">
+<article class="service"><h3>Sales & marketing</h3><p>We attract customers and optimize utilization.</p></article>
+<article class="service"><h3>Rentals & support</h3><p>Bookings, customer communication, handovers and returns.</p></article>
+<article class="service"><h3>Vehicle operations</h3><p>Inspections, cleaning, servicing and repair coordination.</p></article>
+<article class="service"><h3>Finance</h3><p>Payments, accounting, reporting and owner payouts.</p></article>
+</div>
+</div>
+</section>
+<section class="section" id="income">
+<div class="container">
+<div class="income-intro">
+<div>
+<div class="eyebrow">Ways to work with us</div>
+<h2>Choose the setup that fits you</h2>
+</div>
+<p>Whether you already own a car or are planning an investment, Rentico structures the right management model around your budget and scale.</p>
+</div>
 
-  <main>
-    <section class="hero section-dark">
-      <div class="hero-media" role="img" aria-label="Premium car in a modern city"></div>
-      <div class="hero-overlay"></div>
-      <div class="hero-content container">
-        <div class="eyebrow light">Fleet Management by Rentico</div>
-        <h1>Turn your car into a revenue-generating asset.</h1>
-        <p class="hero-copy">Own the car. Rentico takes care of marketing, customers, delivery, inspections, maintenance, insurance support and payments.</p>
-        <div class="hero-actions">
-          <button class="btn btn-light js-cta" type="button">CTA</button>
-          <a class="text-link light" href="#how">Explore the model <span>↘</span></a>
-        </div>
-        <div class="hero-stats">
-          <div><strong>XX+</strong><span>vehicles managed</span></div>
-          <div><strong>XX%</strong><span>average occupancy</span></div>
-          <div><strong>24/7</strong><span>operations team</span></div>
-        </div>
-      </div>
-    </section>
+<div class="income-grid">
+<article class="income-card">
+<span class="tag">Already own a car</span>
+<h3>Put your car under management</h3>
+<div class="income-row"><span>Scale</span><strong>from 1 vehicle</strong></div>
+<div class="income-row"><span>Setup</span><strong>through Rentico’s licensed structure</strong></div>
+<div class="income-row"><span>Operations</span><strong>fully managed by Rentico</strong></div>
+<div class="income-row"><span>Payouts</span><strong>monthly</strong></div>
+<p class="format-copy">For owners who want their existing car to generate income without running the rental operation themselves.</p>
+<button class="btn btn-ghost full js-cta" type="button">Estimate my car’s returns</button>
+</article>
 
-    <section class="intro section-pad">
-      <div class="container split-heading">
-        <div>
-          <div class="eyebrow">A better way to own</div>
-          <h2>Your vehicle can work even when you do not.</h2>
-        </div>
-        <div class="lead-copy">
-          <p>Keep ownership of your car while Rentico turns it into a professionally managed rental asset.</p>
-          <p>No listings, customer calls, delivery schedules or payment collection. You own the vehicle. We operate the business.</p>
-          <button class="btn btn-dark js-cta" type="button">CTA</button>
-        </div>
-      </div>
-    </section>
+<article class="income-card featured-format">
+<span class="tag">I want to invest</span>
+<h3>Start with one or several vehicles</h3>
+<div class="income-row"><span>Investment</span><strong>from $10,000</strong></div>
+<div class="income-row"><span>Vehicles</span><strong>selected for the rental model</strong></div>
+<div class="income-row"><span>Target return</span><strong>from 20% p.a.*</strong></div>
+<div class="income-row"><span>Payouts</span><strong>monthly</strong></div>
+<p class="format-copy">For investors who want exposure to rental vehicles while Rentico handles the entire operation.</p>
+<button class="btn btn-accent full js-cta" type="button">Get an investment estimate</button>
+</article>
 
-    <section class="image-statement">
-      <div class="image-statement-media" role="img" aria-label="Luxury vehicle detail"></div>
-      <div class="container image-statement-content">
-        <p>Professional fleet management</p>
-        <h2>More than rental.<br>Complete vehicle operations.</h2>
-      </div>
-    </section>
+<article class="income-card">
+<span class="tag">I want to build a fleet</span>
+<h3>Your own rental company</h3>
+<div class="income-row"><span>Investment</span><strong>from $200,000</strong></div>
+<div class="income-row"><span>Scale</span><strong>typically from 10 vehicles</strong></div>
+<div class="income-row"><span>Company</span><strong>dedicated legal entity</strong></div>
+<div class="income-row"><span>Licence</span><strong>own Car Rental Licence</strong></div>
+<p class="format-copy">We help establish the investor’s own rental structure, while Rentico takes care of fleet operations.</p>
+<button class="btn btn-ghost full js-cta" type="button">Discuss building a fleet</button>
+</article>
+</div>
 
-    <section class="section-pad" id="how">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="eyebrow">How it works</div>
-            <h2>From one car to recurring income.</h2>
-          </div>
-          <p>A transparent onboarding process designed to get your vehicle ready, listed and operating without unnecessary complexity.</p>
-        </div>
-        <div class="process-grid">
-          <article class="process-card"><span>01</span><h3>Submit your vehicle</h3><p>Share the model, year, mileage and condition.</p></article>
-          <article class="process-card"><span>02</span><h3>Vehicle evaluation</h3><p>We assess rental potential and operating requirements.</p></article>
-          <article class="process-card"><span>03</span><h3>Management agreement</h3><p>Terms, responsibilities and reporting are documented.</p></article>
-          <article class="process-card"><span>04</span><h3>Fleet onboarding</h3><p>Inspection, preparation, photography and system setup.</p></article>
-          <article class="process-card"><span>05</span><h3>Rental operations</h3><p>Marketing, bookings, deliveries and support begin.</p></article>
-          <article class="process-card accent-card"><span>06</span><h3>Receive payouts</h3><p>Track performance and receive scheduled owner payments.</p></article>
-        </div>
-        <button class="btn btn-dark center-btn js-cta" type="button">CTA</button>
-      </div>
-    </section>
-
-    <section class="section-soft section-pad" id="management">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="eyebrow">Everything we handle</div>
-            <h2>One operator.<br>Every moving part.</h2>
-          </div>
-          <p>Rentico combines commercial, operational and financial management in one system.</p>
-        </div>
-        <div class="management-grid">
-          <article><span>01</span><h3>Marketing & distribution</h3><p>Listings, campaigns, booking channels, content and demand generation.</p></article>
-          <article><span>02</span><h3>Sales & reservations</h3><p>Lead response, booking management, upsells and customer communication.</p></article>
-          <article><span>03</span><h3>Dynamic pricing</h3><p>Rates adjusted to demand, seasonality, duration and vehicle availability.</p></article>
-          <article><span>04</span><h3>Delivery & collection</h3><p>Vehicle handover, return, logistics and documented condition checks.</p></article>
-          <article><span>05</span><h3>Maintenance coordination</h3><p>Routine service, repairs, cleaning and vehicle readiness monitoring.</p></article>
-          <article><span>06</span><h3>Payments & reporting</h3><p>Collections, operating records, statements and owner payout reporting.</p></article>
-          <article><span>07</span><h3>Customer support</h3><p>Day-to-day customer questions and operational support throughout the rental.</p></article>
-          <article><span>08</span><h3>Insurance support</h3><p>Incident documentation, claims coordination and communication support.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-pad calculator-section" id="income">
-      <div class="container calculator-wrap">
-        <div class="calculator-copy">
-          <div class="eyebrow">Income calculator</div>
-          <h2>Estimate your vehicle’s earning potential.</h2>
-          <p>Adjust the inputs to preview a simplified operating model. Final figures will depend on the vehicle, season, demand and agreed management terms.</p>
-          <div class="calculator-note">Illustrative estimate only</div>
-        </div>
-        <form class="calculator" id="incomeCalculator">
-          <label>Vehicle class
-            <select id="vehicleClass">
-              <option value="economy">Economy</option>
-              <option value="business" selected>Business</option>
-              <option value="suv">SUV</option>
-              <option value="luxury">Luxury</option>
-            </select>
-          </label>
-          <label>Estimated daily rate <span id="rateValue">420 AED</span>
-            <input id="dailyRate" type="range" min="150" max="1800" value="420" step="10" />
-          </label>
-          <label>Estimated occupancy <span id="occupancyValue">68%</span>
-            <input id="occupancy" type="range" min="20" max="95" value="68" step="1" />
-          </label>
-          <label>Estimated monthly operating costs <span id="costValue">2,800 AED</span>
-            <input id="operatingCosts" type="range" min="500" max="15000" value="2800" step="100" />
-          </label>
-          <div class="calc-results">
-            <div><span>Estimated monthly revenue</span><strong id="monthlyRevenue">8,568 AED</strong></div>
-            <div><span>Estimated owner income</span><strong id="ownerIncome">3,461 AED</strong></div>
-            <div><span>Annual projection</span><strong id="annualIncome">41,530 AED</strong></div>
-          </div>
-          <button class="btn btn-light full-btn js-cta" type="button">CTA</button>
-        </form>
-      </div>
-    </section>
-
-    <section class="dashboard section-dark section-pad">
-      <div class="container dashboard-grid">
-        <div>
-          <div class="eyebrow light">Owner dashboard</div>
-          <h2>Visibility without operational involvement.</h2>
-          <p>Follow the performance of your vehicle through clear, structured reporting.</p>
-          <ul class="check-list">
-            <li>Revenue and payouts</li>
-            <li>Bookings and occupancy</li>
-            <li>Vehicle status</li>
-            <li>Maintenance activity</li>
-            <li>Monthly statements</li>
-          </ul>
-          <button class="btn btn-light js-cta" type="button">CTA</button>
-        </div>
-        <div class="dashboard-ui" aria-label="Fleet dashboard mockup">
-          <div class="dash-top"><span>Fleet overview</span><span>August</span></div>
-          <div class="dash-metrics">
-            <div><small>Revenue</small><strong>18,420</strong><span>AED</span></div>
-            <div><small>Occupancy</small><strong>74%</strong><span>+8.2%</span></div>
-            <div><small>Bookings</small><strong>12</strong><span>This month</span></div>
-          </div>
-          <div class="chart"><div class="chart-line"></div><span class="chart-label one">01</span><span class="chart-label two">10</span><span class="chart-label three">20</span><span class="chart-label four">30</span></div>
-          <div class="dash-row"><span>Vehicle status</span><strong class="status">On rent</strong></div>
-          <div class="dash-row"><span>Next service</span><strong>2,450 km</strong></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-pad" id="security">
-      <div class="container security-grid">
-        <div class="security-image" role="img" aria-label="Car inspection"></div>
-        <div class="security-copy">
-          <div class="eyebrow">Security & risk management</div>
-          <h2>Your vehicle is protected at every stage.</h2>
-          <div class="security-list">
-            <div><span>01</span><p><strong>Customer verification</strong><br>Identity and document checks before vehicle handover.</p></div>
-            <div><span>02</span><p><strong>Documented inspections</strong><br>Condition records at delivery and return.</p></div>
-            <div><span>03</span><p><strong>Deposit and payment controls</strong><br>Structured collection and transaction records.</p></div>
-            <div><span>04</span><p><strong>Incident coordination</strong><br>Damage reports and insurance communication support.</p></div>
-            <div><span>05</span><p><strong>Maintenance monitoring</strong><br>Service scheduling and operational readiness checks.</p></div>
-          </div>
-          <button class="btn btn-dark js-cta" type="button">CTA</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-soft section-pad">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="eyebrow">Performance cases</div>
-            <h2>Built around measurable outcomes.</h2>
-          </div>
-          <p>Placeholder examples for future verified Rentico case studies.</p>
-        </div>
-        <div class="case-grid">
-          <article class="case-card case-one"><div class="case-content"><span>Private owner · 1 vehicle</span><h3>BMW X5</h3><div><strong>XX%</strong><small>occupancy</small><strong>XX,XXX</strong><small>AED revenue</small></div></div></article>
-          <article class="case-card case-two"><div class="case-content"><span>Private owner · 2 vehicles</span><h3>Tesla Model Y</h3><div><strong>XX%</strong><small>occupancy</small><strong>XX,XXX</strong><small>AED revenue</small></div></div></article>
-          <article class="case-card case-three"><div class="case-content"><span>Premium fleet</span><h3>Mercedes-Benz</h3><div><strong>XX%</strong><small>occupancy</small><strong>XX,XXX</strong><small>AED revenue</small></div></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-pad why-section">
-      <div class="container why-grid">
-        <div>
-          <div class="eyebrow">Why Rentico</div>
-          <h2>Fleet management is an operating system, not a listing service.</h2>
-        </div>
-        <div class="why-copy">
-          <p>Strong vehicle performance requires marketing, pricing, customer service, logistics, maintenance, technology and financial control to work together every day.</p>
-          <p>Rentico brings these functions into one managed process so vehicle owners do not have to build their own rental operation.</p>
-          <button class="btn btn-dark js-cta" type="button">CTA</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="faq section-pad" id="faq">
-      <div class="container faq-grid">
-        <div>
-          <div class="eyebrow">FAQ</div>
-          <h2>Clear answers before you start.</h2>
-        </div>
-        <div class="accordion">
-          <details><summary>Who owns the vehicle?<span>+</span></summary><p>You remain the legal owner. The management agreement defines Rentico’s operational responsibilities.</p></details>
-          <details><summary>Can I start with one vehicle?<span>+</span></summary><p>Yes. The service is designed for owners of one vehicle as well as small and larger fleets.</p></details>
-          <details><summary>How are owner payouts calculated?<span>+</span></summary><p>The exact model will be defined in the agreement. Reporting should clearly show revenue, agreed costs and the owner payout.</p></details>
-          <details><summary>What happens if the vehicle is damaged?<span>+</span></summary><p>Each incident follows a documented inspection, reporting and insurance coordination process.</p></details>
-          <details><summary>Who coordinates maintenance?<span>+</span></summary><p>Rentico coordinates scheduled service, cleaning, inspections and approved repairs as part of fleet operations.</p></details>
-          <details><summary>Can I withdraw the vehicle?<span>+</span></summary><p>Withdrawal terms and notice periods are defined transparently in the fleet management agreement.</p></details>
-        </div>
-      </div>
-    </section>
-
-    <section class="final-cta section-dark">
-      <div class="final-media"></div>
-      <div class="final-overlay"></div>
-      <div class="container final-content">
-        <div class="eyebrow light">Fleet Management by Rentico</div>
-        <h2>Let your car work for you.</h2>
-        <p>Keep ownership. Generate income. Leave the operations to Rentico.</p>
-        <button class="btn btn-light js-cta" type="button">CTA</button>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-grid">
-      <a class="brand" href="#top"><span class="brand-mark">R</span><span>RENTICO</span></a>
-      <p>Professional fleet operations for vehicle owners.</p>
-      <div class="footer-links"><a href="#how">Process</a><a href="#income">Income</a><a href="#security">Security</a><a href="#faq">FAQ</a></div>
-      <span>© <span id="year"></span> Rentico</span>
-    </div>
-  </footer>
-
-  <div class="toast" id="ctaToast" role="status" aria-live="polite">CTA action will be added later.</div>
-  <script>
-const currency = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
-const dailyRate = document.getElementById('dailyRate');
-const occupancy = document.getElementById('occupancy');
-const costs = document.getElementById('operatingCosts');
-const vehicleClass = document.getElementById('vehicleClass');
-
-const presets = {
-  economy: { rate: 210, occupancy: 76, costs: 1900 },
-  business: { rate: 420, occupancy: 68, costs: 2800 },
-  suv: { rate: 650, occupancy: 64, costs: 4300 },
-  luxury: { rate: 1350, occupancy: 54, costs: 9200 }
-};
-
-function updateCalculator() {
-  const rate = Number(dailyRate.value);
-  const occ = Number(occupancy.value);
-  const operatingCosts = Number(costs.value);
-  const monthlyRevenue = rate * 30 * (occ / 100);
-  const managementShare = monthlyRevenue * 0.40;
-  const ownerIncome = Math.max(0, monthlyRevenue - operatingCosts - managementShare);
-
-  document.getElementById('rateValue').textContent = `${currency.format(rate)} AED`;
-  document.getElementById('occupancyValue').textContent = `${occ}%`;
-  document.getElementById('costValue').textContent = `${currency.format(operatingCosts)} AED`;
-  document.getElementById('monthlyRevenue').textContent = `${currency.format(monthlyRevenue)} AED`;
-  document.getElementById('ownerIncome').textContent = `${currency.format(ownerIncome)} AED`;
-  document.getElementById('annualIncome').textContent = `${currency.format(ownerIncome * 12)} AED`;
-}
-
-[dailyRate, occupancy, costs].forEach((el) => el.addEventListener('input', updateCalculator));
-vehicleClass.addEventListener('change', () => {
-  const preset = presets[vehicleClass.value];
-  dailyRate.value = preset.rate;
-  occupancy.value = preset.occupancy;
-  costs.value = preset.costs;
-  updateCalculator();
-});
-
-const toast = document.getElementById('ctaToast');
-let toastTimer;
-document.querySelectorAll('.js-cta').forEach((button) => {
-  button.addEventListener('click', () => {
-    toast.classList.add('show');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
-  });
-});
-
-document.querySelectorAll('details').forEach((detail) => {
-  detail.addEventListener('toggle', () => {
-    if (!detail.open) return;
-    document.querySelectorAll('details').forEach((other) => {
-      if (other !== detail) other.open = false;
-    });
-  });
-});
-
-document.getElementById('year').textContent = new Date().getFullYear();
-updateCalculator();
-
-  </script>
+<p class="income-note">* 20% p.a. is an initial target only. Actual returns depend on vehicle selection, purchase price, utilization, seasonality and operating costs. Before you invest, we prepare a financial model for your specific vehicle or budget.</p>
+</div>
+</section>
+<section class="section soft">
+<div class="container">
+<div class="section-head">
+<div><div class="eyebrow">Ownership & operating structure</div><h2>You own the fleet — we run the operation</h2></div>
+<p>In the UAE, rental vehicles must operate through a licensed car rental company. The right structure therefore depends on the size of your investment.</p>
+</div>
+<div class="trust-grid"><article class="trust-card"><h3>Investments below $200,000</h3><p>For one vehicle or a small fleet, setting up a separate company and licence is usually not practical. The vehicle is placed under a management agreement with Rentico and registered within our licensed rental structure.</p></article><article class="trust-card"><h3>Investments from $200,000</h3><p>For investors building a fleet of around 10 vehicles or more, we can help establish a dedicated legal entity and obtain a car rental licence. The fleet operates through the investor’s own structure, while Rentico manages day-to-day operations.</p></article><article class="trust-card"><h3>Day-to-day operations</h3><p>Rentico handles sales, marketing, bookings, customer service, vehicle maintenance, utilization and the daily rental operation.</p></article><article class="trust-card"><h3>Reporting & payouts</h3><p>You receive clear reporting on revenue, costs and fleet performance, with payouts made according to the agreed management structure.</p></article></div>
+</div>
+</section>
+<section class="section" id="faq">
+<div class="container faq">
+<div class="eyebrow">FAQ</div>
+<h2>Frequently asked questions</h2>
+<details><summary>Can I start with one vehicle?</summary><p>Yes. For a small number of vehicles, the car is placed under a management agreement with Rentico and operated within our licensed rental structure.</p></details>
+<details><summary>How is the vehicle set up for rental?</summary><p>In the UAE, a rental vehicle must operate through a licensed car rental company. For smaller investments, the vehicle is placed under a management agreement with Rentico and registered within our licensed structure. From $200,000, we can help investors establish a separate legal entity and obtain their own licence.</p></details>
+<details><summary>How do payouts work?</summary><p>The payout schedule and terms are defined in the management agreement. You also receive regular reporting on vehicle performance.</p></details>
+<details><summary>What happens if the vehicle is damaged?</summary><p>The vehicle’s condition is documented at handover and return. Any incident follows a defined documentation and insurance process.</p></details>
+<details><summary>Can I take my vehicle back?</summary><p>Yes. The notice period and exit terms are defined in the management agreement in advance.</p></details>
+</div>
+</section>
+<section class="final">
+<div class="container">
+<div class="eyebrow" style="color:#aaa">Rentico Fleet Management</div>
+<h2>Let your car do the work</h2>
+<p>Let Rentico handle the day-to-day operation while your vehicle generates income.</p>
+<button class="btn btn-accent js-cta" type="button">Discuss working with Rentico</button>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="container footer-inner"><span>© Rentico</span><span>Fleet Management</span></div>
+</footer>
+<div class="toast" id="toast">The enquiry form will be connected here</div>
+<script>
+const toast=document.getElementById('toast');
+let timer;
+document.querySelectorAll('.js-cta').forEach(btn=>btn.addEventListener('click',()=>{
+  clearTimeout(timer);
+  toast.classList.add('show');
+  timer=setTimeout(()=>toast.classList.remove('show'),1800);
+}));
+</script>
 </body>
 </html>
