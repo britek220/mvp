@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Аналитика блога — прототип</title>
+  <style>
+    :root{
+      --bg:#f4f7fb;
+      --card:#ffffff;
+      --text:#15171a;
+      --muted:#727987;
+      --line:#e7ebf0;
+      --primary:#2563eb;
+      --primary-weak:#eff6ff;
+      --success:#15803d;
+      --success-weak:#ecfdf3;
+      --danger:#b42318;
+      --shadow:0 8px 28px rgba(16,24,40,.06);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+    button,input,select{font:inherit}
+    .app{max-width:1480px;margin:0 auto;padding:36px 28px 48px}
+    .topbar{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:24px}
+    .title h1{margin:0 0 6px;font-size:34px;letter-spacing:-.03em}
+    .title p{margin:0;color:var(--muted);font-size:15px}
+    .help-btn{
+      background:#fff;border:1px solid var(--line);border-radius:12px;
+      padding:11px 14px;color:#525866;cursor:pointer;box-shadow:0 2px 10px rgba(16,24,40,.03)
+    }
+    .toolbar,.section,.kpi-card{
+      background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow)
+    }
+    .toolbar{
+      border-radius:var(--radius);padding:18px;
+      display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:18px
+    }
+    .filters{display:flex;gap:14px;flex-wrap:wrap}
+    .field{min-width:220px}
+    .field label{display:flex;align-items:center;gap:6px;color:#5d6471;font-size:13px;margin-bottom:8px}
+    .control{
+      width:100%;height:46px;border:1px solid #dfe4ea;border-radius:12px;background:#fff;
+      padding:0 13px;color:#252a31;outline:none;transition:.2s
+    }
+    .control:focus{border-color:#9bbcff;box-shadow:0 0 0 4px rgba(37,99,235,.08)}
+    .status{
+      min-width:280px;border:1px solid var(--line);background:#fafbfc;border-radius:12px;padding:12px 14px;
+      color:#656d79;font-size:13px;line-height:1.5
+    }
+    .status strong{color:#31363d}
+    .grid-kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
+    .kpi-card{border-radius:16px;padding:20px;min-height:150px}
+    .kpi-label{display:flex;align-items:center;gap:6px;color:#5f6672;font-size:14px}
+    .kpi-value{font-size:32px;letter-spacing:-.03em;margin-top:12px}
+    .delta{display:inline-flex;align-items:center;gap:5px;margin-top:10px;color:var(--success);font-size:13px}
+    .delta span{color:#747b87}
+    .kpi-sub{
+      border-top:1px solid var(--line);margin-top:16px;padding-top:14px;
+      display:flex;align-items:center;justify-content:space-between;font-size:13px;color:#5f6672
+    }
+    .kpi-sub strong{color:#20242a;font-size:14px}
+    .section{border-radius:var(--radius);padding:0;margin-bottom:18px;overflow:hidden}
+    .section-head{
+      display:flex;justify-content:space-between;gap:18px;align-items:center;padding:20px 20px 16px
+    }
+    .section-title h2{font-size:20px;margin:0;display:flex;align-items:center;gap:7px}
+    .section-title p{margin:5px 0 0;color:var(--muted);font-size:13px}
+    .actions{display:flex;gap:9px;flex-wrap:wrap}
+    .btn{
+      height:40px;border-radius:10px;border:1px solid var(--line);background:#fff;padding:0 13px;
+      cursor:pointer;color:#343a43
+    }
+    .btn:hover{background:#f8fafc}
+    .btn.primary{background:var(--primary);color:#fff;border-color:var(--primary)}
+    .table-tools{display:flex;gap:10px;padding:0 20px 14px;align-items:center}
+    .search{flex:1;min-width:230px}
+    .search input{width:100%;height:40px;border:1px solid var(--line);border-radius:10px;padding:0 12px;outline:none}
+    .table-wrap{overflow:auto;border-top:1px solid var(--line)}
+    table{width:100%;border-collapse:separate;border-spacing:0;min-width:1050px}
+    th,td{padding:14px 16px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+    th{font-size:12px;color:#69717d;background:#fbfcfe;position:sticky;top:0;z-index:1;font-weight:600}
+    th:first-child,td:first-child{text-align:left}
+    tbody tr:hover{background:#fafcff}
+    .article-link{font-weight:600;color:#155eef;text-decoration:none;display:block;max-width:360px;white-space:normal}
+    .article-path{color:#8a909b;font-size:12px;margin-top:4px}
+    .money{font-variant-numeric:tabular-nums}
+    .pill{
+      display:inline-flex;align-items:center;border-radius:999px;padding:4px 8px;font-size:12px;
+      background:#f2f4f7;color:#515762
+    }
+    .positive{background:var(--success-weak);color:var(--success)}
+    .footer-row{display:flex;justify-content:space-between;align-items:center;padding:14px 20px 18px}
+    .pagination{display:flex;gap:7px}
+    .page{
+      width:34px;height:34px;border-radius:9px;border:1px solid var(--line);background:#fff;cursor:pointer
+    }
+    .page.active{background:var(--primary);border-color:var(--primary);color:#fff}
+    .traffic-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;padding:0 20px 20px}
+    .traffic-table{border:1px solid var(--line);border-radius:14px;overflow:hidden}
+    .traffic-row{
+      display:grid;grid-template-columns:1fr auto;gap:16px;padding:14px 16px;border-bottom:1px solid var(--line);align-items:center
+    }
+    .traffic-row:last-child{border-bottom:0}
+    .traffic-meta{display:flex;gap:10px;align-items:center}
+    .dot{width:10px;height:10px;border-radius:50%;background:#8bb4ff;flex:0 0 auto}
+    .bar-card{border:1px solid var(--line);border-radius:14px;padding:18px}
+    .bar-card h3{margin:0 0 16px;font-size:15px}
+    .bar-item{margin-bottom:14px}
+    .bar-label{display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px;color:#545b66}
+    .bar{height:9px;border-radius:999px;background:#eef1f5;overflow:hidden}
+    .bar > i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#2563eb,#69a1ff)}
+    .note{display:flex;gap:10px;align-items:flex-start;padding:14px 16px;border:1px solid var(--line);border-radius:14px;color:#6e7580;background:#fafbfc;font-size:13px}
+    .tooltip{position:relative;display:inline-flex;align-items:center}
+    .q{
+      width:16px;height:16px;border:1px solid #aab2bd;border-radius:50%;display:inline-grid;place-items:center;
+      color:#7f8792;font-size:11px;cursor:help;line-height:1
+    }
+    .tip{
+      position:absolute;left:50%;top:24px;transform:translateX(-50%);width:270px;padding:10px 12px;
+      border-radius:10px;background:#111827;color:#fff;font-size:12px;line-height:1.45;box-shadow:0 10px 30px rgba(0,0,0,.18);
+      opacity:0;pointer-events:none;transition:.15s;z-index:50;text-align:left;white-space:normal
+    }
+    .tooltip:hover .tip{opacity:1}
+    .drawer{
+      position:fixed;inset:0;background:rgba(15,23,42,.28);display:none;justify-content:flex-end;z-index:100
+    }
+    .drawer.open{display:flex}
+    .drawer-panel{width:min(460px,92vw);height:100%;background:#fff;padding:26px;box-shadow:-18px 0 60px rgba(15,23,42,.16)}
+    .drawer-panel h3{margin:0 0 12px}
+    .drawer-panel p{color:#656d79;line-height:1.6}
+    .legend{display:grid;gap:10px;margin-top:18px}
+    .legend div{padding:12px;border:1px solid var(--line);border-radius:10px}
+    @media(max-width:980px){
+      .grid-kpi{grid-template-columns:repeat(2,1fr)}
+      .toolbar{align-items:stretch;flex-direction:column}
+      .traffic-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:620px){
+      .app{padding:20px 12px 34px}
+      .topbar{flex-direction:column}
+      .grid-kpi{grid-template-columns:1fr}
+      .field{min-width:100%}
+      .title h1{font-size:28px}
+      .section-head{align-items:flex-start;flex-direction:column}
+    }
+  </style>
+</head>
+<body>
+<div class="app">
+  <div class="topbar">
+    <div class="title">
+      <h1>Аналитика блога</h1>
+      <p>Все страницы, содержащие <strong>“/blog/”</strong></p>
+    </div>
+    <button class="help-btn" id="helpBtn">ⓘ Как читать дашборд?</button>
+  </div>
+
+  <section class="toolbar">
+    <div class="filters">
+      <div class="field">
+        <label>Период отчёта
+          <span class="tooltip"><span class="q">?</span><span class="tip">Определяет период, за который пересчитываются все показатели дашборда. По умолчанию — последние 7 дней.</span></span>
+        </label>
+        <select class="control" id="period">
+          <option value="7">Последние 7 дней</option>
+          <option value="14">Последние 14 дней</option>
+          <option value="30">Последние 30 дней</option>
+          <option value="custom">Произвольный период</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Источник трафика
+          <span class="tooltip"><span class="q">?</span><span class="tip">Фильтрует весь дашборд по источнику перехода. Этот же фильтр применяется к блоку «Трафик по источникам».</span></span>
+        </label>
+        <select class="control" id="source">
+          <option value="all">Все источники</option>
+          <option value="organic">Органический поиск</option>
+          <option value="direct">Прямые заходы</option>
+          <option value="internal">Внутренние переходы</option>
+          <option value="referral">Переходы по ссылкам</option>
+          <option value="social">Социальные сети</option>
+          <option value="ads">Реклама</option>
+        </select>
+      </div>
+    </div>
+    <div class="status">
+      <strong>Период:</strong> <span id="periodText">последние 7 дней</span><br/>
+      Обновление данных: сегодня, 09:15
+    </div>
+  </section>
+
+  <section class="grid-kpi">
+    <article class="kpi-card">
+      <div class="kpi-label">Всего визитов
+        <span class="tooltip"><span class="q">?</span><span class="tip">Количество визитов, в которых точкой входа была страница блога с “/blog/”.</span></span>
+      </div>
+      <div class="kpi-value" id="visitsKpi">15 642</div>
+      <div class="delta">↑ 12% <span>к пред. периоду</span></div>
+    </article>
+    <article class="kpi-card">
+      <div class="kpi-label">Всего лидов
+        <span class="tooltip"><span class="q">?</span><span class="tip">Все лиды, атрибутированные визитам с входом через статьи блога за выбранный период.</span></span>
+      </div>
+      <div class="kpi-value" id="leadsKpi">482</div>
+      <div class="delta">↑ 8% <span>к пред. периоду</span></div>
+      <div class="kpi-sub"><span>Конверсия в лиды
+        <span class="tooltip"><span class="q">?</span><span class="tip">Лиды ÷ визиты × 100%.</span></span>
+      </span><strong>3,08%</strong></div>
+    </article>
+    <article class="kpi-card">
+      <div class="kpi-label">Всего продаж
+        <span class="tooltip"><span class="q">?</span><span class="tip">Количество оплаченных/успешных сделок, связанных с визитами через статьи блога.</span></span>
+      </div>
+      <div class="kpi-value" id="salesKpi">96</div>
+      <div class="delta">↑ 15% <span>к пред. периоду</span></div>
+      <div class="kpi-sub"><span>Конверсия в продажу
+        <span class="tooltip"><span class="q">?</span><span class="tip">Продажи ÷ лиды × 100%. Показывает качество лидов, пришедших из блога.</span></span>
+      </span><strong>19,9%</strong></div>
+    </article>
+    <article class="kpi-card">
+      <div class="kpi-label">Сумма продаж
+        <span class="tooltip"><span class="q">?</span><span class="tip">Суммарная выручка по успешным сделкам, атрибутированным статьям блога.</span></span>
+      </div>
+      <div class="kpi-value money" id="revenueKpi">1 245 300 AED</div>
+      <div class="delta">↑ 18% <span>к пред. периоду</span></div>
+      <div class="kpi-sub"><span>Средний чек
+        <span class="tooltip"><span class="q">?</span><span class="tip">Сумма продаж ÷ количество продаж.</span></span>
+      </span><strong>12 972 AED</strong></div>
+    </article>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div class="section-title">
+        <h2>Эффективность статей блога
+          <span class="tooltip"><span class="q">?</span><span class="tip">Показывает вклад каждой статьи в трафик, лиды, продажи и выручку за выбранный период.</span></span>
+        </h2>
+        <p>Показатели по каждой статье за выбранный период</p>
+      </div>
+      <div class="actions">
+        <button class="btn" id="exportArticles">⇩ Экспорт CSV</button>
+        <button class="btn" id="columnsBtn">⚙ Настроить столбцы</button>
+      </div>
+    </div>
+    <div class="table-tools">
+      <div class="search"><input id="articleSearch" placeholder="Поиск по статье или URL…" /></div>
+      <select class="btn" id="sortSelect">
+        <option value="visits">Сортировка: визиты</option>
+        <option value="leads">Сортировка: лиды</option>
+        <option value="sales">Сортировка: продажи</option>
+        <option value="revenue">Сортировка: сумма сделок</option>
+      </select>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Статья <span class="tooltip"><span class="q">?</span><span class="tip">Заголовок и URL страницы входа. В выборку попадают только страницы, содержащие “/blog/”.</span></span></th>
+            <th>Визиты <span class="tooltip"><span class="q">?</span><span class="tip">Число визитов, начавшихся с этой статьи.</span></span></th>
+            <th>Конверсия в лид <span class="tooltip"><span class="q">?</span><span class="tip">Лиды ÷ визиты × 100% по конкретной статье.</span></span></th>
+            <th>Лиды <span class="tooltip"><span class="q">?</span><span class="tip">Количество лидов, атрибутированных этой статье.</span></span></th>
+            <th>Конверсия в продажу <span class="tooltip"><span class="q">?</span><span class="tip">Продажи ÷ лиды × 100% по конкретной статье.</span></span></th>
+            <th>Продажи <span class="tooltip"><span class="q">?</span><span class="tip">Количество успешных сделок, связанных со статьёй.</span></span></th>
+            <th>Сумма сделок <span class="tooltip"><span class="q">?</span><span class="tip">Суммарная выручка от успешных сделок, связанных со статьёй.</span></span></th>
+          </tr>
+        </thead>
+        <tbody id="articlesBody"></tbody>
+      </table>
+    </div>
+    <div class="footer-row">
+      <div style="color:#7a818c;font-size:13px" id="resultCount"></div>
+      <div class="pagination">
+        <button class="page">‹</button><button class="page active">1</button><button class="page">2</button><button class="page">3</button><button class="page">›</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div class="section-title">
+        <h2>Трафик по источникам
+          <span class="tooltip"><span class="q">?</span><span class="tip">Распределение всех визитов на статьи блога по источнику перехода за выбранный период.</span></span>
+        </h2>
+        <p>Суммарно по всем статьям блога</p>
+      </div>
+      <div class="actions"><button class="btn" id="exportTraffic">⇩ Экспорт CSV</button></div>
+    </div>
+    <div class="traffic-grid">
+      <div class="traffic-table" id="trafficTable"></div>
+      <div class="bar-card">
+        <h3>Доля визитов по источникам</h3>
+        <div id="trafficBars"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="note">ⓘ <span>Данные предоставлены Roistat. Метрики рассчитываются по визитам, где страницей входа была URL, содержащая “/blog/”. В реальной версии здесь также можно показать дату последней успешной синхронизации.</span></div>
+</div>
+
+<div class="drawer" id="helpDrawer">
+  <div class="drawer-panel">
+    <button class="btn" style="float:right" id="closeHelp">✕</button>
+    <h3>Как читать дашборд</h3>
+    <p>Сначала выберите период и при необходимости источник трафика. Все KPI, таблица статей и блок источников пересчитаются в рамках выбранного фильтра.</p>
+    <div class="legend">
+      <div><strong>Визиты</strong><br><span style="color:#777">Сколько сессий началось со страниц блога.</span></div>
+      <div><strong>Лиды</strong><br><span style="color:#777">Сколько обращений было атрибутировано этим визитам.</span></div>
+      <div><strong>Продажи</strong><br><span style="color:#777">Сколько успешных сделок дошло до продажи.</span></div>
+      <div><strong>Сумма продаж</strong><br><span style="color:#777">Финансовый вклад блога за период.</span></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const articles = [
+  {title:"Public Holidays in Dubai 2026: Complete List and Calendar", path:"/blog/en/public-holidays-dubai-2026", visits:2800, leads:150, sales:31, revenue:412300},
+  {title:"Free Parking in Dubai: The Ultimate Guide to Schedules, Zones, and Rules", path:"/blog/en/free-parking-in-dubai", visits:2420, leads:96, sales:16, revenue:215400},
+  {title:"Best Places to Visit in Dubai by Rental Car", path:"/blog/en/best-places-dubai-by-car", visits:1980, leads:61, sales:11, revenue:140600},
+  {title:"Dubai Airport Car Rental Guide: Terminals, Pickup and Tips", path:"/blog/en/dubai-airport-car-rental-guide", visits:1760, leads:52, sales:9, revenue:121500},
+  {title:"Salik Dubai: Toll Gates, Prices and How It Works", path:"/blog/en/salik-dubai-guide", visits:1530, leads:39, sales:6, revenue:80100},
+  {title:"Driving in Dubai for Tourists: Rules, Fines and Parking", path:"/blog/en/driving-in-dubai-for-tourists", visits:1420, leads:37, sales:8, revenue:109800},
+  {title:"Rent a Car in Ajman: What You Need to Know", path:"/blog/en/rent-a-car-ajman", visits:1180, leads:25, sales:5, revenue:62700},
+  {title:"Budget Car Rental Tips in Dubai", path:"/blog/en/budget-car-rental-dubai", visits:1030, leads:22, sales:4, revenue:52400},
+  {title:"Dubai Parking Zones Explained", path:"/blog/en/dubai-parking-zones", visits:870, leads:0, sales:0, revenue:0},
+  {title:"Road Trips from Dubai: 7 Routes for a Weekend", path:"/blog/en/road-trips-from-dubai", visits:652, leads:0, sales:0, revenue:0}
+];
+
+const traffic = [
+  ["Органический поиск (Google)",7342],
+  ["Прямые заходы",4123],
+  ["Внутренние переходы",2356],
+  ["Переходы по ссылкам",1245],
+  ["Социальные сети",412],
+  ["Реклама (Google Ads)",164]
+];
+
+const fmt = new Intl.NumberFormat('ru-RU');
+const money = n => `${fmt.format(n)} AED`;
+const pct = n => `${n.toFixed(2).replace('.',',')}%`;
+
+function renderArticles(){
+  const body = document.getElementById('articlesBody');
+  const q = document.getElementById('articleSearch').value.trim().toLowerCase();
+  const sort = document.getElementById('sortSelect').value;
+  const rows = articles
+    .filter(a => !q || a.title.toLowerCase().includes(q) || a.path.toLowerCase().includes(q))
+    .sort((a,b)=>b[sort]-a[sort]);
+  body.innerHTML = rows.map(a=>{
+    const leadCr = a.visits ? a.leads/a.visits*100 : 0;
+    const saleCr = a.leads ? a.sales/a.leads*100 : 0;
+    return `<tr>
+      <td><a class="article-link" href="#" onclick="return false">${a.title}</a><div class="article-path">${a.path}</div></td>
+      <td>${fmt.format(a.visits)}</td>
+      <td><span class="pill ${leadCr>=4?'positive':''}">${pct(leadCr)}</span></td>
+      <td>${fmt.format(a.leads)}</td>
+      <td><span class="pill ${saleCr>=20?'positive':''}">${pct(saleCr)}</span></td>
+      <td>${fmt.format(a.sales)}</td>
+      <td class="money">${money(a.revenue)}</td>
+    </tr>`
+  }).join('');
+  document.getElementById('resultCount').textContent = `Показано статей: ${rows.length}`;
+}
+
+function renderTraffic(){
+  const total = traffic.reduce((s,[,v])=>s+v,0);
+  document.getElementById('trafficTable').innerHTML = traffic.map(([name,v],i)=>`
+    <div class="traffic-row">
+      <div class="traffic-meta"><span class="dot" style="opacity:${1-i*0.11}"></span><span>${name}</span></div>
+      <strong>${fmt.format(v)} <span style="color:#8a909b;font-weight:500">(${(v/total*100).toFixed(1).replace('.',',')}%)</span></strong>
+    </div>
+  `).join('');
+  document.getElementById('trafficBars').innerHTML = traffic.map(([name,v])=>`
+    <div class="bar-item">
+      <div class="bar-label"><span>${name}</span><strong>${fmt.format(v)}</strong></div>
+      <div class="bar"><i style="width:${v/traffic[0][1]*100}%"></i></div>
+    </div>
+  `).join('');
+}
+
+function csvDownload(filename, rows){
+  const csv = rows.map(r=>r.map(x=>`"${String(x).replaceAll('"','""')}"`).join(';')).join('\n');
+  const blob = new Blob(["\uFEFF"+csv], {type:"text/csv;charset=utf-8;"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href=url; a.download=filename; a.click();
+  URL.revokeObjectURL(url);
+}
+
+document.getElementById('articleSearch').addEventListener('input',renderArticles);
+document.getElementById('sortSelect').addEventListener('change',renderArticles);
+document.getElementById('period').addEventListener('change',e=>{
+  const map={7:'последние 7 дней',14:'последние 14 дней',30:'последние 30 дней',custom:'произвольный период'};
+  document.getElementById('periodText').textContent=map[e.target.value];
+});
+document.getElementById('exportArticles').addEventListener('click',()=>{
+  csvDownload('blog-articles.csv',[
+    ['Статья','URL','Визиты','Конверсия в лид','Лиды','Конверсия в продажу','Продажи','Сумма сделок'],
+    ...articles.map(a=>[a.title,a.path,a.visits,pct(a.leads/a.visits*100),a.leads,pct(a.leads?a.sales/a.leads*100:0),a.sales,a.revenue])
+  ]);
+});
+document.getElementById('exportTraffic').addEventListener('click',()=>{
+  csvDownload('blog-traffic-sources.csv',[['Источник трафика','Визиты'],...traffic]);
+});
+document.getElementById('helpBtn').onclick=()=>document.getElementById('helpDrawer').classList.add('open');
+document.getElementById('closeHelp').onclick=()=>document.getElementById('helpDrawer').classList.remove('open');
+document.getElementById('helpDrawer').addEventListener('click',e=>{
+  if(e.target.id==='helpDrawer') e.currentTarget.classList.remove('open');
+});
+document.getElementById('columnsBtn').addEventListener('click',()=>alert('В прототипе: здесь будет выбор отображаемых столбцов.'));
+
+renderArticles();
+renderTraffic();
+</script>
+</body>
+</html>
