@@ -1,0 +1,690 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Инструкция по работе с дашбордом блога</title>
+  <style>
+    :root{
+      --bg:#f4f7fb;
+      --card:#ffffff;
+      --text:#15171a;
+      --muted:#727987;
+      --line:#e7ebf0;
+      --primary:#2563eb;
+      --primary-weak:#eff6ff;
+      --success:#15803d;
+      --success-weak:#ecfdf3;
+      --warning:#b54708;
+      --warning-weak:#fffaeb;
+      --danger:#b42318;
+      --danger-weak:#fef3f2;
+      --shadow:0 8px 28px rgba(16,24,40,.06);
+      --radius:18px;
+      --sidebar:280px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+
+    a{color:inherit}
+    .layout{
+      max-width:1500px;
+      margin:0 auto;
+      padding:28px;
+      display:grid;
+      grid-template-columns:var(--sidebar) minmax(0,1fr);
+      gap:22px;
+      align-items:start;
+    }
+
+    .sidebar{
+      position:sticky;
+      top:22px;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:20px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .sidebar-head{
+      padding:20px 18px 16px;
+      border-bottom:1px solid var(--line);
+    }
+    .sidebar-head strong{display:block;font-size:16px}
+    .sidebar-head span{display:block;color:var(--muted);font-size:12px;margin-top:4px}
+    .nav{padding:10px}
+    .nav a{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:#59606c;
+      padding:10px 11px;
+      border-radius:10px;
+      font-size:14px;
+      margin:2px 0;
+      transition:.18s ease;
+    }
+    .nav a:hover{background:#f7f9fc;color:#252a31}
+    .nav a.active{background:var(--primary-weak);color:var(--primary);font-weight:600}
+    .nav-index{
+      width:24px;height:24px;border-radius:7px;background:#f1f4f8;
+      display:grid;place-items:center;font-size:11px;color:#7b8491;flex:0 0 auto
+    }
+    .nav a.active .nav-index{background:#dbeafe;color:#1d4ed8}
+    .back{
+      margin:0 10px 10px;
+      display:block;
+      text-decoration:none;
+      text-align:center;
+      padding:10px;
+      border:1px solid var(--line);
+      border-radius:10px;
+      font-size:13px;
+      color:#404753;
+    }
+
+    .content{min-width:0}
+    .hero{
+      background:linear-gradient(180deg,#fff,#fbfdff);
+      border:1px solid var(--line);
+      border-radius:22px;
+      box-shadow:var(--shadow);
+      padding:34px;
+      margin-bottom:18px;
+    }
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      color:var(--primary);
+      background:var(--primary-weak);
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:600;
+      margin-bottom:14px;
+    }
+    .hero h1{
+      margin:0;
+      font-size:38px;
+      line-height:1.12;
+      letter-spacing:-.035em;
+    }
+    .hero p{
+      margin:14px 0 0;
+      color:#667085;
+      font-size:16px;
+      max-width:900px;
+    }
+
+    .quick{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      margin-top:24px;
+    }
+    .quick-card{
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:14px;
+      background:#fff;
+    }
+    .quick-card strong{display:block;font-size:13px;margin-bottom:4px}
+    .quick-card span{font-size:12px;color:var(--muted)}
+
+    .section{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:20px;
+      box-shadow:var(--shadow);
+      padding:28px;
+      margin-bottom:18px;
+      scroll-margin-top:24px;
+    }
+    .section h2{
+      margin:0 0 8px;
+      font-size:24px;
+      letter-spacing:-.02em;
+    }
+    .section > p.lead{
+      margin:0 0 22px;
+      color:#6b7280;
+      max-width:930px;
+    }
+
+    .callout{
+      border-radius:14px;
+      padding:14px 16px;
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      margin:16px 0;
+      font-size:14px;
+    }
+    .callout.info{background:#eff6ff;border:1px solid #dbeafe;color:#334155}
+    .callout.good{background:var(--success-weak);border:1px solid #d1fadf;color:#315b3b}
+    .callout.warn{background:var(--warning-weak);border:1px solid #fedf89;color:#7a4a12}
+    .callout.danger{background:var(--danger-weak);border:1px solid #fecdca;color:#7a271a}
+    .callout strong{display:block;margin-bottom:2px;color:inherit}
+
+    .steps{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+      margin:18px 0 0;
+    }
+    .step{
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:16px;
+      min-height:138px;
+    }
+    .step-num{
+      width:30px;height:30px;border-radius:9px;background:var(--primary);
+      color:#fff;display:grid;place-items:center;font-weight:700;font-size:13px;margin-bottom:10px
+    }
+    .step strong{display:block;font-size:14px;margin-bottom:5px}
+    .step p{margin:0;color:var(--muted);font-size:13px}
+
+    .metric-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+    }
+    .metric{
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:18px;
+    }
+    .metric h3{margin:0 0 5px;font-size:16px}
+    .metric p{margin:0;color:#6f7783;font-size:13px}
+    .formula{
+      display:inline-block;margin-top:10px;padding:5px 8px;border-radius:8px;
+      background:#f6f8fb;color:#4d5562;font-size:12px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace
+    }
+
+    .table-like{
+      border:1px solid var(--line);
+      border-radius:14px;
+      overflow:hidden;
+      margin-top:16px;
+    }
+    .row{
+      display:grid;
+      grid-template-columns:230px 1fr;
+      gap:18px;
+      padding:14px 16px;
+      border-bottom:1px solid var(--line);
+    }
+    .row:last-child{border-bottom:0}
+    .row strong{font-size:13px}
+    .row span{color:#68707c;font-size:13px}
+
+    .decision-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-top:16px;
+    }
+    .decision{
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:17px;
+    }
+    .decision h3{font-size:15px;margin:0 0 7px}
+    .decision p{font-size:13px;color:#6f7783;margin:0 0 10px}
+    .decision ul{margin:0;padding-left:18px;color:#4f5662;font-size:13px}
+    .decision li{margin:5px 0}
+
+    .checklist{
+      display:grid;
+      gap:8px;
+      margin-top:14px;
+    }
+    .check{
+      display:flex;gap:10px;align-items:flex-start;
+      border:1px solid var(--line);border-radius:12px;padding:12px 14px;
+    }
+    .box{
+      width:20px;height:20px;border-radius:6px;background:#eef4ff;color:#2563eb;
+      display:grid;place-items:center;font-size:12px;flex:0 0 auto;margin-top:1px
+    }
+    .check strong{display:block;font-size:13px}
+    .check span{display:block;color:#757d88;font-size:12px;margin-top:2px}
+
+    .example{
+      background:#111827;color:#e5e7eb;border-radius:14px;padding:18px;margin-top:16px;
+      font-size:13px;
+    }
+    .example strong{color:#fff}
+    .example ul{margin:10px 0 0;padding-left:18px}
+    .example li{margin:7px 0}
+
+    .footer-note{
+      text-align:center;
+      color:#8a919c;
+      font-size:12px;
+      padding:10px 0 26px;
+    }
+
+    @media(max-width:1100px){
+      .layout{grid-template-columns:1fr}
+      .sidebar{position:relative;top:0}
+      .nav{display:grid;grid-template-columns:repeat(3,1fr)}
+      .back{margin-top:0}
+      .steps{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:760px){
+      .layout{padding:14px}
+      .hero,.section{padding:20px}
+      .hero h1{font-size:30px}
+      .quick,.metric-grid,.decision-grid,.steps{grid-template-columns:1fr}
+      .nav{grid-template-columns:1fr 1fr}
+      .row{grid-template-columns:1fr;gap:4px}
+    }
+  </style>
+</head>
+<body>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-head">
+      <strong>Инструкция</strong>
+      <span>Аналитика блога</span>
+    </div>
+    <nav class="nav" id="nav">
+      <a href="#purpose"><span class="nav-index">01</span>Назначение</a>
+      <a href="#workflow"><span class="nav-index">02</span>Как работать</a>
+      <a href="#filters"><span class="nav-index">03</span>Фильтры</a>
+      <a href="#kpi"><span class="nav-index">04</span>Сводные метрики</a>
+      <a href="#articles"><span class="nav-index">05</span>Таблица статей</a>
+      <a href="#traffic"><span class="nav-index">06</span>Источники трафика</a>
+      <a href="#interpretation"><span class="nav-index">07</span>Как делать выводы</a>
+      <a href="#patterns"><span class="nav-index">08</span>Типовые сценарии</a>
+      <a href="#mistakes"><span class="nav-index">09</span>Ошибки чтения</a>
+      <a href="#checklist"><span class="nav-index">10</span>Чек-лист</a>
+    </nav>
+    <a class="back" href="index.html">← Вернуться в дашборд</a>
+  </aside>
+
+  <main class="content">
+    <section class="hero">
+      <div class="eyebrow">Help center · Аналитика блога</div>
+      <h1>Как читать дашборд блога и принимать решения по данным</h1>
+      <p>
+        Эта инструкция нужна для того, чтобы любой сотрудник мог самостоятельно понять:
+        что показывает дашборд, как интерпретировать показатели, как оценивать эффективность статей,
+        где искать проблемы и какие выводы можно делать по результатам.
+      </p>
+
+      <div class="quick">
+        <div class="quick-card">
+          <strong>Главный вопрос</strong>
+          <span>Приносит ли блог не только трафик, но и лиды, продажи и выручку?</span>
+        </div>
+        <div class="quick-card">
+          <strong>Основная единица анализа</strong>
+          <span>Статья блога, которая была страницей входа в визит.</span>
+        </div>
+        <div class="quick-card">
+          <strong>Источник данных</strong>
+          <span>Roistat. В выборку попадают страницы входа, содержащие “/blog/”.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="purpose">
+      <h2>1. Назначение дашборда</h2>
+      <p class="lead">
+        Дашборд отвечает не на вопрос «сколько людей прочитало статьи», а на более важный бизнес-вопрос:
+        какие статьи приводят потенциальных клиентов и продажи.
+      </p>
+
+      <div class="callout info">
+        <div>ⓘ</div>
+        <div>
+          <strong>Что считается в отчёте</strong>
+          В отчёт попадают визиты, где пользователь начал знакомство с сайтом со страницы, URL которой содержит <b>/blog/</b>.
+          Далее по этому визиту отслеживаются лиды, продажи и сумма успешных сделок.
+        </div>
+      </div>
+
+      <div class="table-like">
+        <div class="row"><strong>Контент-команда</strong><span>Понимает, какие темы стоит развивать, обновлять, объединять или перестать поддерживать.</span></div>
+        <div class="row"><strong>SEO-команда</strong><span>Видит, какие органические статьи дают реальный бизнес-эффект, а не только трафик.</span></div>
+        <div class="row"><strong>Маркетинг</strong><span>Оценивает вклад блога в лидогенерацию, продажи и выручку.</span></div>
+        <div class="row"><strong>Руководитель</strong><span>Понимает, насколько блог влияет на коммерческий результат и куда направлять ресурсы.</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="workflow">
+      <h2>2. Рекомендуемый порядок работы</h2>
+      <p class="lead">Чтобы не делать выводы по одной цифре, используйте дашборд в одном и том же порядке.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <strong>Выберите период</strong>
+          <p>Для оперативного контроля — 7 дней. Для оценки устойчивой динамики — 30 дней и больше.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <strong>Посмотрите общую картину</strong>
+          <p>Сравните визиты, лиды, продажи и выручку с предыдущим периодом.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <strong>Перейдите к статьям</strong>
+          <p>Найдите статьи-лидеры и статьи с аномально слабой конверсией.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <strong>Разберите источники</strong>
+          <p>Поймите, за счёт какого трафика статьи получают визиты и меняется ли структура каналов.</p>
+        </div>
+      </div>
+
+      <div class="callout good">
+        <div>✓</div>
+        <div>
+          <strong>Правильный подход</strong>
+          Сначала смотрим на объём, затем на конверсию, затем на абсолютное количество продаж и выручку.
+          Одна высокая конверсия без достаточного числа визитов ещё не делает статью сильной.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="filters">
+      <h2>3. Период и источник трафика</h2>
+      <p class="lead">Фильтры применяются ко всему дашборду и определяют контекст, в котором нужно читать остальные показатели.</p>
+
+      <div class="metric-grid">
+        <div class="metric">
+          <h3>Период отчёта</h3>
+          <p>По умолчанию показываются последние 7 дней. Такой период подходит для регулярного мониторинга, но может быть слишком коротким для статей с небольшим трафиком.</p>
+        </div>
+        <div class="metric">
+          <h3>Источник трафика</h3>
+          <p>Позволяет оценить эффективность блога внутри одного канала: например, только органического поиска или только рекламы.</p>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <div>!</div>
+        <div>
+          <strong>Не сравнивайте несопоставимые периоды</strong>
+          Например, 7 дней с 30 днями или праздничную неделю с обычной без поправки на сезонность.
+          Лучше сравнивать одинаковые по длине соседние периоды.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="kpi">
+      <h2>4. Как читать сводные метрики</h2>
+      <p class="lead">Верхний блок нужен для быстрой оценки общего состояния блога за выбранный период.</p>
+
+      <div class="metric-grid">
+        <div class="metric">
+          <h3>Всего визитов</h3>
+          <p>Количество визитов, которые начались со страниц блога. Это показатель объёма входящего трафика.</p>
+          <span class="formula">визиты = входы через /blog/</span>
+        </div>
+
+        <div class="metric">
+          <h3>Всего лидов</h3>
+          <p>Количество обращений, которые Roistat связал с визитами через блог.</p>
+          <span class="formula">CR в лид = лиды / визиты × 100%</span>
+        </div>
+
+        <div class="metric">
+          <h3>Всего продаж</h3>
+          <p>Количество успешных сделок, которые были атрибутированы визитам через блог.</p>
+          <span class="formula">CR в продажу = продажи / лиды × 100%</span>
+        </div>
+
+        <div class="metric">
+          <h3>Сумма продаж</h3>
+          <p>Суммарная выручка по успешным сделкам, связанным с блогом.</p>
+          <span class="formula">средний чек = сумма продаж / продажи</span>
+        </div>
+      </div>
+
+      <div class="callout info">
+        <div>ⓘ</div>
+        <div>
+          <strong>Как читать показатели вместе</strong>
+          Рост визитов сам по себе не означает улучшение результата. Если визиты растут, а лиды и продажи стоят на месте,
+          возможно, блог получает менее целевой трафик или статьи недостаточно хорошо переводят читателя в коммерческий сценарий.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="articles">
+      <h2>5. Таблица «Эффективность статей»</h2>
+      <p class="lead">Это основной рабочий блок дашборда. Здесь видно, какой вклад в результат вносит каждая статья.</p>
+
+      <div class="table-like">
+        <div class="row"><strong>Статья</strong><span>Название и URL страницы входа. Используйте поиск, чтобы быстро найти нужный материал.</span></div>
+        <div class="row"><strong>Визиты</strong><span>Показывают охват статьи как точки входа на сайт.</span></div>
+        <div class="row"><strong>Конверсия в лид</strong><span>Показывает, какая доля визитов приводит к обращению.</span></div>
+        <div class="row"><strong>Лиды</strong><span>Абсолютное число обращений. Важнее конверсии, когда нужно оценить реальный вклад статьи.</span></div>
+        <div class="row"><strong>Конверсия в продажу</strong><span>Показывает качество лидов после обращения.</span></div>
+        <div class="row"><strong>Продажи</strong><span>Количество успешных сделок, связанных со статьёй.</span></div>
+        <div class="row"><strong>Сумма сделок</strong><span>Главный денежный показатель вклада статьи.</span></div>
+      </div>
+
+      <div class="callout good">
+        <div>✓</div>
+        <div>
+          <strong>Самый полезный способ сортировки</strong>
+          Сначала отсортируйте статьи по визитам, затем по лидам, затем по продажам и сумме сделок.
+          Это быстро показывает, где много трафика без результата и где небольшой трафик даёт непропорционально хороший бизнес-эффект.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="traffic">
+      <h2>6. Блок «Трафик по источникам»</h2>
+      <p class="lead">Показывает, откуда пользователи приходят на статьи блога в выбранном периоде.</p>
+
+      <div class="decision-grid">
+        <div class="decision">
+          <h3>Органический поиск</h3>
+          <p>Основной канал для SEO-статей.</p>
+          <ul>
+            <li>рост обычно означает улучшение видимости или спроса;</li>
+            <li>падение может быть связано с позициями, сезонностью или изменением спроса.</li>
+          </ul>
+        </div>
+        <div class="decision">
+          <h3>Прямые заходы</h3>
+          <p>Могут включать возвраты, закладки и часть нераспознанного трафика.</p>
+          <ul>
+            <li>рост может говорить о возвращаемости аудитории;</li>
+            <li>не стоит интерпретировать этот канал как SEO.</li>
+          </ul>
+        </div>
+        <div class="decision">
+          <h3>Внутренние переходы</h3>
+          <p>Пользователь попал в статью с другой страницы сайта.</p>
+          <ul>
+            <li>полезно для оценки перелинковки;</li>
+            <li>высокая доля может означать, что блог хорошо встроен в сайт.</li>
+          </ul>
+        </div>
+        <div class="decision">
+          <h3>Реклама / ссылки / соцсети</h3>
+          <p>Показывают влияние внешнего продвижения.</p>
+          <ul>
+            <li>сравнивайте эффективность каналов не только по визитам, но и по последующим лидам и продажам.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="interpretation">
+      <h2>7. Как делать выводы по данным</h2>
+      <p class="lead">Не оценивайте статью по одной метрике. Используйте связку «объём → конверсия → продажи → выручка».</p>
+
+      <div class="decision-grid">
+        <div class="decision">
+          <h3>Много визитов + мало лидов</h3>
+          <p>Статья хорошо привлекает аудиторию, но слабо переводит её в следующий шаг.</p>
+          <ul>
+            <li>проверьте соответствие поискового интента;</li>
+            <li>CTA и коммерческие блоки;</li>
+            <li>релевантность внутренних ссылок;</li>
+            <li>скорость и мобильную версию.</li>
+          </ul>
+        </div>
+
+        <div class="decision">
+          <h3>Мало визитов + высокая конверсия</h3>
+          <p>Материал может быть коммерчески сильным, но недостаточно видимым.</p>
+          <ul>
+            <li>усилить SEO;</li>
+            <li>добавить внутреннюю перелинковку;</li>
+            <li>обновить и расширить материал;</li>
+            <li>протестировать внешнее продвижение.</li>
+          </ul>
+        </div>
+
+        <div class="decision">
+          <h3>Много лидов + мало продаж</h3>
+          <p>Контент привлекает обращения, но качество лидов или последующая обработка могут быть слабыми.</p>
+          <ul>
+            <li>проверить запросы и ожидания пользователей;</li>
+            <li>сравнить источники трафика;</li>
+            <li>обсудить качество лидов с отделом продаж.</li>
+          </ul>
+        </div>
+
+        <div class="decision">
+          <h3>Небольшой трафик + высокая выручка</h3>
+          <p>Одна из самых интересных категорий статей: небольшой объём может приносить очень ценных клиентов.</p>
+          <ul>
+            <li>искать похожие темы;</li>
+            <li>расширять семантику;</li>
+            <li>делать кластеры контента вокруг таких страниц.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="example">
+        <strong>Пример корректного вывода</strong>
+        <ul>
+          <li>Статья A получила 3 000 визитов и 15 лидов: трафик высокий, но CR в лид всего 0,5%.</li>
+          <li>Статья B получила 700 визитов и 35 лидов: трафик ниже, но CR в лид 5%.</li>
+          <li>Если статья B также даёт продажи и выручку, её стоит рассматривать как более ценную коммерчески и масштабировать.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="patterns">
+      <h2>8. Типовые сценарии и действия</h2>
+      <p class="lead">Ниже — простая карта «что увидели → что проверить → что можно сделать».</p>
+
+      <div class="table-like">
+        <div class="row"><strong>Трафик резко упал</strong><span>Проверьте период, источник, сезонность, позиции SEO, техническую доступность страницы и изменения URL.</span></div>
+        <div class="row"><strong>Трафик вырос, лиды не выросли</strong><span>Проверьте качество запросов, CTA, коммерческие элементы, соответствие содержания намерению пользователя.</span></div>
+        <div class="row"><strong>Лиды выросли, продажи нет</strong><span>Смотрите качество лидов, источник трафика, оффер и обработку лидов отделом продаж.</span></div>
+        <div class="row"><strong>Одна статья даёт много выручки</strong><span>Изучите тему, запросы и структуру статьи. Создавайте соседние материалы и усиливайте кластер.</span></div>
+        <div class="row"><strong>Статья получает трафик, но 0 продаж</strong><span>Не удаляйте её автоматически. Возможно, она информационная и участвует в более длинном пути пользователя. Сначала проверьте лиды и роль во внутренней перелинковке.</span></div>
+        <div class="row"><strong>Растёт платный трафик на блог</strong><span>Отделяйте этот рост от органического результата. Используйте фильтр источника и сравнивайте качество лидов по каналам.</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="mistakes">
+      <h2>9. Частые ошибки при чтении дашборда</h2>
+      <p class="lead">Большинство неверных решений появляются не из-за плохих данных, а из-за неверной интерпретации.</p>
+
+      <div class="callout danger">
+        <div>×</div>
+        <div>
+          <strong>Ошибка: считать трафик главным результатом</strong>
+          Большой трафик полезен только тогда, когда он соответствует задачам бизнеса или помогает пользователю двигаться дальше по воронке.
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <div>!</div>
+        <div>
+          <strong>Ошибка: делать вывод по короткому периоду</strong>
+          Для статьи с 50 визитами одна продажа радикально изменит конверсию. Чем меньше объём, тем осторожнее нужно трактовать проценты.
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <div>!</div>
+        <div>
+          <strong>Ошибка: сравнивать только проценты</strong>
+          20% конверсии при 5 лидах — это всего одна продажа. Всегда смотрите одновременно процент и абсолютное количество.
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <div>!</div>
+        <div>
+          <strong>Ошибка: не учитывать источник трафика</strong>
+          Одна и та же статья может конвертировать органический, рекламный и внутренний трафик совершенно по-разному.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="checklist">
+      <h2>10. Чек-лист еженедельного анализа</h2>
+      <p class="lead">Этот порядок можно использовать как регулярный 10–15-минутный ритуал проверки блога.</p>
+
+      <div class="checklist">
+        <div class="check"><div class="box">✓</div><div><strong>Проверить общий объём визитов</strong><span>Есть ли заметный рост или падение относительно предыдущего периода?</span></div></div>
+        <div class="check"><div class="box">✓</div><div><strong>Сравнить лиды и продажи</strong><span>Движутся ли они в том же направлении, что и трафик?</span></div></div>
+        <div class="check"><div class="box">✓</div><div><strong>Посмотреть сумму продаж</strong><span>Меняется ли денежный вклад блога?</span></div></div>
+        <div class="check"><div class="box">✓</div><div><strong>Найти 5 лидирующих статей</strong><span>По визитам, лидам, продажам и выручке.</span></div></div>
+        <div class="check"><div class="box">✓</div><div><strong>Найти статьи с большим трафиком и низкой конверсией</strong><span>Это кандидаты на улучшение CTA, интента и структуры.</span></div></div>
+        <div class="check"><div class="box">✓</div><div><strong>Найти статьи с небольшой посещаемостью, но сильной монетизацией</strong><span>Это кандидаты на SEO-масштабирование.</span></div></div>
+        <div class="check"><div class="box">✓</div><div><strong>Проверить структуру источников</strong><span>Не изменился ли канал, который формирует основной объём трафика?</span></div></div>
+        <div class="check"><div class="box">✓</div><div><strong>Сформулировать 1–3 конкретных действия</strong><span>Например: обновить статью, усилить CTA, расширить тему, проверить SEO или обсудить качество лидов.</span></div></div>
+      </div>
+
+      <div class="callout good">
+        <div>✓</div>
+        <div>
+          <strong>Хороший итог анализа — это действие</strong>
+          Не «у статьи упала конверсия», а «у статьи X трафик стабилен, CR в лид снизился с 3,4% до 1,8%; проверяем CTA и изменения страницы».
+        </div>
+      </div>
+    </section>
+
+    <div class="footer-note">
+      Внутренняя инструкция · Дашборд аналитики блога · Данные Roistat
+    </div>
+  </main>
+</div>
+
+<script>
+  const sections = [...document.querySelectorAll('.section')];
+  const links = [...document.querySelectorAll('.nav a')];
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        links.forEach(a => a.classList.remove('active'));
+        const active = links.find(a => a.getAttribute('href') === '#' + entry.target.id);
+        if(active) active.classList.add('active');
+      }
+    });
+  }, {rootMargin:'-20% 0px -68% 0px', threshold:0});
+
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
