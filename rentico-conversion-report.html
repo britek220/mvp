@@ -29,7 +29,6 @@
 
     body {
       margin: 0;
-
       background: var(--bg);
       color: var(--text);
 
@@ -49,16 +48,13 @@
     .page {
       max-width: var(--container);
       margin: 0 auto;
-
       padding: 40px 24px 80px;
     }
 
     .report-card {
       background: var(--card);
-
       border: 1px solid var(--border);
       border-radius: var(--radius);
-
       padding: 30px;
     }
 
@@ -79,7 +75,6 @@
 
     .eyebrow {
       margin: 0;
-
       color: var(--muted);
 
       font-size: 12px;
@@ -101,7 +96,6 @@
 
     .lead {
       margin: 14px 0 0;
-
       color: var(--muted);
 
       font-size: 15px;
@@ -109,7 +103,7 @@
     }
 
     .multiplier {
-      min-width: 160px;
+      min-width: 170px;
 
       background: var(--accent);
       border-radius: 18px;
@@ -156,15 +150,12 @@
 
     .kpi {
       background: var(--panel);
-
       border-radius: 17px;
-
       padding: 20px;
     }
 
     .kpi-label {
       margin: 0;
-
       color: var(--muted);
 
       font-size: 11px;
@@ -186,7 +177,6 @@
 
     .kpi-description {
       margin: 7px 0 0;
-
       color: var(--muted);
 
       font-size: 12px;
@@ -264,40 +254,36 @@
 
     .bar {
       height: 22px;
-
       overflow: hidden;
 
       background: var(--panel);
-
       border-radius: 999px;
     }
 
     .bar-fill {
       height: 100%;
-
       border-radius: inherit;
     }
 
     .bar-fill.booking {
-      width: 95%;
+      width: 100%;
       background: var(--accent);
     }
 
     .bar-fill.whatsapp {
-      width: 23%;
+      width: 61.5%;
       background: #7d817c;
     }
 
     .bar-description {
       margin: 8px 0 0;
-
       color: var(--muted);
 
       font-size: 12px;
       line-height: 1.45;
     }
 
-    /* insight blocks */
+    /* insights */
 
     .insight-grid {
       display: grid;
@@ -309,7 +295,6 @@
 
     .insight {
       border-radius: 18px;
-
       padding: 22px;
     }
 
@@ -348,7 +333,6 @@
 
     .big-caption {
       margin-top: 7px;
-
       color: var(--muted);
 
       font-size: 12px;
@@ -364,17 +348,25 @@
       font-weight: 700;
     }
 
-    .cro-title {
+    .difference-value {
       margin: 8px 0 0;
 
-      font-size: 20px;
-      line-height: 1.25;
+      font-size: 38px;
+      line-height: 1;
 
+      font-weight: 950;
+      letter-spacing: -1px;
+    }
+
+    .difference-subtitle {
+      margin-top: 6px;
+
+      font-size: 16px;
       font-weight: 900;
     }
 
     .cro-text {
-      margin: 10px 0 0;
+      margin: 12px 0 0;
 
       color: var(--muted);
 
@@ -382,67 +374,45 @@
       line-height: 1.6;
     }
 
-    /* funnel */
+    /* channel detail */
 
-    .funnel {
+    .channel-detail-grid {
       display: grid;
-      grid-template-columns:
-        minmax(0, 1fr)
-        auto
-        minmax(0, 1fr)
-        auto
-        minmax(0, 1fr)
-        auto
-        minmax(0, 1fr);
-
-      align-items: center;
-      gap: 9px;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
 
       margin-top: 24px;
     }
 
-    .funnel-step {
-      min-width: 0;
-
+    .channel-detail {
       background: var(--panel);
-
-      border-radius: 15px;
-
-      padding: 18px 12px;
-
-      text-align: center;
+      border-radius: 18px;
+      padding: 22px;
     }
 
-    .funnel-step.final {
-      background: var(--accent);
+    .channel-detail-title {
+      margin: 0;
+
+      font-size: 14px;
+      font-weight: 900;
     }
 
-    .funnel-value {
-      font-size: 30px;
+    .channel-detail-main {
+      margin: 10px 0 0;
+
+      font-size: 34px;
       line-height: 1;
 
       font-weight: 950;
+      letter-spacing: -1px;
     }
 
-    .funnel-label {
-      margin-top: 7px;
-
+    .channel-detail-text {
+      margin: 8px 0 0;
       color: var(--muted);
 
-      font-size: 11px;
-      line-height: 1.35;
-    }
-
-    .funnel-step.final .funnel-label {
-      color: var(--text);
-      font-weight: 700;
-    }
-
-    .arrow {
-      color: var(--muted);
-
-      font-size: 22px;
-      font-weight: 700;
+      font-size: 13px;
+      line-height: 1.5;
     }
 
     /* conclusion */
@@ -467,7 +437,6 @@
 
     .conclusion-text {
       margin: 10px 0 0;
-
       color: var(--muted);
 
       font-size: 14px;
@@ -475,8 +444,16 @@
     }
 
     .highlight {
-      font-weight: 900;
       color: var(--text);
+      font-weight: 900;
+    }
+
+    .note {
+      margin: 24px 0 0;
+      color: var(--muted);
+
+      font-size: 12px;
+      line-height: 1.55;
     }
 
     @media (max-width: 760px) {
@@ -486,7 +463,6 @@
 
       .report-card {
         padding: 20px;
-
         border-radius: 20px;
       }
 
@@ -495,13 +471,15 @@
       }
 
       .multiplier {
-        margin-top: 20px;
-
-        min-width: 0;
         width: 100%;
+        min-width: 0;
+
+        margin-top: 20px;
       }
 
-      .kpi-grid {
+      .kpi-grid,
+      .insight-grid,
+      .channel-detail-grid {
         grid-template-columns: 1fr;
       }
 
@@ -511,21 +489,11 @@
 
       .section-note {
         margin-top: 8px;
-
         text-align: left;
       }
 
-      .insight-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .funnel {
-        grid-template-columns: 1fr;
-      }
-
-      .arrow {
-        text-align: center;
-        transform: rotate(90deg);
+      .hundred-comparison {
+        gap: 18px;
       }
     }
   </style>
@@ -548,12 +516,12 @@
           </p>
 
           <h1>
-            WEB_BOOKING приводит к сделке значительно эффективнее WhatsApp
+            WEB_BOOKING конвертируется в сделку лучше WhatsApp
           </h1>
 
           <p class="lead">
             Период: 1 января — 26 августа 2026.
-            Для сравнения использовались лиды на одинаковых этапах
+            Для сравнения использовались лиды по одинаковым этапам
             воронок, чтобы исключить расхождение в методике подсчёта.
           </p>
 
@@ -563,11 +531,11 @@
         <div class="multiplier">
 
           <div class="multiplier-label">
-            Разница
+            Преимущество
           </div>
 
           <div class="multiplier-value">
-            4,1×
+            1,63×
           </div>
 
           <div class="multiplier-text">
@@ -603,7 +571,7 @@
         <div class="kpi">
 
           <p class="kpi-label">
-            WEB_BOOKING лидов
+            WEB_BOOKING
           </p>
 
           <p class="kpi-value">
@@ -611,7 +579,7 @@
           </p>
 
           <p class="kpi-description">
-            самостоятельная заявка через checkout
+            лидов через самостоятельный checkout
           </p>
 
         </div>
@@ -620,15 +588,15 @@
         <div class="kpi">
 
           <p class="kpi-label">
-            WEB_BOOKING сделок
+            WhatsApp
           </p>
 
           <p class="kpi-value">
-            82
+            9 443
           </p>
 
           <p class="kpi-description">
-            завершились сделкой
+            лида из диалогов
           </p>
 
         </div>
@@ -650,15 +618,15 @@
             </p>
 
             <h2 class="section-title">
-              Сравнение конверсии каналов
+              Конверсия по каналам
             </h2>
 
           </div>
 
 
           <div class="section-note">
-            Сравниваются одинаковые<br>
-            этапы обеих воронок
+            Сопоставимые этапы<br>
+            обеих воронок
           </div>
 
         </div>
@@ -666,7 +634,7 @@
 
         <div class="conversion-list">
 
-          <!-- Booking -->
+          <!-- WEB BOOKING -->
 
           <div class="conversion">
 
@@ -679,34 +647,33 @@
                 </span>
 
                 <span class="channel-note">
-                  checkout
+                  самостоятельное бронирование
                 </span>
 
               </div>
 
 
               <div class="conversion-value">
-                19%
+                22,1%
               </div>
 
             </div>
 
 
             <div class="bar">
-
               <div class="bar-fill booking"></div>
-
             </div>
 
 
             <p class="bar-description">
-              82 сделки из 430 лидов · фактическая конверсия 19,1%
+              <strong>95 сделок</strong> из 430 лидов
             </p>
 
           </div>
 
 
-          <!-- WhatsApp -->
+
+          <!-- WHATSAPP -->
 
           <div class="conversion">
 
@@ -726,21 +693,25 @@
 
 
               <div class="conversion-value">
-                4,6%
+                13,6%
               </div>
 
             </div>
 
 
             <div class="bar">
-
               <div class="bar-fill whatsapp"></div>
-
             </div>
+
+
+            <p class="bar-description">
+              <strong>1 283 сделки</strong> из 9 443 лидов
+            </p>
 
           </div>
 
         </div>
+
 
 
         <!-- INSIGHTS -->
@@ -759,11 +730,11 @@
               <div>
 
                 <p class="big-number">
-                  19
+                  22,1
                 </p>
 
                 <div class="big-caption">
-                  сделок<br>
+                  сделки<br>
                   WEB_BOOKING
                 </div>
 
@@ -778,7 +749,7 @@
               <div>
 
                 <p class="big-number">
-                  4,6
+                  13,6
                 </p>
 
                 <div class="big-caption">
@@ -793,21 +764,25 @@
           </div>
 
 
+
           <div class="insight border">
 
             <p class="eyebrow">
-              Что это означает для CRO
+              Разница в эффективности
             </p>
 
-            <p class="cro-title">
-              Checkout — не просто ещё один канал получения лида
+            <p class="difference-value">
+              +8,5 п.п.
+            </p>
+
+            <p class="difference-subtitle">
+              или примерно +63%
             </p>
 
             <p class="cro-text">
-              Пользователь, который самостоятельно проходит
-              WEB_BOOKING, значительно ближе к сделке.
-              Поэтому рост количества завершённых checkout
-              имеет прямую бизнес-ценность.
+              Вероятность превращения WEB_BOOKING-лида
+              в сделку примерно на 63% выше относительно
+              лида из WhatsApp.
             </p>
 
           </div>
@@ -820,84 +795,51 @@
 
 
 
-    <!-- FUNNEL -->
+    <!-- BUSINESS VALUE -->
 
     <section class="report-card">
 
       <p class="eyebrow">
-        Связь с анализом Webvisor
+        Бизнес-вывод
       </p>
 
       <h2 class="section-title">
-        Главная возможность — увеличить количество WEB_BOOKING
+        WEB_BOOKING имеет более высокую ценность на уровне лида
       </h2>
 
 
-      <div class="funnel">
+      <div class="channel-detail-grid">
 
-        <div class="funnel-step">
+        <div class="channel-detail">
 
-          <div class="funnel-value">
-            100
-          </div>
+          <p class="channel-detail-title">
+            WEB_BOOKING
+          </p>
 
-          <div class="funnel-label">
-            ввели даты
-          </div>
+          <p class="channel-detail-main">
+            ≈ 1 из 4,5
+          </p>
 
-        </div>
-
-
-        <div class="arrow">
-          →
-        </div>
-
-
-        <div class="funnel-step">
-
-          <div class="funnel-value">
-            35
-          </div>
-
-          <div class="funnel-label">
-            открыли checkout
-          </div>
+          <p class="channel-detail-text">
+            лидов превращается в сделку
+          </p>
 
         </div>
 
 
-        <div class="arrow">
-          →
-        </div>
+        <div class="channel-detail">
 
+          <p class="channel-detail-title">
+            WhatsApp
+          </p>
 
-        <div class="funnel-step">
+          <p class="channel-detail-main">
+            ≈ 1 из 7,4
+          </p>
 
-          <div class="funnel-value">
-            13
-          </div>
-
-          <div class="funnel-label">
-            начали форму
-          </div>
-
-        </div>
-
-
-        <div class="arrow">
-          →
-        </div>
-
-
-        <div class="funnel-step final">
-
-          <div class="funnel-value">
-            6
-          </div>
-
-          <div class="funnel-label">
-            отправили booking
-          </div>
+          <p class="channel-detail-text">
+            лидов превращается в сделку
+          </p>
 
         </div>
 
@@ -908,24 +850,30 @@
       <div class="conclusion">
 
         <p class="conclusion-title">
-          Приоритет — помогать большему числу пользователей
-          завершить самостоятельное бронирование
+          Основной CRO-фокус — увеличивать долю пользователей,
+          которые способны самостоятельно завершить checkout
         </p>
 
         <p class="conclusion-text">
-          WhatsApp остаётся важным резервным каналом для клиентов,
-          которым нужна консультация. Но при конверсии
-          <span class="highlight">19% у WEB_BOOKING</span>
-          против
-          <span class="highlight">4,6% у WhatsApp</span>
-          основной CRO-фокус логично направить на рост количества
-          самостоятельных бронирований.
-          Это означает: упрощать checkout, делать цену прозрачнее,
-          понятнее объяснять депозит и снижать неопределённость
-          перед отправкой заявки.
+          WhatsApp остаётся важным каналом для консультаций
+          и пользователей, которым нужна помощь.
+          Но WEB_BOOKING показывает более высокую конверсию
+          лид → сделка:
+          <span class="highlight">22,1% против 13,6%</span>.
+          Поэтому упрощение формы, прозрачность стоимости,
+          понятные условия депозита и снижение барьеров
+          при оформлении могут иметь прямой эффект на продажи.
         </p>
 
       </div>
+
+
+      <p class="note">
+        Примечание: 430 WEB_BOOKING + 9 443 WhatsApp = 9 873 лида.
+        Из общего количества 9 986 остаются 113 лидов,
+        относящихся к другим источникам или не включённых
+        в эти две сравниваемые группы.
+      </p>
 
     </section>
 
