@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Айдолхаус — Модульные и каркасные дома под ключ в Воронеже</title>
+    <meta name="description" content="Качественные модульные и каркасные дома для постоянного проживания. Фиксированная смета, ипотека, монтаж за 1 день.">
+    
+    <!-- Шрифты -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #121212;
+            --bg-card: #1E1E1E;
+            --bg-card-hover: #2A2A2A;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A0A0A0;
+            --accent: #D4A373; /* Теплый древесно-золотой акцент */
+            --accent-hover: #C08E5F;
+            --danger: #FF6B6B;
+            --success: #4CAF50;
+            --border: #333333;
+            --radius: 12px;
+            --container: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; border-radius: var(--radius); }
+
+        .container {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Кнопки --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 32px;
+            background-color: var(--accent);
+            color: #121212;
+            font-weight: 700;
+            font-size: 16px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(212, 163, 115, 0.2);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent);
+            color: #121212;
+        }
+
+        /* --- Header --- */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            padding: 15px 0;
+        }
+
+        .header__inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span { color: var(--accent); }
+
+        .header__contacts {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .phone {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .phone:hover { color: var(--accent); }
+
+        /* --- Hero Section --- */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            background: linear-gradient(rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.9)), 
+                        url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+        }
+
+        .hero__content {
+            max-width: 700px;
+        }
+
+        .hero__badge {
+            display: inline-block;
+            background-color: rgba(212, 163, 115, 0.15);
+            color: var(--accent);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            border: 1px solid rgba(212, 163, 115, 0.3);
+        }
+
+        .hero__title {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero__subtitle {
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            max-width: 550px;
+        }
+
+        .hero__price-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            margin-bottom: 32px;
+            display: inline-block;
+            max-width: 400px;
+        }
+
+        .hero__price-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .hero__price-value {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .hero__price-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .hero__buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* --- Quiz / Selection Section --- */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section__title {
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .section__subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            font-size: 18px;
+        }
+
+        .quiz-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .quiz-card {
+            background-color: var(--bg-card);
+            border: 2px solid transparent;
+            border-radius: var(--radius);
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .quiz-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            background-color: var(--bg-card-hover);
+        }
+
+        .quiz-card.active {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(212, 163, 115, 0.2);
+        }
+
+        .quiz-card__img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .quiz-card__body {
+            padding: 24px;
+        }
+
+        .quiz-card__title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .quiz-card__desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .quiz-card__tag {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* --- Filter / USP Section --- */
+        .filter-section {
+            background-color: var(--bg-card);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .filter-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+
+        .filter-block h3 {
+            font-size: 24px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .filter-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-size: 16px;
+            color: var(--text-secondary);
+        }
+
+        .filter-list li strong {
+            color: var(--text-primary);
+        }
+
+        .icon-cross { color: var(--danger); font-size: 20px; flex-shrink: 0; }
+        .icon-check { color: var(--success); font-size: 20px; flex-shrink: 0; }
+
+        .usp-badges {
+            display: flex;
+            gap: 16px;
+            margin-top: 32px;
+            flex-wrap: wrap;
+        }
+
+        .usp-badge {
+            background-color: var(--bg-dark);
+            padding: 16px 24px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .usp-badge__num {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--accent);
+            display: block;
+        }
+
+        .usp-badge__text {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* --- Mortgage & Speed --- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background-color: var(--bg-card);
+            padding: 32px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+
+        .feature-card__icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        .feature-card__title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .feature-card__desc {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        /* --- Form Section --- */
+        .form-section {
+            background: linear-gradient(rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.95)), 
+                        url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            text-align: center;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: var(--bg-card);
+            padding: 40px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 16px;
+            background-color: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 16px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .selected-product {
+            background-color: rgba(212, 163, 115, 0.1);
+            color: var(--accent);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px dashed var(--accent);
+            display: none;
+        }
+
+        .form-policy {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 16px;
+            line-height: 1.4;
+        }
+
+        .form-policy a {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: #0A0A0A;
+            padding: 60px 0 30px;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer__title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .footer__text {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .footer__bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        /* --- Mobile Sticky Bar --- */
+        .mobile-sticky {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--bg-card);
+            border-top: 1px solid var(--border);
+            padding: 12px 20px;
+            z-index: 999;
+            gap: 12px;
+        }
+
+        .mobile-sticky .btn {
+            flex: 1;
+            padding: 14px;
+            font-size: 14px;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .header__contacts .btn { display: none; }
+            .hero { min-height: auto; padding: 120px 0 60px; }
+            .hero__buttons { flex-direction: column; }
+            .hero__buttons .btn { width: 100%; }
+            .filter-grid { grid-template-columns: 1fr; gap: 32px; }
+            .section { padding: 60px 0; }
+            .mobile-sticky { display: flex; }
+            body { padding-bottom: 70px; } /* Отступ для sticky бара */
+            .form-container { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header__inner">
+            <a href="#" class="logo">IDOL<span>HOUSE</span></a>
+            <div class="header__contacts">
+                <a href="tel:+79585090819" class="phone">+7 (958) 509-08-19</a>
+                <a href="#form" class="btn">Получить консультацию</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero__content">
+                <div class="hero__badge">Воронеж и область • С 2018 года</div>
+                <h1 class="hero__title">Модульный дом «под ключ» с мебелью и техникой</h1>
+                <p class="hero__subtitle">Заезжай и живи. Готовый модуль произведен на заводе. Монтаж на вашем участке за 1 день.</p>
+                
+                <div class="hero__price-card">
+                    <div class="hero__price-label">Модульный дом 26,8 кв.м</div>
+                    <div class="hero__price-value">2 390 000 ₽</div>
+                    <div class="hero__price-desc">Мебель, техника, отделка «под ключ». Цена зафиксирована в договоре.</div>
+                </div>
+
+                <div class="hero__buttons">
+                    <a href="#quiz" class="btn">Подобрать проект</a>
+                    <a href="https://wa.me/79585090819" class="btn btn-outline">Написать в WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz / Selection Section -->
+    <section id="quiz" class="section">
+        <div class="container">
+            <h2 class="section__title">Что вы планируете строить?</h2>
+            <p class="section__subtitle">Выберите направление, чтобы мы отправили актуальные каталоги и рассчитали точную стоимость</p>
+            
+            <div class="quiz-grid">
+                <div class="quiz-card" onclick="selectProduct('Каркасный дом (Барнхаус)')">
+                    <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=600&q=80" alt="Барнхаус" class="quiz-card__img">
+                    <div class="quiz-card__body">
+                        <h3 class="quiz-card__title">Каркасный дом (Барнхаус)</h3>
+                        <p class="quiz-card__desc">Стиль, панорамные окна. Комплектация «Теплый контур» без внутренней отделки.</p>
+                        <span class="quiz-card__tag">Для самостоятельной отделки</span>
+                    </div>
+                </div>
+
+                <div class="quiz-card" onclick="selectProduct('Модульный дом (Премиум под ключ)')">
+                    <img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=600&q=80" alt="Модульный дом" class="quiz-card__img">
+                    <div class="quiz-card__body">
+                        <h3 class="quiz-card__title">Модульный дом (Премиум)</h3>
+                        <p class="quiz-card__desc">Полная готовность. Мебель, техника, отделка. Для круглогодичного проживания.</p>
+                        <span class="quiz-card__tag">Заезжай и живи</span>
+                    </div>
+                </div>
+
+                <div class="quiz-card" onclick="selectProduct('Модульная баня под ключ')">
+                    <img src="https://images.unsplash.com/photo-1542718610-a1d656d1884c?auto=format&fit=crop&w=600&q=80" alt="Модульная баня" class="quiz-card__img">
+                    <div class="quiz-card__body">
+                        <h3 class="quiz-card__title">Модульная баня</h3>
+                        <p class="quiz-card__desc">Привозим на участок готовой. Парилка, комната отдыха, терраса.</p>
+                        <span class="quiz-card__tag">Монтаж за 1 день</span>
+                    </div>
+                </div>
+
+                <div class="quiz-card" onclick="selectProduct('Бытовки и хозблоки')">
+                    <img src="https://images.unsplash.com/photo-1599809275671-b5942cabc7a2?auto=format&fit=crop&w=600&q=80" alt="Хозблок" class="quiz-card__img">
+                    <div class="quiz-card__body">
+                        <h3 class="quiz-card__title">Бытовки и хозблоки</h3>
+                        <p class="quiz-card__desc">Надежные деревянные конструкции для старта стройки или хранения.</p>
+                        <span class="quiz-card__tag">Доступные цены</span>
+                    </div>
+                </div>
+
+                <div class="quiz-card" onclick="selectProduct('Готовые дома (Распродажа)')">
+                    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=600&q=80" alt="Готовые дома" class="quiz-card__img">
+                    <div class="quiz-card__body">
+                        <h3 class="quiz-card__title">Готовые дома</h3>
+                        <p class="quiz-card__desc">Дома, которые уже построены на производстве или площадке. Можно посмотреть live.</p>
+                        <span class="quiz-card__tag">Скидки до 15%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter / USP Section -->
+    <section class="section filter-section">
+        <div class="container">
+            <h2 class="section__title">Почему мы не строим «бюджетно»?</h2>
+            <p class="section__subtitle">Мы строим для людей, которые считают свои деньги на длинной дистанции</p>
+            
+            <div class="filter-grid">
+                <div class="filter-block">
+                    <h3><span class="icon-cross">✕</span> Мы НЕ подходим вам, если:</h3>
+                    <ul class="filter-list">
+                        <li><span class="icon-cross">✕</span> Вам нужен самый дешевый вариант «лишь бы стоял».</li>
+                        <li><span class="icon-cross">✕</span> Вы готовы экономить на утеплителе, пленках и качестве древесины.</li>
+                        <li><span class="icon-cross">✕</span> Вы ищете подрядчика, который будет менять смету в процессе стройки.</li>
+                    </ul>
+                </div>
+                
+                <div class="filter-block">
+                    <h3><span class="icon-check">✓</span> Мы работаем для вас, если:</h3>
+                    <ul class="filter-list">
+                        <li><span class="icon-check">✓</span> Вам важна гарантия и отсутствие сквозняков через год.</li>
+                        <li><span class="icon-check">✓</span> Вы хотите увидеть реальную смету, которая не вырастет в 2 раза.</li>
+                        <li><span class="icon-check">✓</span> Вы цените свое время, нервы и хотите жить в теплом доме.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="usp-badges">
+                <div class="usp-badge">
+                    <span class="usp-badge__num">200+</span>
+                    <span class="usp-badge__text">Семей уже живут в наших домах</span>
+                </div>
+                <div class="usp-badge">
+                    <span class="usp-badge__num">100%</span>
+                    <span class="usp-badge__text">Фиксация цены в договоре</span>
+                </div>
+                <div class="usp-badge">
+                    <span class="usp-badge__num">1 день</span>
+                    <span class="usp-badge__text">Монтаж модульного дома на участке</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mortgage & Features -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Строим быстро. Оформляем удобно.</h2>
+            <div class="features-grid" style="margin-top: 48px;">
+                <div class="feature-card">
+                    <div class="feature-card__icon">🏦</div>
+                    <h3 class="feature-card__title">Ипотека на ИЖС</h3>
+                    <p class="feature-card__desc">Помогаем одобриться. Платеж как за аренду квартиры, а актив остается вашим. Работаем со всеми крупными банками.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon">👶</div>
+                    <h3 class="feature-card__title">Материнский капитал</h3>
+                    <p class="feature-card__desc">Принимаем маткапитал как первый взнос или часть оплаты. Полное юридическое сопровождение сделки.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon">⚡</div>
+                    <h3 class="feature-card__title">Скорость без потери качества</h3>
+                    <p class="feature-card__desc">Модуль: 1 день на монтаж. Каркасный дом: от 45 дней до «Теплого контура». Собственное производство в Воронеже.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Form -->
+    <section id="form" class="section form-section">
+        <div class="container">
+            <div class="form-container">
+                <h2 class="section__title" style="font-size: 28px; margin-bottom: 12px;">Получите расчет и каталог проектов</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 24px;">Оставьте заявку, и инженер пришлет подборку домов под ваш бюджет и размеры участка.</p>
+                
+                <div id="selected-product-display" class="selected-product"></div>
+
+                <form onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label class="form-label">Ваше имя</label>
+                        <input type="text" class="form-input" placeholder="Иван" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Номер телефона</label>
+                        <input type="tel" class="form-input" placeholder="+7 (___) ___-__-__" required>
+                    </div>
+                    <input type="hidden" id="product-input" name="product" value="">
+                    
+                    <button type="submit" class="btn" style="width: 100%;">Получить каталог и цены</button>
+                    
+                    <p class="form-policy">
+                        Отправляя форму, я даю согласие на обработку моих персональных данных в соответствии с 
+                        <a href="#">Политикой конфиденциальности</a>.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div>
+                    <a href="#" class="logo" style="margin-bottom: 16px; display: block;">IDOL<span>HOUSE</span></a>
+                    <p class="footer__text">Воронежская компания, которая с 2018 года радует своих клиентов качественными быстровозводимыми каркасными и модульными домами.</p>
+                </div>
+                <div>
+                    <h4 class="footer__title">Контакты</h4>
+                    <p class="footer__text">📞 <a href="tel:+79585090819" style="color: var(--accent);">+7 (958) 509-08-19</a></p>
+                    <p class="footer__text">📍 г. Воронеж, производственная площадка</p>
+                    <p class="footer__text">✉️ info@idolhouse.ru</p>
+                </div>
+                <div>
+                    <h4 class="footer__title">Направления</h4>
+                    <p class="footer__text">Каркасные дома</p>
+                    <p class="footer__text">Модульные дома</p>
+                    <p class="footer__text">Бани и хозблоки</p>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                © 2018–2026 ООО «Айдолхаус». Все права защищены. Цены на сайте не являются публичной офертой.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Sticky Bar -->
+    <div class="mobile-sticky">
+        <a href="tel:+79585090819" class="btn btn-outline" style="border-color: var(--text-secondary); color: var(--text-primary);">Позвонить</a>
+        <a href="#form" class="btn">Оставить заявку</a>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Функция выбора продукта в квизе
+        function selectProduct(productName) {
+            // Убираем активный класс у всех карточек
+            document.querySelectorAll('.quiz-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            
+            // Добавляем активный класс нажатой карточке (через event.target поиск)
+            event.currentTarget.classList.add('active');
+            
+            // Показываем блок в форме
+            const display = document.getElementById('selected-product-display');
+            display.textContent = `Вы выбрали: ${productName}`;
+            display.style.display = 'block';
+            
+            // Записываем в скрытое поле
+            document.getElementById('product-input').value = productName;
+            
+            // Плавный скролл к форме
+            document.getElementById('form').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Обработка отправки формы (заглушка для демонстрации)
+        function handleSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            
+            btn.textContent = 'Отправка...';
+            btn.disabled = true;
+            
+            // Имитация отправки
+            setTimeout(() => {
+                alert('Спасибо за заявку! Наш инженер свяжется с вами в течение 15 минут для уточнения деталей.');
+                e.target.reset();
+                document.getElementById('selected-product-display').style.display = 'none';
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }, 1500);
+        }
+
+        // Плавный скролл для всех якорных ссылок
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
