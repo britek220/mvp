@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Do I Need an IDP in Dubai/UAE? International Driving Permit Checker</title>
+  <meta name="description" content="Check whether you need an International Driving Permit (IDP) to drive or rent a car in Dubai and the UAE based on your passport and driving licence country." />
+  <link rel="canonical" href="https://example.com/driving-in-uae/idp/" />
+  <meta name="robots" content="index,follow" />
+
+  <style>
+    :root{
+      --bg:#f6f7fa;
+      --surface:#ffffff;
+      --text:#14171b;
+      --muted:#666d78;
+      --line:#e3e6eb;
+      --accent:#1d4ed8;
+      --accent-soft:#edf3ff;
+      --success:#087443;
+      --success-soft:#e9f8f1;
+      --danger:#a22424;
+      --danger-soft:#fff1f1;
+      --warning:#8b5300;
+      --warning-soft:#fff7e7;
+      --shadow:0 16px 36px rgba(20,23,27,.08);
+      --radius:24px;
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.55;
+    }
+    a{color:inherit}
+    .container{width:min(calc(100% - 32px),var(--max));margin:auto}
+    .topbar{background:#11151b;color:#fff;font-size:13px}
+    .topbar .container{display:flex;justify-content:space-between;gap:20px;padding:10px 0}
+    header{
+      background:rgba(255,255,255,.94);
+      border-bottom:1px solid var(--line);
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(10px);
+    }
+    nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+    .brand{font-size:20px;font-weight:850;text-decoration:none}
+    .navlinks{display:flex;align-items:center;gap:22px;font-size:14px;color:#4e5560}
+    .navlinks a{text-decoration:none}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      min-height:46px;padding:0 20px;border-radius:999px;border:1px solid transparent;
+      font-weight:750;text-decoration:none;cursor:pointer;font:inherit;
+    }
+    .btn-dark{background:#11151b;color:#fff}
+    .btn-blue{background:var(--accent);color:#fff}
+    .btn-outline{background:#fff;border-color:#cfd4dc}
+    .crumbs{padding-top:26px;color:var(--muted);font-size:14px}
+    .crumbs a{text-decoration:none}
+    .hero{padding:34px 0 50px}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(360px,.85fr);gap:32px;align-items:start}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;
+      background:var(--accent-soft);color:#244b9d;
+      padding:7px 12px;border-radius:999px;font-weight:800;font-size:13px;
+    }
+    h1{
+      font-size:clamp(40px,5.6vw,70px);
+      line-height:1.01;letter-spacing:-.05em;
+      margin:18px 0 20px;
+    }
+    .lead{font-size:20px;color:#505762;max-width:780px;margin:0 0 24px}
+    .trustline{
+      display:flex;gap:18px;flex-wrap:wrap;color:#606774;font-size:14px;
+      margin-top:18px
+    }
+    .checker{
+      background:var(--surface);border:1px solid var(--line);
+      border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);
+    }
+    .checker h2{font-size:25px;margin:0 0 6px;letter-spacing:-.02em}
+    .checker p{color:var(--muted);margin:0 0 20px;font-size:14px}
+    label{display:block;font-size:13px;font-weight:800;margin:0 0 7px}
+    select{
+      width:100%;height:50px;border:1px solid #ccd2da;border-radius:13px;
+      padding:0 12px;background:#fff;font:inherit;margin-bottom:14px;
+    }
+    .checker-actions{display:grid;grid-template-columns:1fr;gap:10px}
+    .result{
+      margin-top:16px;border-radius:16px;padding:17px 18px;border:1px solid var(--line);
+      background:#f8f9fb;font-size:14px;
+    }
+    .result.yes{background:var(--success-soft);border-color:#b9e3cc;color:#275843}
+    .result.no{background:#eff6ff;border-color:#c8d9ff;color:#254b83}
+    .result.unknown{background:var(--warning-soft);border-color:#efcf94;color:#6c4208}
+    .result strong{display:block;font-size:16px;color:var(--text);margin-bottom:3px}
+    section{padding:62px 0}
+    .section-head{max-width:770px;margin-bottom:28px}
+    .section-head h2{font-size:36px;line-height:1.08;letter-spacing:-.035em;margin:0 0 10px}
+    .section-head p{font-size:17px;color:var(--muted);margin:0}
+    .quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{
+      background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;
+    }
+    .card .icon{
+      width:40px;height:40px;border-radius:12px;background:var(--accent-soft);
+      color:var(--accent);display:grid;place-items:center;font-weight:900;margin-bottom:14px;
+    }
+    .card h3{font-size:18px;margin:0 0 7px}
+    .card p{margin:0;color:var(--muted)}
+    .explain{
+      display:grid;grid-template-columns:1fr 1fr;gap:18px;
+    }
+    .visual{
+      background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px;
+    }
+    .doc-visual{
+      min-height:280px;border-radius:17px;
+      background:
+       linear-gradient(135deg,rgba(29,78,216,.08),rgba(255,255,255,.15)),
+       repeating-linear-gradient(0deg,#f7f8fa,#f7f8fa 28px,#edf0f4 29px);
+      display:flex;align-items:center;justify-content:center;padding:24px;
+      margin-bottom:18px;
+    }
+    .plastic-card,.booklet{
+      width:min(92%,420px);background:#fff;border:1px solid #cbd1d9;border-radius:12px;
+      padding:20px;box-shadow:0 15px 40px rgba(16,20,28,.13)
+    }
+    .plastic-card{aspect-ratio:1.58/1;transform:rotate(-1deg)}
+    .booklet{aspect-ratio:1.28/1;background:#eee7d7;transform:rotate(1deg)}
+    .fake-title{text-transform:uppercase;letter-spacing:.08em;font-size:11px;font-weight:900;margin-bottom:22px}
+    .redact{height:9px;background:#16191e;border-radius:3px;margin:9px 0;width:80%}
+    .redact.short{width:48%}.redact.tiny{width:30%}
+    .visual h3{margin:0 0 7px}
+    .visual p{margin:0;color:var(--muted)}
+    .country-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
+    .country{
+      background:#fff;border:1px solid var(--line);border-radius:16px;padding:17px;
+      text-decoration:none;transition:.15s ease;
+    }
+    .country:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+    .country strong{display:block;margin-bottom:4px}
+    .country span{font-size:13px;color:var(--muted)}
+    .country .status{margin-top:10px;font-size:12px;font-weight:800;color:var(--accent)}
+    .flow{
+      background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px;
+      display:grid;grid-template-columns:repeat(4,1fr);gap:14px
+    }
+    .step{position:relative;padding:18px;background:#fafbfc;border-radius:16px}
+    .step .n{font-size:12px;font-weight:900;color:var(--accent);margin-bottom:8px}
+    .step h3{font-size:16px;margin:0 0 6px}
+    .step p{font-size:13px;color:var(--muted);margin:0}
+    .note{
+      background:var(--warning-soft);border:1px solid #f0d29a;color:#70460d;
+      border-radius:16px;padding:17px 18px;font-size:14px;margin-top:20px
+    }
+    .faq details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:0 18px}
+    .faq details+details{margin-top:10px}
+    .faq summary{cursor:pointer;font-weight:780;padding:18px 0}
+    .faq p{margin:0;padding:0 0 18px;color:var(--muted)}
+    .cta{
+      background:#12161c;color:#fff;border-radius:28px;padding:42px;
+      display:flex;justify-content:space-between;align-items:center;gap:30px;
+    }
+    .cta h2{font-size:34px;line-height:1.1;margin:0 0 10px}
+    .cta p{margin:0;color:#c5cbd3;max-width:680px}
+    .cta .btn{background:#fff;color:#11151b}
+    footer{padding:42px 0 58px;color:#717883;font-size:13px}
+    .footer-row{border-top:1px solid var(--line);padding-top:26px;display:flex;justify-content:space-between;gap:24px}
+    @media(max-width:980px){
+      .hero-grid,.explain{grid-template-columns:1fr}
+      .quick-grid{grid-template-columns:1fr}
+      .country-grid{grid-template-columns:repeat(2,1fr)}
+      .flow{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:700px){
+      .navlinks{display:none}
+      .topbar{display:none}
+      .country-grid,.flow{grid-template-columns:1fr}
+      .cta{display:block}
+      .cta .btn{margin-top:22px}
+      .section-head h2{font-size:30px}
+      h1{font-size:44px}
+      section{padding:46px 0}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="container">
+      <span>UAE driving documents guide</span>
+      <span>Requirements last reviewed: September 2026</span>
+    </div>
+  </div>
+
+  <header>
+    <div class="container">
+      <nav>
+        <a class="brand" href="#">CAR RENTAL</a>
+        <div class="navlinks">
+          <a href="#checker">IDP Checker</a>
+          <a href="#countries">By country</a>
+          <a href="#examples">IDP examples</a>
+          <a href="#faq">FAQ</a>
+          <a class="btn btn-dark" href="#">Find a car</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container crumbs">
+      <a href="#">Home</a> &nbsp;›&nbsp;
+      <a href="#">Driving in UAE</a> &nbsp;›&nbsp;
+      International Driving Permit
+    </div>
+
+    <section class="hero" id="checker">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">UAE IDP guide + document checker</div>
+          <h1>Do You Need an International Driving Permit in the UAE?</h1>
+          <p class="lead">Select the country that issued your passport and the country that issued your driving licence. We’ll show whether an International Driving Permit (IDP) is required for your combination.</p>
+
+          <div class="trustline">
+            <span>✓ Passport + licence based logic</span>
+            <span>✓ Built for UAE car rental customers</span>
+            <span>✓ No guessed results</span>
+          </div>
+
+          <div class="note">
+            The result depends on the exact passport × driving licence combination in our current requirements matrix. If your combination is not available, the checker should return “Unknown” and ask you to contact support.
+          </div>
+        </div>
+
+        <aside class="checker">
+          <h2>Check if you need an IDP</h2>
+          <p>Prototype interface. In production, all 199 countries should be searchable and results must come from the shared requirements engine.</p>
+
+          <label for="passport">Passport issued by</label>
+          <select id="passport">
+            <option value="India">India</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="United States">United States</option>
+            <option value="Canada">Canada</option>
+            <option value="Pakistan">Pakistan</option>
+            <option value="Australia">Australia</option>
+          </select>
+
+          <label for="licence">Driving licence issued by</label>
+          <select id="licence">
+            <option value="India">India</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="United States">United States</option>
+            <option value="Canada">Canada</option>
+            <option value="Pakistan">Pakistan</option>
+            <option value="Australia">Australia</option>
+          </select>
+
+          <div class="checker-actions">
+            <button class="btn btn-blue" id="checkBtn">Check IDP requirement</button>
+          </div>
+
+          <div class="result yes" id="resultBox">
+            <strong>Yes — IDP required.</strong>
+            India passport + India-issued driving licence is shown as IDP required in this prototype.
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <h2>What should you bring to rent a car?</h2>
+          <p>The checker answers the IDP question. The rental handover still depends on having the correct original documents with you.</p>
+        </div>
+
+        <div class="quick-grid">
+          <article class="card">
+            <div class="icon">1</div>
+            <h3>Your passport</h3>
+            <p>Bring the original travel document used for your rental verification.</p>
+          </article>
+          <article class="card">
+            <div class="icon">2</div>
+            <h3>Your national driving licence</h3>
+            <p>An IDP does not replace the original licence issued by your home/licence country.</p>
+          </article>
+          <article class="card">
+            <div class="icon">3</div>
+            <h3>Your IDP, if required</h3>
+            <p>If the checker says Yes, bring a valid original International Driving Permit as well.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="examples">
+      <div class="container">
+        <div class="section-head">
+          <h2>National driving licence vs International Driving Permit</h2>
+          <p>This visual distinction is important because many customers call any foreign-looking card an “international licence.” The page should show real anonymised examples from your document archive.</p>
+        </div>
+
+        <div class="explain">
+          <article class="visual">
+            <div class="doc-visual">
+              <div class="plastic-card">
+                <div class="fake-title">National driving licence — anonymised example</div>
+                <div class="redact"></div>
+                <div class="redact short"></div>
+                <div class="redact"></div>
+                <div class="redact tiny"></div>
+              </div>
+            </div>
+            <h3>National driving licence</h3>
+            <p>The licence issued by your country or licensing authority. This is not automatically an IDP.</p>
+          </article>
+
+          <article class="visual">
+            <div class="doc-visual">
+              <div class="booklet">
+                <div class="fake-title">International Driving Permit — anonymised example</div>
+                <div class="redact short"></div>
+                <div class="redact"></div>
+                <div class="redact short"></div>
+                <div class="redact tiny"></div>
+              </div>
+            </div>
+            <h3>International Driving Permit (IDP)</h3>
+            <p>A separate international permit used together with your national driving licence when required.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="countries">
+      <div class="container">
+        <div class="section-head">
+          <h2>Check IDP requirements by driving licence country</h2>
+          <p>Only create dedicated SEO pages for countries with meaningful search/business demand. The rest should remain available through the checker.</p>
+        </div>
+
+        <div class="country-grid">
+          <a class="country" href="/driving-in-uae/idp/india/">
+            <strong>🇮🇳 India</strong>
+            <span>Indian driving licence in the UAE</span>
+            <div class="status">View requirements →</div>
+          </a>
+          <a class="country" href="/driving-in-uae/idp/uk/">
+            <strong>🇬🇧 United Kingdom</strong>
+            <span>UK driving licence in the UAE</span>
+            <div class="status">View requirements →</div>
+          </a>
+          <a class="country" href="/driving-in-uae/idp/usa/">
+            <strong>🇺🇸 United States</strong>
+            <span>US driving licence in the UAE</span>
+            <div class="status">View requirements →</div>
+          </a>
+          <a class="country" href="/driving-in-uae/idp/canada/">
+            <strong>🇨🇦 Canada</strong>
+            <span>Canadian driving licence in the UAE</span>
+            <div class="status">View requirements →</div>
+          </a>
+          <a class="country" href="/driving-in-uae/idp/pakistan/">
+            <strong>🇵🇰 Pakistan</strong>
+            <span>Pakistani driving licence in the UAE</span>
+            <div class="status">View requirements →</div>
+          </a>
+          <a class="country" href="/driving-in-uae/idp/australia/">
+            <strong>🇦🇺 Australia</strong>
+            <span>Australian driving licence in the UAE</span>
+            <div class="status">View requirements →</div>
+          </a>
+          <a class="country" href="/driving-in-uae/idp/what-does-idp-look-like/">
+            <strong>See IDP examples</strong>
+            <span>What does an IDP look like?</span>
+            <div class="status">Open gallery →</div>
+          </a>
+          <a class="country" href="/driving-in-uae/idp/how-to-get-idp/">
+            <strong>How to get an IDP</strong>
+            <span>Application and preparation guide</span>
+            <div class="status">Read guide →</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <h2>How the IDP checker works</h2>
+          <p>The product logic should be transparent enough that a user and support agent understand why two country selections are required.</p>
+        </div>
+
+        <div class="flow">
+          <div class="step">
+            <div class="n">STEP 1</div>
+            <h3>Select passport country</h3>
+            <p>The user's travel-document country forms the first half of the rule.</p>
+          </div>
+          <div class="step">
+            <div class="n">STEP 2</div>
+            <h3>Select licence country</h3>
+            <p>Choose the country/authority that issued the driving licence.</p>
+          </div>
+          <div class="step">
+            <div class="n">STEP 3</div>
+            <h3>Exact matrix lookup</h3>
+            <p>The system checks passport × licence. No frontend assumptions.</p>
+          </div>
+          <div class="step">
+            <div class="n">STEP 4</div>
+            <h3>Yes / No / Unknown</h3>
+            <p>Unknown must never be silently converted into an answer.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="faq">
+      <div class="container">
+        <div class="section-head">
+          <h2>International Driving Permit FAQ</h2>
+          <p>Use this section for broad IDP queries while country-specific questions live on country landing pages.</p>
+        </div>
+
+        <details open>
+          <summary>What is an International Driving Permit?</summary>
+          <p>An IDP is a separate international driving document used alongside a valid national driving licence where it is required. It should not be presented as a replacement for the national licence.</p>
+        </details>
+
+        <details>
+          <summary>Do all tourists need an IDP in Dubai?</summary>
+          <p>No single answer should be hardcoded for every tourist. The requirement depends on the relevant passport and driving-licence combination in the current requirements matrix.</p>
+        </details>
+
+        <details>
+          <summary>Can I use only my IDP without my national driving licence?</summary>
+          <p>No. The page should clearly explain that the IDP is used together with the original valid national driving licence.</p>
+        </details>
+
+        <details>
+          <summary>What if the checker cannot confirm my combination?</summary>
+          <p>The correct UX is to show “Unknown” and ask the customer to contact support before booking, rather than making a guessed Yes/No decision.</p>
+        </details>
+
+        <details>
+          <summary>Can I share my checker result with someone?</summary>
+          <p>In production, the selected passport and driving licence can be stored in query parameters so a support agent can send a prefilled link. Those parameter URLs should not become separate SEO pages.</p>
+        </details>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="cta">
+          <div>
+            <h2>Know which documents you need? Choose your car.</h2>
+            <p>The role of the IDP hub is to remove uncertainty before booking and move qualified visitors into the rental flow with confidence.</p>
+          </div>
+          <a class="btn" href="#">Browse cars in Dubai</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div>Prototype: /driving-in-uae/idp/</div>
+      <div>Not a government service · Requirements may change</div>
+    </div>
+  </footer>
+
+  <script>
+    const passport = document.getElementById('passport');
+    const licence = document.getElementById('licence');
+    const resultBox = document.getElementById('resultBox');
+    const checkBtn = document.getElementById('checkBtn');
+
+    // Prototype examples only.
+    // Production must use the shared passport × driving licence requirements engine.
+    const demoRules = {
+      "India|India": "yes",
+      "India|United Kingdom": "no",
+      "United Kingdom|United Kingdom": "no",
+      "Pakistan|Pakistan": "yes",
+      "Canada|Canada": "unknown"
+    };
+
+    function renderResult() {
+      const key = passport.value + "|" + licence.value;
+      const state = demoRules[key] || "unknown";
+
+      resultBox.className = "result " + state;
+
+      if (state === "yes") {
+        resultBox.innerHTML =
+          "<strong>Yes — IDP required.</strong>" +
+          "Bring your original national driving licence and a valid original International Driving Permit.";
+      } else if (state === "no") {
+        resultBox.innerHTML =
+          "<strong>No — IDP not required for this demo combination.</strong>" +
+          "You still need your original valid driving licence and the other rental documents.";
+      } else {
+        resultBox.innerHTML =
+          "<strong>We couldn't confirm this combination.</strong>" +
+          "In production this must return Unknown and direct the customer to support. Never guess the result.";
+      }
+
+      const url = new URL(window.location.href);
+      url.searchParams.set("passport", passport.value.toLowerCase().replace(/\s+/g,"-"));
+      url.searchParams.set("licence", licence.value.toLowerCase().replace(/\s+/g,"-"));
+      history.replaceState({}, "", url);
+    }
+
+    checkBtn.addEventListener("click", renderResult);
+  </script>
+</body>
+</html>
