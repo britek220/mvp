@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="Бронирование автомобиля онлайн">
+  <title>Бронирование автомобиля</title>
+
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --surface: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --accent: #111827;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .site-header {
+      position: relative;
+      z-index: 20;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .header-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      background: var(--accent);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .header-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    main {
+      min-height: calc(100vh - 73px);
+    }
+
+    .hero {
+      padding: 42px 0 20px;
+    }
+
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: clamp(30px, 5vw, 48px);
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    .booking-shell {
+      margin: 18px auto 48px;
+      min-height: 520px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: 0 14px 40px rgba(17, 24, 39, 0.06);
+      overflow: hidden;
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        width: min(100% - 20px, 1180px);
+      }
+
+      .header-inner {
+        min-height: 64px;
+      }
+
+      .header-note {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 28px;
+      }
+
+      .booking-shell {
+        margin-top: 14px;
+        border-radius: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/" aria-label="На главную">
+        <span class="brand-mark">R</span>
+        <span>Rentico</span>
+      </a>
+
+      <p class="header-note">Онлайн-бронирование автомобилей</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Бронирование автомобиля</h1>
+        <p>
+          Выберите подходящий автомобиль, даты аренды и дополнительные услуги.
+          Бронирование оформляется онлайн.
+        </p>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="booking-shell" id="booking"></div>
+    </section>
+  </main>
+
+  <!-- Localrent White Label -->
+  <script src="https://static.localrent.com/booking/v2/wl/app.js"
+          async
+          data-mrc-wl="true"
+          data-affiliate="17817"
+          data-country="14"
+          data-city="62821"
+          data-routing="on"
+          data-zindex="10000"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="Бронирование автомобиля онлайн">
+  <title>Бронирование автомобиля</title>
+
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --surface: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --accent: #111827;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .site-header {
+      position: relative;
+      z-index: 20;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .header-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      background: var(--accent);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .header-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    main {
+      min-height: calc(100vh - 73px);
+    }
+
+    .hero {
+      padding: 42px 0 20px;
+    }
+
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: clamp(30px, 5vw, 48px);
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    .booking-shell {
+      margin: 18px auto 48px;
+      min-height: 520px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: 0 14px 40px rgba(17, 24, 39, 0.06);
+      overflow: hidden;
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        width: min(100% - 20px, 1180px);
+      }
+
+      .header-inner {
+        min-height: 64px;
+      }
+
+      .header-note {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 28px;
+      }
+
+      .booking-shell {
+        margin-top: 14px;
+        border-radius: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/" aria-label="На главную">
+        <span class="brand-mark">R</span>
+        <span>Rentico</span>
+      </a>
+
+      <p class="header-note">Онлайн-бронирование автомобилей</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Бронирование автомобиля</h1>
+        <p>
+          Выберите подходящий автомобиль, даты аренды и дополнительные услуги.
+          Бронирование оформляется онлайн.
+        </p>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="booking-shell" id="booking"></div>
+    </section>
+  </main>
+
+  <!-- Localrent White Label -->
+  <script src="https://static.localrent.com/booking/v2/wl/app.js"
+          async
+          data-mrc-wl="true"
+          data-affiliate="17817"
+          data-country="14"
+          data-city="62821"
+          data-routing="on"
+          data-zindex="10000"></script>
+</body>
+</html>
