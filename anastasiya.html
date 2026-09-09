@@ -1,0 +1,527 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайт и Реклама под ключ от Анастасии</title>
+    <!-- Подключаем более живые шрифты -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #f4fbf6; /* Очень светлый, почти белый мятный */
+            --accent-green: #2ecc71;
+            --accent-red: #d32f2f; /* Чуть более глубокий красный, как на платье */
+            --text-main: #2d3748;
+            --text-muted: #718096;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Типографика */
+        h1, h2, h3 {
+            line-height: 1.2;
+        }
+        .handwritten {
+            font-family: 'Caveat', cursive;
+            color: var(--accent-red);
+            font-size: 2rem;
+            display: block;
+            margin-bottom: -10px;
+        }
+
+        /* Кнопки */
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-red);
+            color: var(--white);
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(211, 47, 47, 0.2);
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(211, 47, 47, 0.3);
+        }
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 2px solid var(--text-main);
+            box-shadow: none;
+        }
+        .btn-outline:hover {
+            background-color: var(--text-main);
+            color: var(--white);
+        }
+
+        /* Главный экран (Hero) с фото */
+        .hero {
+            padding: 60px 0 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+        .hero-text {
+            flex: 1;
+        }
+        .hero-text h1 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+        .hero-image {
+            flex: 1;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 30px;
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.1)); 
+            z-index: 2;
+            position: relative;
+        }
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            background-color: #e0f2e9;
+            border-radius: 50%;
+            top: 10%;
+            right: 0;
+            z-index: 1;
+        }
+
+        /* Секция "Что внутри" */
+        .features {
+            padding: 80px 0;
+            background-color: var(--white);
+            border-radius: 40px 40px 0 0;
+        }
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+        }
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 40px;
+            padding: 20px;
+            border-radius: 20px;
+            transition: background 0.3s;
+        }
+        .feature-item:hover {
+            background-color: var(--bg-color);
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            background: var(--bg-color);
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            flex-shrink: 0;
+        }
+        .feature-item:hover .feature-icon {
+            background: var(--white);
+        }
+        .feature-text h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+        .feature-text p {
+            color: var(--text-muted);
+        }
+
+        /* Блок Обо мне */
+        .about-me {
+            padding: 80px 0;
+            text-align: center;
+        }
+        .about-card {
+            background: var(--white);
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .about-card p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        .signature {
+            font-family: 'Caveat', cursive;
+            font-size: 2.5rem;
+            color: var(--accent-green);
+            margin-top: 20px;
+        }
+
+        /* === НОВЫЙ БЛОК: КЕЙСЫ === */
+        .cases {
+            padding: 80px 0;
+            background-color: var(--white);
+            border-radius: 40px;
+        }
+        .cases h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+        }
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .case-card {
+            background: var(--bg-color);
+            border-radius: 24px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s;
+            border: 1px solid #e2e8f0;
+        }
+        .case-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+        }
+        .case-tags {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .tag {
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+        .tag-niche {
+            background: var(--white);
+            color: var(--text-main);
+            border: 1px solid #cbd5e0;
+        }
+        .tag-result {
+            background: var(--accent-green);
+            color: var(--white);
+        }
+        .case-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+        .case-metrics {
+            list-style: none;
+            margin-top: 20px;
+        }
+        .case-metrics li {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed #cbd5e0;
+            font-weight: 600;
+        }
+        .case-metrics li:last-child {
+            border-bottom: none;
+        }
+        .metric-value {
+            color: var(--accent-red);
+            font-weight: 800;
+        }
+        /* ========================= */
+
+        /* Допродажи */
+        .upsell {
+            padding: 80px 0;
+        }
+        .upsell h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+        }
+        .upsell-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+        }
+        .upsell-card {
+            padding: 30px;
+            border-radius: 20px;
+            background: var(--white);
+            text-align: center;
+            transition: transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+        }
+        .upsell-card:hover {
+            transform: translateY(-5px);
+        }
+        .upsell-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        .upsell-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            min-height: 60px;
+        }
+        .upsell-card .btn {
+            padding: 12px 24px;
+            font-size: 0.9rem;
+            background-color: var(--text-main);
+            box-shadow: none;
+        }
+        .upsell-card .btn:hover {
+            background-color: var(--accent-green);
+        }
+
+        /* Футер */
+        footer {
+            text-align: center;
+            padding: 60px 0;
+        }
+        footer p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding: 40px 0;
+            }
+            .hero-text p {
+                margin: 0 auto 30px;
+            }
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            .feature-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .about-card {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Главный экран -->
+        <section class="hero">
+            <div class="hero-text">
+                <span class="handwritten">Привет! Я Анастасия 👋</span>
+                <h1>Готовая связка:<br>Сайт + Реклама</h1>
+                <p>Хватит сливать бюджет на тесты и ждать месяц. Заберите готовое решение под вашу нишу и получайте заявки уже завтра.</p>
+                <a href="https://wa.me/79000000000?text=Здравствуйте,%20Анастасия!%20Хочу%20забрать%20готовую%20связку." class="btn">Получить клиентов</a>
+            </div>
+            <div class="hero-image">
+                <!-- ВСТАВЬТЕ СЮДА ССЫЛКУ НА ВАШЕ ФОТО -->
+                <img src="https://i.imgur.com/vHqXgTl.jpeg" alt="Анастасия - маркетолог">
+            </div>
+        </section>
+    </div>
+
+    <!-- Что входит -->
+    <section class="features">
+        <div class="container">
+            <span class="handwritten" style="text-align: center;">Что вы получите на руки?</span>
+            <h2>Всё готово к запуску</h2>
+            
+            <div class="feature-item">
+                <div class="feature-icon">💻</div>
+                <div class="feature-text">
+                    <h3>Продающий Лендинг</h3>
+                    <p>Не просто «красивый сайт», а страница, которая продает. Структура собрана на основе анализа конкурентов. Кнопки, формы, триггеры — всё на местах.</p>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">🎯</div>
+                <div class="feature-text">
+                    <h3>Настроенный Яндекс Директ</h3>
+                    <p>Собрано семантическое ядро (без мусора), написаны цепляющие объявления, настроена минусовка. Вам остается только пополнить баланс.</p>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">🎨</div>
+                <div class="feature-text">
+                    <h3>Креативы для РСЯ</h3>
+                    <p>Готовые баннеры, которые не выглядят как назойливая реклама. Люди будут кликать, потому что это решает их проблему.</p>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">📹</div>
+                <div class="feature-text">
+                    <h3>Понятная Видеоинструкция</h3>
+                    <p>Я записала пошаговое видео. Даже если вы никогда не касались рекламы — вы сможете запустить её за один вечер с чашкой чая.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Обо мне -->
+    <div class="container">
+        <section class="about-me">
+            <div class="about-card">
+                <span class="handwritten">Почему готовые связки?</span>
+                <h2 style="margin-bottom: 20px;">Честно о подходе</h2>
+                <p>Агентства берут десятки тысяч за «индивидуальную разработку», хотя по факту используют одни и те же шаблоны, просто растягивая сроки.</p>
+                <p>Я пошла другим путем. Я беру конкретную нишу (например, барбершоп или ресницы), глубоко анализирую её и собираю <b>идеальную рабочую связку</b>. Вы получаете результат за копейки по меркам рынка и запускаетесь за 2 дня.</p>
+                <p>Никакой воды. Только то, что приносит деньги.</p>
+                <div class="signature">Ваша Анастасия</div>
+            </div>
+        </section>
+    </div>
+
+    <!-- === НОВЫЙ БЛОК: КЕЙСЫ === -->
+    <section class="cases">
+        <div class="container">
+            <span class="handwritten" style="text-align: center;">Цифры говорят сами за себя</span>
+            <h2>Реальные результаты</h2>
+            
+            <div class="cases-grid">
+                <!-- Кейс 1: Ресницы -->
+                <div class="case-card">
+                    <div class="case-tags">
+                        <span class="tag tag-niche">Бьюти / Ресницы</span>
+                        <span class="tag tag-result">Топ выдача</span>
+                    </div>
+                    <h3 class="case-title">Студия наращивания ресниц (Воронеж)</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Запустили готовую связку с акцентом на тренды (LED, мокрый эффект) и гиперлокальный таргетинг.</p>
+                    <ul class="case-metrics">
+                        <li>Стоимость заявки (CPA) <span class="metric-value">150 ₽</span></li>
+                        <li>Конверсия сайта (CR) <span class="metric-value">11%</span></li>
+                        <li>CTR объявлений <span class="metric-value">14%</span></li>
+                    </ul>
+                </div>
+
+                <!-- Кейс 2: Барбершоп -->
+                <div class="case-card">
+                    <div class="case-tags">
+                        <span class="tag tag-niche">Барбершоп</span>
+                        <span class="tag tag-result">Окупаемость 1 неделя</span>
+                    </div>
+                    <h3 class="case-title">Мужская парикмахерская</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Настроили рекламу на радиус 3 км вокруг салона. Оффер: «Стрижка + борода со скидкой 30% на первый визит».</p>
+                    <ul class="case-metrics">
+                        <li>Стоимость заявки (CPA) <span class="metric-value">220 ₽</span></li>
+                        <li>Конверсия сайта (CR) <span class="metric-value">8.5%</span></li>
+                        <li>Записей в первую неделю <span class="metric-value">+34</span></li>
+                    </ul>
+                </div>
+
+                <!-- Кейс 3: Строительство -->
+                <div class="case-card">
+                    <div class="case-tags">
+                        <span class="tag tag-niche">Строительство домов</span>
+                        <span class="tag tag-result">Высокий чек</span>
+                    </div>
+                    <h3 class="case-title">Строительная компания</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Собрали квиз-лендинг «Рассчитайте стоимость дома за 1 минуту». Отсекли информационный трафик жесткой минусовкой.</p>
+                    <ul class="case-metrics">
+                        <li>Стоимость лида (CPL) <span class="metric-value">850 ₽</span></li>
+                        <li>Конверсия квиза (CR) <span class="metric-value">16%</span></li>
+                        <li>Лидов в месяц <span class="metric-value">+120</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <p style="margin-bottom: 20px; font-size: 1.1rem;">Хотите такие же результаты в вашей нише?</p>
+                <a href="https://wa.me/79000000000?text=Здравствуйте,%20Анастасия!%20Хочу%20такую%20же%20связку%20для%20своего%20бизнеса." class="btn">Забрать свою связку</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Допродажи -->
+    <div class="container">
+        <section class="upsell">
+            <span class="handwritten" style="text-align: center;">Нужна помощь?</span>
+            <h2>Дополнительные услуги</h2>
+            
+            <div class="upsell-grid">
+                <div class="upsell-card">
+                    <h3>📊 Настройка аналитики</h3>
+                    <p>Метрика, цели, коллтрекинг. Чтобы вы знали, откуда пришел каждый клиент.</p>
+                    <a href="https://wa.me/79000000000?text=Нужна%20настройка%20аналитики" class="btn">Пишите в сообщения</a>
+                </div>
+                <div class="upsell-card">
+                    <h3>🧠 Личная консультация</h3>
+                    <p>Разберем вашу нишу, найдем точки роста и составим план действий.</p>
+                    <a href="https://wa.me/79000000000?text=Нужна%20консультация" class="btn">Пишите в сообщения</a>
+                </div>
+                <div class="upsell-card">
+                    <h3>🤝 Ведение рекламы</h3>
+                    <p>Нет времени разбираться самим? Доверьте запуск и ведение мне.</p>
+                    <a href="https://wa.me/79000000000?text=Интересует%20ведение%20рекламы" class="btn">Пишите в сообщения</a>
+                </div>
+                <div class="upsell-card">
+                    <h3>❓ Не знаете с чего начать?</h3>
+                    <p>Сделаем бесплатный экспресс-разбор вашей ситуации в чате.</p>
+                    <a href="https://wa.me/79000000000?text=Не%20знаю%20с%20чего%20начать" class="btn">Пишите в сообщения</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <p>Сайт и Реклама под ключ от Анастасии • Отвечаю в течение 30 минут</p>
+            <a href="https://wa.me/79000000000" class="btn btn-outline">Написать в WhatsApp</a>
+        </div>
+    </footer>
+
+</body>
+</html>
