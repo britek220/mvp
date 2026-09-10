@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="List your cars on Rentico and get more bookings from customers looking to rent a car in Dubai." />
+  <title>Rentico for Rental Companies — More Revenue From Your Fleet</title>
+  <style>
+    :root{
+      --bg:#f6f7f9;
+      --surface:#ffffff;
+      --ink:#111214;
+      --muted:#6b6f77;
+      --line:#e7e8eb;
+      --dark:#101114;
+      --accent:#f3c942;
+      --accent-soft:#fff4c7;
+      --radius:22px;
+      --shadow:0 18px 55px rgba(17,18,20,.08);
+      --container:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--ink);
+      background:var(--bg);
+      line-height:1.5;
+    }
+    a{color:inherit;text-decoration:none}
+    button,input,select,textarea{font:inherit}
+    .container{width:min(var(--container),calc(100% - 40px));margin:auto}
+    .topbar{
+      position:sticky;top:0;z-index:40;
+      background:rgba(255,255,255,.92);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(231,232,235,.95)
+    }
+    .nav{height:74px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .logo{font-size:27px;font-weight:900;letter-spacing:-.055em}
+    .logo span{display:inline-block;background:var(--accent);padding:2px 8px;border-radius:9px;margin-left:3px}
+    .navlinks{display:flex;align-items:center;gap:28px;font-size:14px;font-weight:700;color:#44474e}
+    .btn{
+      min-height:50px;padding:0 22px;border-radius:13px;border:1px solid transparent;
+      display:inline-flex;align-items:center;justify-content:center;gap:9px;
+      font-weight:850;cursor:pointer;transition:.18s ease
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn-primary{background:var(--accent);color:#111}
+    .btn-dark{background:var(--dark);color:#fff}
+    .btn-outline{background:#fff;border-color:#d9dbe0}
+
+    .hero{
+      padding:72px 0 62px;
+      background:
+        radial-gradient(circle at 86% 16%,rgba(243,201,66,.35),transparent 27%),
+        linear-gradient(180deg,#fff 0%,#f7f7f5 100%);
+      overflow:hidden
+    }
+    .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:58px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:850;letter-spacing:.1em;text-transform:uppercase;color:#585c64}
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+    h1{font-size:clamp(44px,6vw,76px);line-height:.98;letter-spacing:-.055em;margin:18px 0 24px;max-width:850px}
+    .lead{font-size:20px;line-height:1.55;color:#565a62;max-width:720px;margin:0 0 30px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .micro{font-size:13px;color:#767a82;margin-top:17px}
+
+    .hero-card{
+      position:relative;min-height:470px;padding:30px;border-radius:30px;overflow:hidden;
+      background:var(--dark);color:#fff;box-shadow:0 28px 80px rgba(0,0,0,.22)
+    }
+    .hero-card:before{
+      content:"";position:absolute;width:360px;height:360px;border-radius:50%;
+      background:var(--accent);right:-140px;top:-140px
+    }
+    .hero-card:after{
+      content:"";position:absolute;width:340px;height:140px;border:2px solid rgba(255,255,255,.15);
+      border-radius:80px;transform:rotate(-18deg);right:-40px;bottom:80px
+    }
+    .hero-card-top{position:relative;z-index:2;display:flex;align-items:flex-start;justify-content:space-between;gap:18px}
+    .hero-card-kicker{font-size:12px;font-weight:850;text-transform:uppercase;letter-spacing:.1em;color:#aeb1b8;margin-bottom:9px}
+    .hero-card h3{font-size:29px;line-height:1.06;margin:0;letter-spacing:-.03em}
+    .live-pill{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:900;letter-spacing:.08em;padding:8px 10px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:#fff}
+    .live-pill span{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(243,201,66,.12)}
+    .order-list{display:grid;gap:13px;position:relative;z-index:2;margin-top:44px}
+    .order{background:#fff;color:#111;padding:14px 15px;border-radius:16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .order-left{display:flex;align-items:center;gap:12px;min-width:0}
+    .car-thumb{width:46px;height:46px;border-radius:13px;background:#f0f1f3;display:grid;place-items:center;color:#202226;flex:0 0 auto}
+    .car-thumb svg{width:34px;height:22px}
+    .order strong{display:block;font-size:14px}.order small{display:block;color:#7a7e86}
+    .badge{font-size:12px;font-weight:850;padding:7px 10px;border-radius:999px;background:#fff3bf;color:#5f4c00;white-space:nowrap}
+    .badge-soft{background:#f1f2f4;color:#555a61}
+    .hero-card-foot{position:relative;z-index:2;margin-top:16px;font-size:12px;color:#8f939b}
+
+    .section{padding:88px 0}
+    .white{background:#fff}.dark{background:var(--dark);color:#fff}
+    .kicker{font-size:13px;font-weight:850;text-transform:uppercase;letter-spacing:.1em;color:#8b8f97;margin-bottom:12px}
+    .section h2{font-size:clamp(34px,4vw,52px);line-height:1.03;letter-spacing:-.04em;margin:0 0 18px}
+    .intro{font-size:18px;color:#70747c;max-width:780px;margin:0 0 42px}
+    .dark .intro{color:#b0b3ba}
+
+    .benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+    .num{width:44px;height:44px;border-radius:13px;background:var(--accent-soft);display:grid;place-items:center;font-weight:900;margin-bottom:32px}
+    .card h3{font-size:19px;letter-spacing:-.02em;margin:0 0 9px}
+    .card p{color:#6d7179;margin:0;font-size:15px}
+
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .step{border-top:1px solid #34363b;padding-top:22px}
+    .step-index{font-size:13px;font-weight:900;color:var(--accent);margin-bottom:42px}
+    .step h3{font-size:22px;margin:0 0 10px}.step p{color:#adb0b7;margin:0}
+
+    .about-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:30px;align-items:stretch}
+    .about-main{
+      background:var(--accent);border-radius:28px;padding:34px;
+      display:flex;flex-direction:column;justify-content:space-between
+    }
+    .about-main .year{font-size:72px;line-height:1;font-weight:950;letter-spacing:-.06em;margin-bottom:34px}
+    .about-main h3{font-size:28px;line-height:1.1;margin:0 0 12px}
+    .about-main p{margin:0;color:#30290e}
+    .about-points{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .about-point{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px}
+    .about-point strong{display:block;font-size:18px;margin-bottom:8px}
+    .about-point p{margin:0;color:#6d7179;font-size:14px}
+    .office-note{margin-top:18px;padding:18px 20px;border-radius:16px;background:#fff;border:1px solid var(--line);color:#555a61;font-size:14px}
+
+    .fit{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .fit .card{min-height:210px}
+    .check{font-size:20px;font-weight:900;margin-bottom:36px}
+
+    .strip{
+      display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;
+      background:var(--accent);padding:42px;border-radius:28px
+    }
+    .strip h2{margin:0 0 8px}.strip p{margin:0;max-width:660px}.strip .btn{justify-self:end}
+
+    .form-wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:start}
+    .form-note{font-size:16px;color:#676b72}
+    .contact-box{margin-top:26px;padding:18px;border:1px solid var(--line);border-radius:16px;background:#fff}
+    .contact-box strong{display:block;margin-bottom:6px}
+    form{background:#fff;border:1px solid var(--line);border-radius:26px;padding:28px;box-shadow:var(--shadow)}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .field{display:grid;gap:7px;margin-bottom:14px}
+    label{font-size:13px;font-weight:800;color:#43464d}
+    input,select,textarea{width:100%;min-height:50px;border:1px solid #dfe1e5;border-radius:12px;padding:12px 13px;outline:none;background:#fff}
+    textarea{min-height:105px;resize:vertical}
+    input:focus,select:focus,textarea:focus{border-color:#a88615;box-shadow:0 0 0 3px rgba(243,201,66,.18)}
+    .consent{display:flex;gap:9px;align-items:flex-start;font-size:12px;color:#777b83;margin:5px 0 17px}
+    .consent input{width:auto;min-height:auto;margin-top:3px}
+    .success{display:none;background:#eaf7ef;color:#157347;padding:13px;border-radius:10px;margin-top:13px;font-weight:700}
+
+    .faq{display:grid;gap:10px;max-width:900px}
+    details{background:#fff;border:1px solid var(--line);padding:19px 21px;border-radius:14px}
+    summary{cursor:pointer;font-weight:850}
+    details p{color:#6d7179;margin:12px 0 0}
+
+    footer{background:#0b0c0e;color:#d8d9dc;padding:36px 0}
+    .footer{display:flex;justify-content:space-between;gap:25px;align-items:center;font-size:13px}
+    .float-wa{position:fixed;right:20px;bottom:20px;z-index:30;background:#111;color:#fff;border-radius:999px;padding:13px 17px;font-weight:850;box-shadow:var(--shadow)}
+
+    @media(max-width:980px){
+      .navlinks a:not(.nav-cta){display:none}
+      .hero-grid,.form-wrap,.about-grid,.strip{grid-template-columns:1fr}
+      .benefits,.fit{grid-template-columns:1fr 1fr}
+      .steps{grid-template-columns:1fr}
+      .strip .btn{justify-self:start}
+    }
+    @media(max-width:620px){
+      .container{width:min(var(--container),calc(100% - 28px))}
+      .nav{height:68px}.logo{font-size:23px}
+      .navlinks .btn{min-height:42px;padding:0 14px;font-size:13px}
+      .hero{padding:48px 0 44px}h1{font-size:44px}.lead{font-size:17px}
+      .benefits,.fit,.grid2,.about-points{grid-template-columns:1fr}
+      .section{padding:66px 0}
+      .hero-card{min-height:390px;padding:22px}
+      .hero-card h3{font-size:25px}
+      .hero-card-top{gap:12px}
+      .live-pill{display:none}
+      .order{align-items:flex-start}
+      .badge{font-size:11px;padding:6px 8px}
+      .strip{padding:28px}
+      .footer{flex-direction:column;align-items:flex-start}
+      .about-main .year{font-size:58px}
+    }
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <div class="container nav">
+    <a href="https://rentico.ae/" class="logo">renti<span>co</span></a>
+    <nav class="navlinks">
+      <a href="#benefits">Benefits</a>
+      <a href="#how">How it works</a>
+      <a href="#about">About Rentico</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-primary nav-cta" href="#rental-form">List your fleet</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> Rentico for Rental Companies</div>
+      <h1>Earn more from your fleet</h1>
+      <p class="lead">Connect your fleet to Rentico and get new customers and bookings. Less idle time means higher fleet utilization and more revenue for your business.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#rental-form">List your cars</a>
+        <a class="btn btn-outline" href="#how">How it works</a>
+      </div>
+      <p class="micro">Send us your details — the Rentico team will explain the listing terms and help you get your fleet live.</p>
+</div>
+
+    <div class="hero-card">
+      <div class="hero-card-top">
+        <div>
+          <div class="hero-card-kicker">Bookings through Rentico</div>
+          <h3>Your cars.<br>New bookings.</h3>
+        </div>
+        <div class="live-pill"><span></span> LIVE</div>
+      </div>
+
+      <div class="order-list">
+        <div class="order">
+          <div class="order-left">
+            <div class="car-thumb">
+              <svg viewBox="0 0 64 40" aria-hidden="true">
+                <path d="M12 26h40l-4-10c-1-3-3-5-6-5H25c-3 0-5 2-7 5l-6 10Z" fill="currentColor"/>
+                <rect x="9" y="25" width="46" height="8" rx="4" fill="currentColor"/>
+                <circle cx="18" cy="33" r="4" fill="#fff"/>
+                <circle cx="46" cy="33" r="4" fill="#fff"/>
+              </svg>
+            </div>
+            <div><strong>Nissan Sunny</strong><small>3 days · Dubai Marina</small></div>
+          </div>
+          <span class="badge">New booking</span>
+        </div>
+
+        <div class="order">
+          <div class="order-left">
+            <div class="car-thumb">
+              <svg viewBox="0 0 64 40" aria-hidden="true">
+                <path d="M10 25h44l-5-11c-1-2-3-4-6-4H24c-3 0-5 2-7 4l-7 11Z" fill="currentColor"/>
+                <rect x="8" y="24" width="48" height="9" rx="4.5" fill="currentColor"/>
+                <circle cx="18" cy="33" r="4" fill="#fff"/>
+                <circle cx="47" cy="33" r="4" fill="#fff"/>
+              </svg>
+            </div>
+            <div><strong>Kia Sportage</strong><small>7 days · DXB Airport</small></div>
+          </div>
+          <span class="badge badge-soft">New request</span>
+        </div>
+
+        <div class="order">
+          <div class="order-left">
+            <div class="car-thumb">
+              <svg viewBox="0 0 64 40" aria-hidden="true">
+                <path d="M13 26h39l-6-9c-2-3-4-4-7-4H27c-3 0-5 1-7 4l-7 9Z" fill="currentColor"/>
+                <rect x="10" y="25" width="45" height="8" rx="4" fill="currentColor"/>
+                <circle cx="19" cy="33" r="4" fill="#fff"/>
+                <circle cx="46" cy="33" r="4" fill="#fff"/>
+              </svg>
+            </div>
+            <div><strong>BMW 4 Series</strong><small>2 days · Downtown</small></div>
+          </div>
+          <span class="badge">New booking</span>
+        </div>
+      </div>
+
+      <div class="hero-card-foot">Example of how new requests can appear for a rental company</div>
+    </div>
+  </div>
+</section>
+
+<section class="section white" id="benefits">
+  <div class="container">
+    <div class="kicker">Why Rentico</div>
+    <h2>A new booking channel<br>for your fleet</h2>
+    <p class="intro">Make your cars available to Rentico customers who are actively looking for a rental in Dubai and comparing suitable options.</p>
+
+    <div class="benefits">
+      <article class="card">
+        <div class="num">01</div>
+        <h3>Reach customers ready to rent</h3>
+        <p>Put your cars in front of customers who are already searching for a rental and choosing the right option.</p>
+      </article>
+      <article class="card">
+        <div class="num">02</div>
+        <h3>Less idle time</h3>
+        <p>Fill gaps between your own bookings and increase utilization across your existing fleet.</p>
+      </article>
+      <article class="card">
+        <div class="num">03</div>
+        <h3>You control the terms</h3>
+        <p>Stay in control of pricing, availability, mileage limits, delivery and additional services.</p>
+      </article>
+      <article class="card">
+        <div class="num">04</div>
+        <h3>Easy to get started</h3>
+        <p>To get started, we only need your company details, vehicle information, photos, rates and rental terms.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section dark" id="how">
+  <div class="container">
+    <div class="kicker">How it works</div>
+    <h2>From application to new bookings in three steps</h2>
+    <p class="intro">No lengthy integration projects. We start with basic fleet information and agree on a convenient way to work together.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-index">STEP 01</div>
+        <h3>Send your details</h3>
+        <p>Tell us about your company, fleet size, main vehicle categories and pickup or delivery areas.</p>
+      </div>
+      <div class="step">
+        <div class="step-index">STEP 02</div>
+        <h3>We prepare your cars for listing</h3>
+        <p>Share vehicle details, photos, prices and rental terms. The Rentico team will review the information and prepare your listings.</p>
+      </div>
+      <div class="step">
+        <div class="step-index">STEP 03</div>
+        <h3>Receive requests and bookings</h3>
+        <p>Customers find your cars on Rentico, choose available dates and send rental requests.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section white" id="about">
+  <div class="container">
+    <div class="kicker">About Rentico</div>
+    <h2>We know Dubai’s car rental<br>market from the inside</h2>
+    <p class="intro">Rentico was launched in 2023 with a simple idea: make renting a car in Dubai clear, transparent and convenient — from choosing a car to getting the keys.</p>
+
+    <div class="about-grid">
+      <div class="about-main">
+        <div>
+          <div class="year">2023</div>
+          <h3>Rentico was built in Dubai by a team that loves cars and understands what a great rental experience should feel like.</h3>
+        </div>
+        <p>For rental companies, the idea is simple: list your cars on a service built around a smooth customer journey and quality service.</p>
+      </div>
+
+      <div class="about-points">
+        <article class="about-point">
+          <strong>Local team in Dubai</strong>
+          <p>We operate in the local market and understand the specifics of car rental, pickup and delivery in the UAE.</p>
+        </article>
+        <article class="about-point">
+          <strong>From Economy to Luxury</strong>
+          <p>Rentico serves a wide range of customer needs — from practical city cars to SUVs, Sport, Business and Luxury vehicles.</p>
+        </article>
+        <article class="about-point">
+          <strong>Simple customer journey</strong>
+          <p>Our customer journey is simple: choose a car → book it → get the keys.</p>
+        </article>
+        <article class="about-point">
+          <strong>Focused on service</strong>
+          <p>Rentico focuses on transparent terms, a convenient rental process and customer support.</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="office-note">
+      <strong>Rentico is a real local business in Dubai.</strong>
+      Head office: The Oberoi Centre, Business Bay, Dubai — Anantara Hotel, Ground Floor, facing Burj Khalifa.
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="kicker">Who it’s for</div>
+    <h2>Built for rental companies<br>of different sizes</h2>
+    <p class="intro">What matters is an active fleet, clear rental terms and a commitment to providing customers with quality service.</p>
+
+    <div class="fit">
+      <article class="card">
+        <div class="check">✓</div>
+        <h3>Local rental company</h3>
+        <p>Increase vehicle utilization and get new bookings without expanding your own sales team.</p>
+      </article>
+      <article class="card">
+        <div class="check">✓</div>
+        <h3>Medium & large fleets</h3>
+        <p>Add another booking channel and list multiple vehicle categories.</p>
+      </article>
+      <article class="card">
+        <div class="check">✓</div>
+        <h3>Economy, SUV, Business, Luxury</h3>
+        <p>Rentico covers a broad range of demand — from practical city cars to premium models.</p>
+      </article>
+      <article class="card">
+        <div class="check">✓</div>
+        <h3>Pickup & delivery in Dubai</h3>
+        <p>Ideal for companies that can provide convenient vehicle pickup or delivery to customers.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="rental-form" style="padding-top:76px">
+  <div class="container form-wrap">
+    <div>
+      <div class="kicker">List your fleet</div>
+      <h2>List your cars on Rentico</h2>
+      <p class="form-note">Leave your contact details and tell us a little about your fleet. The Rentico team will contact you, explain the listing terms and help you get started.</p>
+
+      <div class="contact-box">
+        <strong>Rentico, Dubai</strong>
+        +971 55 626 6457<br>
+        hello@rentico.ae<br>
+        The Oberoi Centre, Business Bay
+      </div>
+    </div>
+
+    <form id="leadForm">
+      <input type="hidden" name="utm_source" id="utm_source">
+      <input type="hidden" name="utm_medium" id="utm_medium">
+      <input type="hidden" name="utm_campaign" id="utm_campaign">
+      <input type="hidden" name="utm_content" id="utm_content">
+      <input type="hidden" name="utm_term" id="utm_term">
+      <input type="hidden" name="landing_url" id="landing_url">
+
+      <div class="grid2">
+        <div class="field">
+          <label for="company">Company name *</label>
+          <input id="company" name="company" required placeholder="Dubai Rent A Car LLC">
+        </div>
+        <div class="field">
+          <label for="name">Contact person *</label>
+          <input id="name" name="name" required placeholder="Name">
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="field">
+          <label for="phone">Phone / WhatsApp *</label>
+          <input id="phone" name="phone" required placeholder="+971 ...">
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="name@company.com">
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="field">
+          <label for="fleet">Fleet size *</label>
+          <select id="fleet" name="fleet_size" required>
+            <option value="" selected disabled>Select</option>
+            <option>1–10 cars</option>
+            <option>11–30 cars</option>
+            <option>31–100 cars</option>
+            <option>100+ cars</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="area">Operating area *</label>
+          <select id="area" name="area" required>
+            <option value="" selected disabled>Select</option>
+            <option>Dubai</option>
+            <option>Abu Dhabi</option>
+            <option>Sharjah</option>
+            <option>Other emirate / multiple emirates</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="website">Website / Instagram</label>
+        <input id="website" name="website" placeholder="https://...">
+      </div>
+
+      <div class="field">
+        <label for="message">Anything we should know about your fleet?</label>
+        <textarea id="message" name="message" placeholder="Main vehicle categories, rental terms, delivery, special requirements..."></textarea>
+      </div>
+
+      <label class="consent">
+        <input type="checkbox" required>
+        <span>I agree to the processing of my data so Rentico can contact me regarding listing my vehicles.</span>
+      </label>
+
+      <button class="btn btn-primary" type="submit" style="width:100%">Submit application</button>
+      <div class="success" id="success">Thank you! Your application has been sent. The Rentico team will contact you.</div>
+    </form>
+  </div>
+</section>
+
+<section class="section white" id="faq">
+  <div class="container">
+    <div class="kicker">FAQ</div>
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq">
+      <details>
+        <summary>Is there a minimum fleet size?</summary>
+        <p>You can apply with a fleet of any size. The Rentico team will review your vehicles, categories and rental terms and suggest a suitable listing format.</p>
+      </details>
+      <details>
+        <summary>Who sets the prices and rental terms?</summary>
+        <p>Prices and rental terms are agreed with your company before listing. You stay in control of rental rates, availability, mileage, delivery and additional services.</p>
+      </details>
+      <details>
+        <summary>What do I need to list my cars?</summary>
+        <p>To get started, we need your company and vehicle details, current photos, prices and key rental terms. The Rentico team will guide you through the remaining steps.</p>
+      </details>
+      <details>
+        <summary>Do I need a technical integration?</summary>
+        <p>Not necessarily at the beginning. We agree on how availability and bookings will be shared after your application, so you can start with a simple workflow.</p>
+      </details>
+      <details>
+        <summary>How will I receive bookings?</summary>
+        <p>The Rentico team will agree with you on a convenient communication channel and booking confirmation process. The workflow can later be expanded or automated if needed.</p>
+      </details>
+      <details>
+        <summary>How much does it cost to list on Rentico?</summary>
+        <p>Commercial terms depend on the working model and are agreed before launch. Send your details and the Rentico team will explain the terms for your fleet.</p>
+      </details>
+      <details>
+        <summary>What types of cars can I list?</summary>
+        <p>Economy, Standard, SUV, Business, Sport, Luxury and other in-demand categories. Vehicles should match their description, be roadworthy and ready for rental.</p>
+      </details>
+      <details>
+        <summary>How quickly can I get started?</summary>
+        <p>Timing depends on how quickly fleet information and terms are finalized. The more complete your application is, the sooner the Rentico team can prepare your cars for listing.</p>
+      </details>
+    </div>
+  </div>
+</section>
+</main>
+
+<a class="float-wa" href="https://wa.me/971556266457?text=Hello%20Rentico%2C%20I%20want%20to%20list%20my%20rental%20fleet" target="_blank" rel="noopener">WhatsApp Rentico</a>
+
+<footer>
+  <div class="container footer">
+    <div>© 2026 RENTICO RENT A CAR L.L.C. · Dubai, UAE</div>
+    <div><a href="https://rentico.ae/">rentico.ae</a> · <a href="mailto:hello@rentico.ae">hello@rentico.ae</a></div>
+  </div>
+</footer>
+
+<script>
+  const FORM_ENDPOINT = "";
+
+  const qs = new URLSearchParams(location.search);
+  ["utm_source","utm_medium","utm_campaign","utm_content","utm_term"].forEach(key => {
+    const el = document.getElementById(key);
+    if (el) el.value = qs.get(key) || "";
+  });
+  document.getElementById("landing_url").value = location.href;
+
+  document.getElementById("leadForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const form = e.currentTarget;
+    const btn = form.querySelector('button[type="submit"]');
+    const success = document.getElementById("success");
+    const payload = Object.fromEntries(new FormData(form).entries());
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "rental_fleet_lead",
+      lead_type: "rental_company",
+      fleet_size: payload.fleet_size || "",
+      area: payload.area || "",
+      utm_source: payload.utm_source || "",
+      utm_medium: payload.utm_medium || "",
+      utm_campaign: payload.utm_campaign || ""
+    });
+
+    if (!FORM_ENDPOINT) {
+      console.log("Lead demo:", payload);
+      success.style.display = "block";
+      success.textContent = "Demo mode: add FORM_ENDPOINT in the code to send applications to your CRM or webhook.";
+      return;
+    }
+
+    try {
+      btn.disabled = true;
+      btn.textContent = "Sending...";
+
+      const response = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) throw new Error("HTTP " + response.status);
+
+      success.style.display = "block";
+      success.textContent = "Thank you! Your application has been sent. The Rentico team will contact you.";
+      form.reset();
+    } catch (err) {
+      alert("We could not send your application. Please contact us on WhatsApp or at hello@rentico.ae");
+      console.error(err);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Submit application";
+    }
+  });
+</script>
+</body>
+</html>
