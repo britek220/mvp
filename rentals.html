@@ -65,8 +65,6 @@
     .lead{font-size:20px;line-height:1.55;color:#565a62;max-width:720px;margin:0 0 30px}
     .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
     .micro{font-size:13px;color:#767a82;margin-top:17px}
-    .trust-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
-    .trust-chip{font-size:13px;font-weight:800;padding:9px 12px;border-radius:999px;background:#fff;border:1px solid var(--line)}
 
     .hero-card{
       position:relative;min-height:470px;padding:30px;border-radius:30px;overflow:hidden;
@@ -80,13 +78,20 @@
       content:"";position:absolute;width:340px;height:140px;border:2px solid rgba(255,255,255,.15);
       border-radius:80px;transform:rotate(-18deg);right:-40px;bottom:80px
     }
-    .hero-card h3{position:relative;z-index:2;font-size:27px;line-height:1.08;margin:0}
-    .order-list{display:grid;gap:13px;position:relative;z-index:2;margin-top:58px}
+    .hero-card-top{position:relative;z-index:2;display:flex;align-items:flex-start;justify-content:space-between;gap:18px}
+    .hero-card-kicker{font-size:12px;font-weight:850;text-transform:uppercase;letter-spacing:.1em;color:#aeb1b8;margin-bottom:9px}
+    .hero-card h3{font-size:29px;line-height:1.06;margin:0;letter-spacing:-.03em}
+    .live-pill{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:900;letter-spacing:.08em;padding:8px 10px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:#fff}
+    .live-pill span{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(243,201,66,.12)}
+    .order-list{display:grid;gap:13px;position:relative;z-index:2;margin-top:44px}
     .order{background:#fff;color:#111;padding:14px 15px;border-radius:16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .order-left{display:flex;align-items:center;gap:12px}
-    .car-icon{width:42px;height:42px;border-radius:12px;background:#f0f1f3;display:grid;place-items:center;font-size:20px}
+    .order-left{display:flex;align-items:center;gap:12px;min-width:0}
+    .car-thumb{width:46px;height:46px;border-radius:13px;background:#f0f1f3;display:grid;place-items:center;color:#202226;flex:0 0 auto}
+    .car-thumb svg{width:34px;height:22px}
     .order strong{display:block;font-size:14px}.order small{display:block;color:#7a7e86}
-    .badge{font-size:12px;font-weight:850;padding:7px 10px;border-radius:999px;background:#fff3bf;color:#5f4c00}
+    .badge{font-size:12px;font-weight:850;padding:7px 10px;border-radius:999px;background:#fff3bf;color:#5f4c00;white-space:nowrap}
+    .badge-soft{background:#f1f2f4;color:#555a61}
+    .hero-card-foot{position:relative;z-index:2;margin-top:16px;font-size:12px;color:#8f939b}
 
     .section{padding:88px 0}
     .white{background:#fff}.dark{background:var(--dark);color:#fff}
@@ -169,6 +174,11 @@
       .benefits,.fit,.grid2,.about-points{grid-template-columns:1fr}
       .section{padding:66px 0}
       .hero-card{min-height:390px;padding:22px}
+      .hero-card h3{font-size:25px}
+      .hero-card-top{gap:12px}
+      .live-pill{display:none}
+      .order{align-items:flex-start}
+      .badge{font-size:11px;padding:6px 8px}
       .strip{padding:28px}
       .footer{flex-direction:column;align-items:flex-start}
       .about-main .year{font-size:58px}
@@ -201,29 +211,65 @@
         <a class="btn btn-outline" href="#how">Как это работает</a>
       </div>
       <p class="micro">Оставьте заявку — команда Rentico расскажет об условиях размещения и поможет подключить ваш автопарк.</p>
-      <div class="trust-row">
-        <span class="trust-chip">Dubai-based team</span>
-        <span class="trust-chip">Работаем с 2023 года</span>
-        <span class="trust-chip">Business Bay office</span>
-      </div>
-    </div>
+</div>
 
     <div class="hero-card">
-      <h3>Ваш автопарк.<br>Новые клиенты Rentico.</h3>
+      <div class="hero-card-top">
+        <div>
+          <div class="hero-card-kicker">Бронирования через Rentico</div>
+          <h3>Ваши автомобили.<br>Новые бронирования.</h3>
+        </div>
+        <div class="live-pill"><span></span> LIVE</div>
+      </div>
+
       <div class="order-list">
         <div class="order">
-          <div class="order-left"><div class="car-icon">🚘</div><div><strong>Nissan Sunny</strong><small>3 дня · Dubai Marina</small></div></div>
-          <span class="badge">Новый заказ</span>
+          <div class="order-left">
+            <div class="car-thumb">
+              <svg viewBox="0 0 64 40" aria-hidden="true">
+                <path d="M12 26h40l-4-10c-1-3-3-5-6-5H25c-3 0-5 2-7 5l-6 10Z" fill="currentColor"/>
+                <rect x="9" y="25" width="46" height="8" rx="4" fill="currentColor"/>
+                <circle cx="18" cy="33" r="4" fill="#fff"/>
+                <circle cx="46" cy="33" r="4" fill="#fff"/>
+              </svg>
+            </div>
+            <div><strong>Nissan Sunny</strong><small>3 дня · Dubai Marina</small></div>
+          </div>
+          <span class="badge">Новое бронирование</span>
         </div>
+
         <div class="order">
-          <div class="order-left"><div class="car-icon">🚙</div><div><strong>Kia Sportage</strong><small>7 дней · DXB Airport</small></div></div>
-          <span class="badge">Запрос</span>
+          <div class="order-left">
+            <div class="car-thumb">
+              <svg viewBox="0 0 64 40" aria-hidden="true">
+                <path d="M10 25h44l-5-11c-1-2-3-4-6-4H24c-3 0-5 2-7 4l-7 11Z" fill="currentColor"/>
+                <rect x="8" y="24" width="48" height="9" rx="4.5" fill="currentColor"/>
+                <circle cx="18" cy="33" r="4" fill="#fff"/>
+                <circle cx="47" cy="33" r="4" fill="#fff"/>
+              </svg>
+            </div>
+            <div><strong>Kia Sportage</strong><small>7 дней · DXB Airport</small></div>
+          </div>
+          <span class="badge badge-soft">Новый запрос</span>
         </div>
+
         <div class="order">
-          <div class="order-left"><div class="car-icon">🏎️</div><div><strong>BMW 4 Series</strong><small>2 дня · Downtown</small></div></div>
-          <span class="badge">Новый заказ</span>
+          <div class="order-left">
+            <div class="car-thumb">
+              <svg viewBox="0 0 64 40" aria-hidden="true">
+                <path d="M13 26h39l-6-9c-2-3-4-4-7-4H27c-3 0-5 1-7 4l-7 9Z" fill="currentColor"/>
+                <rect x="10" y="25" width="45" height="8" rx="4" fill="currentColor"/>
+                <circle cx="19" cy="33" r="4" fill="#fff"/>
+                <circle cx="46" cy="33" r="4" fill="#fff"/>
+              </svg>
+            </div>
+            <div><strong>BMW 4 Series</strong><small>2 дня · Downtown</small></div>
+          </div>
+          <span class="badge">Новое бронирование</span>
         </div>
       </div>
+
+      <div class="hero-card-foot">Пример того, как новые запросы выглядят для rental-компании</div>
     </div>
   </div>
 </section>
