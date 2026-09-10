@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Подключите свой автопарк к Rentico и получайте дополнительные бронирования в Дубае без затрат на собственный маркетинг." />
-  <title>Rentico Partners — больше бронирований для вашего автопарка</title>
+  <meta name="description" content="Разместите автомобили на Rentico и получайте больше бронирований от клиентов, которые ищут аренду в Дубае." />
+  <title>Rentico for Rental Companies — больше бронирований для вашего автопарка</title>
   <style>
     :root{
       --bg:#f6f7f9;
@@ -14,7 +14,7 @@
       --line:#e7e8eb;
       --dark:#101114;
       --accent:#f3c942;
-      --accent-2:#ffe889;
+      --accent-soft:#fff4c7;
       --success:#157347;
       --radius:22px;
       --shadow:0 16px 50px rgba(17,18,20,.08);
@@ -70,7 +70,7 @@
     }
     .hero-card:before{
       content:"";position:absolute;width:360px;height:360px;border-radius:50%;
-      background:var(--accent);filter:blur(0);right:-140px;top:-140px;opacity:.95;
+      background:var(--accent);right:-140px;top:-140px;opacity:.95;
     }
     .hero-card:after{
       content:"";position:absolute;width:340px;height:140px;border:2px solid rgba(255,255,255,.16);
@@ -91,7 +91,7 @@
     .section.dark{background:var(--dark);color:white}
     .kicker{font-weight:850;font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:#8b8f97;margin-bottom:12px}
     .section h2{font-size:clamp(34px,4vw,52px);letter-spacing:-.04em;line-height:1.03;margin:0 0 18px}
-    .section-intro{font-size:18px;color:#70747c;max-width:720px;margin-bottom:42px}
+    .section-intro{font-size:18px;color:#70747c;max-width:760px;margin-bottom:42px}
     .dark .section-intro{color:#afb2b8}
     .benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
     .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
@@ -102,15 +102,39 @@
     .step{border-top:1px solid #34363b;padding-top:22px}
     .step-index{color:var(--accent);font-size:13px;font-weight:900;margin-bottom:42px}
     .step h3{font-size:22px;margin:0 0 10px}.step p{color:#adb0b7;margin:0}
+    .booking-flow{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:stretch
+    }
+    .flow-card{
+      background:white;border:1px solid var(--line);border-radius:20px;padding:24px;position:relative
+    }
+    .flow-card:not(:last-child):after{
+      content:"→";position:absolute;right:-18px;top:50%;transform:translateY(-50%);
+      width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+      background:var(--accent);font-weight:900;z-index:2
+    }
+    .flow-icon{font-size:27px;margin-bottom:28px}
+    .flow-card h3{margin:0 0 8px;font-size:18px}.flow-card p{margin:0;color:#6d7179;font-size:14px}
     .fit{display:grid;grid-template-columns:1fr 1fr;gap:16px}
     .fit .card{min-height:210px}
     .check{font-weight:900;font-size:20px;margin-bottom:38px}
+    .conditions-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .condition-card{background:#17191d;border:1px solid #2a2d33;border-radius:20px;padding:25px}
+    .condition-card h3{margin:0 0 9px;font-size:18px}.condition-card p{margin:0;color:#adb0b7;font-size:14px}
+    .requirements{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .req-card{background:white;border:1px solid var(--line);border-radius:20px;padding:25px}
+    .req-tag{font-size:12px;font-weight:900;color:#8c7219;margin-bottom:30px}
+    .req-card h3{margin:0 0 9px;font-size:18px}.req-card p{margin:0;color:#6d7179;font-size:14px}
     .strip{
       display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;
       background:var(--accent);padding:42px;border-radius:28px
     }
     .strip h2{margin:0 0 8px}.strip p{margin:0;max-width:660px}
     .strip .btn{justify-self:end}
+    .note{
+      margin-top:20px;padding:16px 18px;border-radius:14px;background:#fff9df;
+      border:1px solid #f2df89;color:#66540d;font-size:14px
+    }
     .form-wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:start}
     .form-note{font-size:16px;color:#666a72}
     form{background:white;border:1px solid var(--line);border-radius:26px;padding:28px;box-shadow:var(--shadow)}
@@ -126,7 +150,7 @@
     .consent{display:flex;gap:9px;align-items:flex-start;font-size:12px;color:#777b83;margin:5px 0 17px}
     .consent input{width:auto;min-height:auto;margin-top:3px}
     .success{display:none;background:#eaf7ef;color:var(--success);padding:13px;border-radius:10px;margin-top:13px;font-weight:700}
-    .faq{display:grid;gap:10px;max-width:850px}
+    .faq{display:grid;gap:10px;max-width:900px}
     details{background:white;border:1px solid var(--line);padding:19px 21px;border-radius:14px}
     summary{cursor:pointer;font-weight:850}
     details p{color:#6d7179;margin:12px 0 0}
@@ -137,11 +161,13 @@
       position:fixed;right:20px;bottom:20px;z-index:20;background:#111;color:white;
       border-radius:999px;padding:13px 17px;font-weight:800;box-shadow:var(--shadow)
     }
-    @media(max-width:900px){
+    @media(max-width:980px){
       .navlinks a:not(.nav-cta){display:none}
       .hero-grid,.form-wrap,.strip{grid-template-columns:1fr}
-      .benefits{grid-template-columns:1fr 1fr}
+      .benefits,.conditions-grid,.requirements{grid-template-columns:1fr 1fr}
       .steps{grid-template-columns:1fr}
+      .booking-flow{grid-template-columns:1fr 1fr}
+      .flow-card:after{display:none}
       .hero-card{min-height:410px}
       .strip .btn{justify-self:start}
     }
@@ -152,7 +178,7 @@
       .hero{padding:48px 0 44px}
       h1{font-size:44px}
       .lead{font-size:17px}
-      .benefits,.fit,.grid2{grid-template-columns:1fr}
+      .benefits,.fit,.grid2,.booking-flow,.conditions-grid,.requirements{grid-template-columns:1fr}
       .section{padding:68px 0}
       .hero-card{padding:22px;min-height:390px}
       .strip{padding:28px}
@@ -169,7 +195,7 @@
         <a href="#benefits">Преимущества</a>
         <a href="#how">Как это работает</a>
         <a href="#faq">FAQ</a>
-        <a class="btn btn-primary nav-cta" href="#partner-form">Подключить автопарк</a>
+        <a class="btn btn-primary nav-cta" href="#rental-form">Подключить автопарк</a>
       </nav>
     </div>
   </header>
@@ -180,15 +206,15 @@
         <div>
           <div class="eyebrow"><span class="dot"></span> Rentico for Rental Companies</div>
           <h1>Больше бронирований для вашего автопарка</h1>
-          <p class="lead">Подключите свой автопарк к Rentico, привлекайте новых клиентов и увеличивайте загрузку автомобилей. Меньше простоя — больше бронирований и выручки для вашего бизнеса.</p>
+          <p class="lead">Разместите автомобили на Rentico и получайте заказы от клиентов, которые ищут аренду в Дубае. Увеличивайте загрузку автопарка, сокращайте простой и зарабатывайте больше.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#partner-form">Стать партнёром</a>
+            <a class="btn btn-primary" href="#rental-form">Разместить автомобили</a>
             <a class="btn btn-outline" href="#how">Как это работает</a>
           </div>
-          <p class="micro">Заявка занимает около 2 минут. После отправки с вами свяжется команда Rentico.</p>
+          <p class="micro">Оставьте заявку — расскажем об условиях размещения и поможем подключить ваш автопарк.</p>
         </div>
 
-        <div class="hero-card" aria-label="Пример входящих бронирований">
+        <div class="hero-card">
           <h3>Ваш автопарк.<br>Новые клиенты Rentico.</h3>
           <div class="order-list">
             <div class="order">
@@ -211,14 +237,30 @@
     <section class="section white" id="benefits">
       <div class="container">
         <div class="kicker">Почему Rentico</div>
-        <h2>Дополнительный канал продаж<br>без лишней операционки</h2>
-        <p class="section-intro">Мы строим партнёрство вокруг простой идеи: прокатчик отвечает за хороший автомобиль и сервис, Rentico — за привлечение клиента и удобный путь до бронирования.</p>
+        <h2>Новый канал бронирований<br>для вашего автопарка</h2>
+        <p class="section-intro">Rentico — онлайн-сервис аренды автомобилей в Дубае. Клиенты находят и бронируют автомобили, а rental-компании размещают свой автопарк и получают новые заказы через платформу.</p>
 
         <div class="benefits">
-          <article class="card"><div class="num">01</div><h3>Новые бронирования</h3><p>Получайте дополнительный поток клиентов без запуска отдельной рекламы для каждого автомобиля.</p></article>
-          <article class="card"><div class="num">02</div><h3>Без сложного старта</h3><p>Для первого подключения достаточно данных о компании, автопарке, тарифах и условиях аренды.</p></article>
-          <article class="card"><div class="num">03</div><h3>Вы контролируете условия</h3><p>Сохраняйте контроль над ценами, доступностью, лимитами пробега, доставкой и дополнительными услугами.</p></article>
-          <article class="card"><div class="num">04</div><h3>Локальная команда в Дубае</h3><p>Работаем на рынке ОАЭ и понимаем специфику выдачи, доставки и коммуникации с международными клиентами.</p></article>
+          <article class="card">
+            <div class="num">01</div>
+            <h3>Новые клиенты</h3>
+            <p>Получайте бронирования через Rentico и расширяйте продажи без необходимости самостоятельно привлекать каждого клиента.</p>
+          </article>
+          <article class="card">
+            <div class="num">02</div>
+            <h3>Выше загрузка</h3>
+            <p>Используйте свободные даты между собственными заказами и сокращайте время, когда автомобили стоят без аренды.</p>
+          </article>
+          <article class="card">
+            <div class="num">03</div>
+            <h3>Ваши цены и условия</h3>
+            <p>Вы определяете стоимость аренды, доступность автомобилей, лимиты пробега, доставку и дополнительные услуги.</p>
+          </article>
+          <article class="card">
+            <div class="num">04</div>
+            <h3>Простой старт</h3>
+            <p>Для начала достаточно данных об автомобилях, ценах и условиях аренды. Сложная техническая интеграция на старте не требуется.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -226,26 +268,89 @@
     <section class="section dark" id="how">
       <div class="container">
         <div class="kicker">Подключение</div>
-        <h2>От заявки до первого размещения — три шага</h2>
-        <p class="section-intro">Без длинных интеграционных проектов. Начинаем с базовой информации и масштабируем размещение по мере готовности вашего парка.</p>
+        <h2>От заявки до размещения — три шага</h2>
+        <p class="section-intro">Без длинного интеграционного проекта. Передайте информацию об автопарке — команда Rentico поможет подготовить автомобили к размещению.</p>
         <div class="steps">
-          <div class="step"><div class="step-index">ШАГ 01</div><h3>Оставьте заявку</h3><p>Расскажите о компании: размер парка, основные классы автомобилей, география выдачи и контактное лицо.</p></div>
-          <div class="step"><div class="step-index">ШАГ 02</div><h3>Согласуем условия</h3><p>Команда Rentico уточнит тарифы, правила аренды, документы, доставку и формат передачи бронирований.</p></div>
-          <div class="step"><div class="step-index">ШАГ 03</div><h3>Запускаем продажи</h3><p>Добавляем автомобили в каталог, открываем доступность и начинаем приводить вам целевые запросы и бронирования.</p></div>
+          <div class="step">
+            <div class="step-index">ШАГ 01</div>
+            <h3>Расскажите об автопарке</h3>
+            <p>Оставьте контакты и основную информацию: количество автомобилей, категории, цены и условия аренды.</p>
+          </div>
+          <div class="step">
+            <div class="step-index">ШАГ 02</div>
+            <h3>Размещаем автомобили</h3>
+            <p>Согласуем условия и добавим ваши автомобили в каталог Rentico, чтобы клиенты могли находить их при поиске аренды.</p>
+          </div>
+          <div class="step">
+            <div class="step-index">ШАГ 03</div>
+            <h3>Получайте бронирования</h3>
+            <p>Когда клиент выбирает ваш автомобиль, вы получаете запрос и подтверждаете доступность. Дальше заказ обслуживает ваша rental-компания.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section white">
+      <div class="container">
+        <div class="kicker">Бронирование через Rentico</div>
+        <h2>Как заказ доходит до вашего rental</h2>
+        <p class="section-intro">Простой сценарий от поиска автомобиля клиентом до подтверждённого заказа.</p>
+
+        <div class="booking-flow">
+          <div class="flow-card">
+            <div class="flow-icon">🔎</div>
+            <h3>Клиент ищет автомобиль</h3>
+            <p>Выбирает даты и подходящий автомобиль на Rentico.</p>
+          </div>
+          <div class="flow-card">
+            <div class="flow-icon">📩</div>
+            <h3>Вы получаете запрос</h3>
+            <p>Rentico передаёт вашей компании информацию о бронировании.</p>
+          </div>
+          <div class="flow-card">
+            <div class="flow-icon">✓</div>
+            <h3>Подтверждаете доступность</h3>
+            <p>Вы подтверждаете автомобиль и согласованные условия заказа.</p>
+          </div>
+          <div class="flow-card">
+            <div class="flow-icon">🚗</div>
+            <h3>Обслуживаете клиента</h3>
+            <p>Ваша компания выдаёт или доставляет автомобиль клиенту.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark">
+      <div class="container">
+        <div class="kicker">Контроль остаётся у вас</div>
+        <h2>Ваш автопарк — ваши условия</h2>
+        <p class="section-intro">Rentico становится ещё одним каналом бронирований, а управление автомобилями и ключевыми условиями аренды остаётся за вашей компанией.</p>
+
+        <div class="conditions-grid">
+          <article class="condition-card"><h3>Цены</h3><p>Определяйте стоимость аренды автомобилей и согласовывайте тарифы до размещения.</p></article>
+          <article class="condition-card"><h3>Доступность</h3><p>Решайте, какие автомобили и на какие даты доступны клиентам Rentico.</p></article>
+          <article class="condition-card"><h3>Условия аренды</h3><p>Депозит, пробег, страховка и другие правила фиксируются до публикации автомобиля.</p></article>
+          <article class="condition-card"><h3>Доставка и доп. услуги</h3><p>Указывайте доступные районы доставки и дополнительные услуги вашей компании.</p></article>
         </div>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <div class="kicker">Кому подходит</div>
-        <h2>Работаем с прокатчиками разного масштаба</h2>
-        <p class="section-intro">Главное — актуальный парк, прозрачные условия и готовность стабильно обслуживать клиентов Rentico.</p>
-        <div class="fit">
-          <article class="card"><div class="check">✓</div><h3>Небольшой локальный прокат</h3><p>Есть несколько или несколько десятков автомобилей и нужно повысить загрузку без расширения собственной команды продаж.</p></article>
-          <article class="card"><div class="check">✓</div><h3>Средний и крупный автопарк</h3><p>Нужен ещё один стабильный канал заказов, понятная коммуникация и возможность разместить разные классы автомобилей.</p></article>
-          <article class="card"><div class="check">✓</div><h3>Economy, SUV, Business и Luxury</h3><p>На Rentico клиенты ищут автомобили под разные бюджеты и сценарии — от городской аренды до премиальных поездок.</p></article>
-          <article class="card"><div class="check">✓</div><h3>Доставка по Дубаю</h3><p>Особенно интересны партнёры, которые могут организовать выдачу или доставку авто в популярных районах, отелях и аэропортах.</p></article>
+        <div class="kicker">Что нужно для старта</div>
+        <h2>Подготовить автопарк к размещению просто</h2>
+        <p class="section-intro">Для первого запуска достаточно базовой информации. Остальные детали команда Rentico поможет уточнить после заявки.</p>
+
+        <div class="requirements">
+          <article class="req-card"><div class="req-tag">01</div><h3>Автомобили</h3><p>Марка, модель, год, характеристики и актуальные фотографии.</p></article>
+          <article class="req-card"><div class="req-tag">02</div><h3>Цены</h3><p>Стоимость аренды и доступных дополнительных услуг.</p></article>
+          <article class="req-card"><div class="req-tag">03</div><h3>Условия</h3><p>Депозит, страховка, пробег, доставка и другие правила аренды.</p></article>
+          <article class="req-card"><div class="req-tag">04</div><h3>Доступность</h3><p>Информация о датах, когда автомобили можно бронировать.</p></article>
+        </div>
+
+        <div class="note">
+          Для старта не требуется сложная техническая интеграция. Формат передачи доступности и бронирований согласуем с вашей компанией при подключении.
         </div>
       </div>
     </section>
@@ -253,18 +358,21 @@
     <section class="section white">
       <div class="container">
         <div class="strip">
-          <div><h2>У вас есть свободные автомобили?</h2><p>Превратите простой парка в дополнительную выручку. Отправьте данные — обсудим формат подключения и подходящие условия.</p></div>
-          <a class="btn btn-dark" href="#partner-form">Отправить заявку</a>
+          <div>
+            <h2>У вас есть свободные автомобили?</h2>
+            <p>Разместите их на Rentico, заполняйте свободные даты новыми бронированиями и увеличивайте выручку существующего автопарка.</p>
+          </div>
+          <a class="btn btn-dark" href="#rental-form">Разместить автомобили</a>
         </div>
       </div>
     </section>
 
-    <section class="section" id="partner-form">
+    <section class="section" id="rental-form">
       <div class="container form-wrap">
         <div>
-          <div class="kicker">Стать партнёром</div>
-          <h2>Подключите свой автопарк к Rentico</h2>
-          <p class="form-note">Заполните короткую форму. Мы посмотрим ваш парк и свяжемся, чтобы обсудить условия, формат загрузки автомобилей и запуск.</p>
+          <div class="kicker">Подключить автопарк</div>
+          <h2>Разместите автомобили на Rentico</h2>
+          <p class="form-note">Оставьте контакты и расскажите немного о вашем автопарке. Команда Rentico свяжется с вами, расскажет об условиях размещения и поможет начать работу.</p>
           <p class="form-note"><strong>Контакты Rentico:</strong><br>+971 55 626 6457<br>hello@rentico.ae<br>Dubai, UAE</p>
         </div>
 
@@ -277,31 +385,65 @@
           <input type="hidden" name="landing_url" id="landing_url">
 
           <div class="grid2">
-            <div class="field"><label for="company">Название компании *</label><input id="company" name="company" required placeholder="Dubai Rent A Car LLC"></div>
-            <div class="field"><label for="name">Контактное лицо *</label><input id="name" name="name" required placeholder="Имя"></div>
+            <div class="field">
+              <label for="company">Название компании *</label>
+              <input id="company" name="company" required placeholder="Dubai Rent A Car LLC">
+            </div>
+            <div class="field">
+              <label for="name">Контактное лицо *</label>
+              <input id="name" name="name" required placeholder="Имя">
+            </div>
           </div>
+
           <div class="grid2">
-            <div class="field"><label for="phone">Телефон / WhatsApp *</label><input id="phone" name="phone" required inputmode="tel" placeholder="+971 ..."></div>
-            <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" placeholder="name@company.com"></div>
+            <div class="field">
+              <label for="phone">Телефон / WhatsApp *</label>
+              <input id="phone" name="phone" required inputmode="tel" placeholder="+971 ...">
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="name@company.com">
+            </div>
           </div>
+
           <div class="grid2">
-            <div class="field"><label for="fleet">Размер автопарка *</label>
+            <div class="field">
+              <label for="fleet">Размер автопарка *</label>
               <select id="fleet" name="fleet_size" required>
                 <option value="" selected disabled>Выберите</option>
-                <option>1–10 автомобилей</option><option>11–30 автомобилей</option><option>31–100 автомобилей</option><option>100+ автомобилей</option>
+                <option>1–10 автомобилей</option>
+                <option>11–30 автомобилей</option>
+                <option>31–100 автомобилей</option>
+                <option>100+ автомобилей</option>
               </select>
             </div>
-            <div class="field"><label for="area">Где работаете *</label>
+            <div class="field">
+              <label for="area">Где работаете *</label>
               <select id="area" name="area" required>
                 <option value="" selected disabled>Выберите</option>
-                <option>Dubai</option><option>Abu Dhabi</option><option>Sharjah</option><option>Другой эмират / несколько эмиратов</option>
+                <option>Dubai</option>
+                <option>Abu Dhabi</option>
+                <option>Sharjah</option>
+                <option>Другой эмират / несколько эмиратов</option>
               </select>
             </div>
           </div>
-          <div class="field"><label for="website">Сайт / Instagram</label><input id="website" name="website" placeholder="https://..."></div>
-          <div class="field"><label for="message">Что важно знать о вашем парке?</label><textarea id="message" name="message" placeholder="Классы авто, условия, доставка, особенности..."></textarea></div>
 
-          <label class="consent"><input type="checkbox" required> <span>Я согласен на обработку данных для связи по вопросу партнёрства.</span></label>
+          <div class="field">
+            <label for="website">Сайт / Instagram</label>
+            <input id="website" name="website" placeholder="https://...">
+          </div>
+
+          <div class="field">
+            <label for="message">Что важно знать о вашем парке?</label>
+            <textarea id="message" name="message" placeholder="Классы авто, условия, доставка, особенности..."></textarea>
+          </div>
+
+          <label class="consent">
+            <input type="checkbox" required>
+            <span>Я согласен на обработку данных для связи по вопросу размещения автомобилей на Rentico.</span>
+          </label>
+
           <button class="btn btn-primary" type="submit" style="width:100%">Отправить заявку</button>
           <div class="success" id="success">Спасибо! Заявка отправлена. Команда Rentico свяжется с вами.</div>
         </form>
@@ -313,17 +455,56 @@
         <div class="kicker">FAQ</div>
         <h2>Частые вопросы</h2>
         <div class="faq">
-          <details><summary>Сколько автомобилей нужно для подключения?</summary><p>Можно отправить заявку с парком любого размера. Команда Rentico оценит доступность, классы автомобилей и условия и предложит подходящий формат работы.</p></details>
-          <details><summary>Нужна ли техническая интеграция?</summary><p>Не обязательно на первом этапе. Формат обмена доступностью и бронированиями согласовывается после заявки — можно начать с самого простого сценария.</p></details>
-          <details><summary>Какие автомобили можно разместить?</summary><p>Economy, Standard, SUV, Business, Luxury и другие востребованные категории. Важно, чтобы автомобиль соответствовал описанию, был технически исправен и готов к выдаче клиенту.</p></details>
-          <details><summary>Как быстро можно начать?</summary><p>Срок зависит от готовности данных по вашему парку и согласования коммерческих условий. Чем полнее информация в заявке, тем быстрее команда сможет подготовить запуск.</p></details>
-          <details><summary>Как будут приходить заявки?</summary><p>На старте команда согласует удобный канал коммуникации и процесс подтверждения. В дальнейшем формат можно расширить или автоматизировать.</p></details>
+          <details>
+            <summary>Сколько стоит размещение автомобилей на Rentico?</summary>
+            <p>Коммерческие условия зависят от формата размещения и согласовываются с вашей компанией до запуска. Оставьте заявку — команда Rentico расскажет о доступной модели и условиях для вашего автопарка.</p>
+          </details>
+          <details>
+            <summary>Кто устанавливает цены на автомобили?</summary>
+            <p>Цены и условия аренды согласовываются с вашей rental-компанией до размещения. Вы сохраняете контроль над стоимостью аренды и основными условиями предоставления автомобиля.</p>
+          </details>
+          <details>
+            <summary>Как я буду получать бронирования?</summary>
+            <p>После получения заказа через Rentico ваша компания получает информацию о бронировании и подтверждает доступность автомобиля. Удобный формат коммуникации согласуем при подключении.</p>
+          </details>
+          <details>
+            <summary>Нужна ли техническая интеграция?</summary>
+            <p>Для старта сложная интеграция не требуется. Мы согласуем удобный способ передачи информации об автомобилях, доступности и бронированиях.</p>
+          </details>
+          <details>
+            <summary>Какие автомобили можно разместить?</summary>
+            <p>Economy, Standard, SUV, Business, Luxury и другие востребованные категории. Автомобиль должен соответствовать заявленным характеристикам, быть технически исправен и готов к аренде.</p>
+          </details>
+          <details>
+            <summary>Как происходит оплата за аренду?</summary>
+            <p>Порядок оплаты и взаиморасчётов зависит от согласованной модели размещения. Команда Rentico подробно объяснит финансовую схему до запуска автомобилей.</p>
+          </details>
+          <details>
+            <summary>Что происходит при отмене бронирования?</summary>
+            <p>Условия отмены и обработки no-show фиксируются в правилах работы до запуска. Вы будете заранее понимать, как обрабатываются такие ситуации.</p>
+          </details>
+          <details>
+            <summary>Как быстро автомобили появятся на Rentico?</summary>
+            <p>После получения информации об автопарке команда Rentico проверит данные, согласует условия и подготовит автомобили к размещению. Срок зависит от количества машин и полноты предоставленной информации.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark">
+      <div class="container">
+        <div class="strip" style="background:var(--accent);color:#111">
+          <div>
+            <h2>Откройте ещё один канал бронирований</h2>
+            <p>Разместите свой автопарк на Rentico и получайте больше заказов от клиентов, которые ищут аренду автомобиля в Дубае.</p>
+          </div>
+          <a class="btn btn-dark" href="#rental-form">Подключить автопарк</a>
         </div>
       </div>
     </section>
   </main>
 
-  <a class="float-wa" href="https://wa.me/971556266457?text=Hello%20Rentico%2C%20I%20want%20to%20connect%20my%20car%20rental%20fleet" target="_blank" rel="noopener">WhatsApp Rentico</a>
+  <a class="float-wa" href="https://wa.me/971556266457?text=Hello%20Rentico%2C%20I%20want%20to%20list%20my%20rental%20fleet" target="_blank" rel="noopener">WhatsApp Rentico</a>
 
   <footer>
     <div class="container footer">
@@ -333,8 +514,8 @@
   </footer>
 
   <script>
-    // Вставьте сюда endpoint вашей формы: Make, Zapier, n8n, Bitrix24 webhook,
-    // собственный API endpoint или Formspree.
+    // Укажите endpoint для отправки заявок:
+    // Make / n8n / Zapier / Bitrix24 / amoCRM / собственный backend / Formspree.
     const FORM_ENDPOINT = "";
 
     const qs = new URLSearchParams(location.search);
@@ -345,38 +526,42 @@
 
     document.getElementById("leadForm").addEventListener("submit", async (e) => {
       e.preventDefault();
+
       const form = e.currentTarget;
       const btn = form.querySelector('button[type="submit"]');
       const success = document.getElementById("success");
       const payload = Object.fromEntries(new FormData(form).entries());
 
-      // Событие для GTM/GA4/Meta Pixel можно ловить по dataLayer event "partner_lead".
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
-        event: "partner_lead",
-        lead_type: "car_rental_partner",
+        event: "rental_fleet_lead",
+        lead_type: "rental_company",
         fleet_size: payload.fleet_size || "",
         area: payload.area || "",
         utm_source: payload.utm_source || "",
+        utm_medium: payload.utm_medium || "",
         utm_campaign: payload.utm_campaign || ""
       });
 
       if (!FORM_ENDPOINT) {
-        console.log("Partner lead (demo):", payload);
+        console.log("Rental fleet lead (demo):", payload);
         success.style.display = "block";
-        success.textContent = "Форма работает в демо-режиме. Укажите FORM_ENDPOINT в коде, чтобы заявки уходили в CRM / webhook.";
+        success.textContent = "Форма работает в демо-режиме. Укажите FORM_ENDPOINT в коде, чтобы заявки отправлялись в CRM или webhook.";
         return;
       }
 
       try {
         btn.disabled = true;
         btn.textContent = "Отправляем...";
+
         const response = await fetch(FORM_ENDPOINT, {
           method: "POST",
           headers: {"Content-Type":"application/json"},
           body: JSON.stringify(payload)
         });
+
         if (!response.ok) throw new Error("HTTP " + response.status);
+
         success.style.display = "block";
         success.textContent = "Спасибо! Заявка отправлена. Команда Rentico свяжется с вами.";
         form.reset();
